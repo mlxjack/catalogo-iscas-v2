@@ -154,94 +154,103 @@ export default function ProductDetails() {
   return (
     <div className="pd-page">
       <div className="pd-container">
-
-        {/* Breadcrumb */}
-        <Link to="/" className="pd-back">
-          <ArrowLeft size={16} />
-          Voltar ao catálogo
-        </Link>
-
         {/* Main Grid */}
         <div className="pd-grid">
 
-          {/* Gallery */}
-          <div className="pd-gallery">
-            <div className="pd-main-img">
-              {product.images.length > 0
-                ? <img src={product.images[activeImage]} alt={product.title} />
-                : <div className="pd-no-img">Sem imagem</div>
-              }
+          {/* Left Column: Gallery & Description */}
+          <div className="pd-left-col">
+            <div className="pd-gallery">
+              <div className="pd-main-img">
+                {product.images.length > 0
+                  ? <img src={product.images[activeImage]} alt={product.title} className="fade-in" key={activeImage} />
+                  : <div className="pd-no-img">Sem imagem</div>
+                }
+              </div>
+              {product.images.length > 1 && (
+                <div className="pd-thumbs">
+                  {product.images.map((img, i) => (
+                    <button
+                      key={i}
+                      className={`pd-thumb ${i === activeImage ? 'active' : ''}`}
+                      onClick={() => setActiveImage(i)}
+                    >
+                      <img src={img} alt={`Foto ${i + 1}`} />
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
-            {product.images.length > 1 && (
-              <div className="pd-thumbs">
-                {product.images.map((img, i) => (
-                  <button
-                    key={i}
-                    className={`pd-thumb ${i === activeImage ? 'active' : ''}`}
-                    onClick={() => setActiveImage(i)}
-                  >
-                    <img src={img} alt={`Foto ${i + 1}`} />
-                  </button>
-                ))}
+
+            {product.description && (
+              <div className="pd-description">
+                <h3 className="pd-desc-title">Sobre o Produto</h3>
+                <div dangerouslySetInnerHTML={{ __html: product.description }} />
               </div>
             )}
           </div>
 
-          {/* Info */}
-          <div className="pd-info">
+          {/* Right Column: Info & Specs */}
+          <div className="pd-right-col">
+            <div className="pd-info">
+              {/* Back link */}
+              <Link to="/" className="pd-back">
+                <ArrowLeft size={14} />
+                Voltar ao catálogo
+              </Link>
 
-            {product.type && <span className="pd-type">{product.type}</span>}
-            <h1 className="pd-title">{product.title}</h1>
-            <div className="pd-price">{displayPrice}</div>
+              {product.type && <span className="pd-type">{product.type}</span>}
+              <h1 className="pd-title">{product.title}</h1>
+              <div className="pd-price">{displayPrice}</div>
 
-            {/* Options */}
-            <div className="pd-options">
-              {Object.keys(product.options).map(optionName => {
-                const values = product.options[optionName];
-                if (!values || values.length === 0) return null;
-                const isColor = optionName.toLowerCase().includes('cor') || optionName.toLowerCase().includes('color');
+              {/* Options */}
+              <div className="pd-options">
+                {Object.keys(product.options).map(optionName => {
+                  const values = product.options[optionName];
+                  if (!values || values.length === 0) return null;
+                  const isColor = optionName.toLowerCase().includes('cor') || optionName.toLowerCase().includes('color');
 
-                return (
-                  <div key={optionName} className="pd-option-group">
-                    <div className="pd-option-label">
-                      {optionName}: <strong>{selectedOptions[optionName]}</strong>
-                    </div>
+                  return (
+                    <div key={optionName} className="pd-option-group">
+                      <div className="pd-option-label">
+                        {optionName}: <strong>{selectedOptions[optionName]}</strong>
+                      </div>
 
-                    {isColor ? (
-                      <div className="pd-colors">
-                        {values.map(val => {
-                          const imgUrl = getColorImage(val);
-                          return (
+                      {isColor ? (
+                        <div className="pd-colors">
+                          {values.map(val => {
+                            const imgUrl = getColorImage(val);
+                            return (
+                              <button
+                                key={val}
+                                className={`pd-color-btn ${selectedOptions[optionName] === val ? 'active' : ''}`}
+                                onClick={() => handleOptionSelect(optionName, val)}
+                                title={val}
+                              >
+                                {imgUrl
+                                  ? <img src={imgUrl} alt={val} />
+                                  : <span className="pd-color-fallback">{val.slice(0, 2)}</span>
+                                }
+                              </button>
+                            );
+                          })}
+                        </div>
+                      ) : (
+                        <div className="pd-sizes">
+                          {values.map(val => (
                             <button
                               key={val}
-                              className={`pd-color-btn ${selectedOptions[optionName] === val ? 'active' : ''}`}
+                              className={`pd-size-btn ${selectedOptions[optionName] === val ? 'active' : ''}`}
                               onClick={() => handleOptionSelect(optionName, val)}
-                              title={val}
                             >
-                              {imgUrl
-                                ? <img src={imgUrl} alt={val} />
-                                : <span className="pd-color-fallback">{val.slice(0, 2)}</span>
-                              }
+                              {val}
                             </button>
-                          );
-                        })}
-                      </div>
-                    ) : (
-                      <div className="pd-sizes">
-                        {values.map(val => (
-                          <button
-                            key={val}
-                            className={`pd-size-btn ${selectedOptions[optionName] === val ? 'active' : ''}`}
-                            onClick={() => handleOptionSelect(optionName, val)}
-                          >
-                            {val}
-                          </button>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
 
             {/* Specs */}
@@ -256,16 +265,8 @@ export default function ProductDetails() {
                 ))}
               </div>
             </div>
-
-            {/* Description */}
-            {product.description && (
-              <div className="pd-description">
-                <h3 className="pd-desc-title">Sobre o Produto</h3>
-                <div dangerouslySetInnerHTML={{ __html: product.description }} />
-              </div>
-            )}
-
           </div>
+
         </div>
       </div>
     </div>
