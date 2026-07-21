@@ -115,32 +115,122 @@ export default function ProductDetails() {
   };
 
   const buildSpecs = () => {
-    const specs = [
-      { label: 'Categoria', value: product.type || 'Iscas Artificiais' },
-      { label: 'Fabricante', value: product.vendor || 'Chumbada Oficial' },
-    ];
-    if (currentVariant?.sku) specs.push({ label: 'SKU', value: currentVariant.sku });
+    if (!product) return [];
+    
+    const specs = [];
+    const descLower = (product.description || '').toLowerCase();
+    const titleLower = (product.title || '').toLowerCase();
+    const fullText = `${titleLower} ${descLower}`;
+
+    // 1. Categoria & Marca
+    specs.push({ label: 'Categoria', value: product.type || 'Iscas Artificiais' });
+    specs.push({ label: 'Fabricante', value: product.vendor || 'Chumbada Oficial' });
+
+    // 2. Código SKU (se houver variação ativa)
+    if (currentVariant?.sku) {
+      specs.push({ label: 'SKU / Código', value: currentVariant.sku });
+    }
+
+    // 3. Opções dinâmicas ativas (Cor, Tamanho, Quantidade, etc.)
     const optionKeys = Object.keys(product.options);
     optionKeys.forEach(key => {
       const val = selectedOptions[key];
-      if (val) specs.push({ label: key, value: val });
+      if (val) {
+        specs.push({ label: key, value: val });
+      }
     });
-    if (currentVariant?.grams > 0) specs.push({ label: 'Peso', value: `${currentVariant.grams}g` });
-    if (product.title.toLowerCase().includes('soft') || product.description.toLowerCase().includes('soft bait') || product.description.toLowerCase().includes('silicone')) {
-      specs.push({ label: 'Material', value: 'Plastisol (Soft Bait)' });
-    } else if (product.title.toLowerCase().includes('jig') || product.title.toLowerCase().includes('chumbo')) {
-      specs.push({ label: 'Material', value: 'Chumbo + Anzol Reforçado' });
+
+    // 4. Peso (se houver no produto ou variação)
+    if (currentVariant?.grams > 0) {
+      specs.push({ label: 'Peso Unitário', value: `${currentVariant.grams}g` });
     }
-    const descLower = product.description.toLowerCase();
-    const species = [];
-    if (descLower.includes('tucunaré') || descLower.includes('tucunare')) species.push('Tucunaré');
-    if (descLower.includes('robalo')) species.push('Robalo');
-    if (descLower.includes('traíra') || descLower.includes('traira')) species.push('Traíra');
-    if (descLower.includes('dourado')) species.push('Dourado');
-    if (descLower.includes('black bass') || descLower.includes('bass')) species.push('Black Bass');
-    if (descLower.includes('xaréu') || descLower.includes('xareu')) species.push('Xaréu');
-    if (descLower.includes('tarpon') || descLower.includes('camurupim')) species.push('Tarpon');
-    if (species.length > 0) specs.push({ label: 'Espécies', value: species.join(', ') });
+
+    // 5. Material / Composição
+    if (fullText.includes('anteninha') || fullText.includes('átomo') || fullText.includes('eva')) {
+      specs.push({ label: 'Material', value: 'EVA de Alta Densidade + Miçanga' });
+    } else if (fullText.includes('jig head') || fullText.includes('jig de olho') || fullText.includes('chumbo')) {
+      specs.push({ label: 'Material', value: 'Chumbo Reforçado + Anzol de Aço Carbono 90°' });
+    } else if (fullText.includes('soft') || fullText.includes('camarão') || fullText.includes('plastisol') || fullText.includes('borracha') || fullText.includes('grub') || fullText.includes('worm') || fullText.includes('shad') || fullText.includes('paddle') || fullText.includes('fluke') || fullText.includes('pitu') || fullText.includes('sapo')) {
+      specs.push({ label: 'Material', value: 'Plastisol Soft Bait (Super Flexível e Resistente)' });
+    } else {
+      specs.push({ label: 'Material', value: 'Polímero de Pesca de Alta Resistência' });
+    }
+
+    // 6. Flutuabilidade / Ação
+    if (fullText.includes('floating') || fullText.includes('flutuante') || fullText.includes('flutuabilidade')) {
+      specs.push({ label: 'Ação / Flutuabilidade', value: 'Floating (Flutuante na Água)' });
+    } else if (fullText.includes('sinking') || fullText.includes('afunda')) {
+      specs.push({ label: 'Ação / Flutuabilidade', value: 'Sinking (Subsuperfície / Fundo)' });
+    } else if (fullText.includes('jig head') || fullText.includes('jig')) {
+      specs.push({ label: 'Ação / Flutuabilidade', value: 'Trabalho no Fundo / Meia Água' });
+    } else if (fullText.includes('superfície') || fullText.includes('superficie')) {
+      specs.push({ label: 'Ação / Flutuabilidade', value: 'Superfície Explosiva' });
+    } else {
+      specs.push({ label: 'Ação / Flutuabilidade', value: 'Ação Meia Água / Fundo' });
+    }
+
+    // 7. Modalidades e Técnicas Recomendadas
+    const tecnicas = [];
+    if (fullText.includes('ned rig')) tecnicas.push('Ned Rig');
+    if (fullText.includes('drop shot') || fullText.includes('down shot') || fullText.includes('dropshot')) tecnicas.push('Drop / Down Shot');
+    if (fullText.includes('two bait') || fullText.includes('twobait')) tecnicas.push('Two Bait');
+    if (fullText.includes('ajing') || fullText.includes('ultralight') || fullText.includes('finesse')) tecnicas.push('Pesca Finesse / UL');
+    if (fullText.includes('flipping')) tecnicas.push('Flipping');
+    if (fullText.includes('trailer')) tecnicas.push('Trailer Bait');
+    if (fullText.includes('pesqueiro') || fullText.includes('pesqueiros')) tecnicas.push('Pescaria de Pesqueiro');
+    if (tecnicas.length > 0) {
+      specs.push({ label: 'Técnica Indicada', value: tecnicas.join(', ') });
+    }
+
+    // 8. Montagens / Anzóis Compatíveis
+    const montagens = [];
+    if (fullText.includes('jig head 90') || fullText.includes('jig head comum') || fullText.includes('jig head')) montagens.push('Jig Head 90°');
+    if (fullText.includes('offset ewg') || fullText.includes('anzol offset') || fullText.includes('offset')) montagens.push('Anzol Offset EWG');
+    if (fullText.includes('articulado')) montagens.push('Jig Head / Offset Articulado');
+    if (montagens.length > 0) {
+      specs.push({ label: 'Montagem Compatível', value: montagens.join(', ') });
+    }
+
+    // 9. Espécies Alvo (Target Species)
+    const speciesMap = [
+      { key: 'tucunaré', label: 'Tucunaré' },
+      { key: 'tucunare', label: 'Tucunaré' },
+      { key: 'robalo', label: 'Robalo' },
+      { key: 'traíra', label: 'Traíra' },
+      { key: 'traira', label: 'Traíra' },
+      { key: 'dourado', label: 'Dourado' },
+      { key: 'black bass', label: 'Black Bass' },
+      { key: 'bass', label: 'Black Bass' },
+      { key: 'xaréu', label: 'Xaréu' },
+      { key: 'xareu', label: 'Xaréu' },
+      { key: 'tarpon', label: 'Tarpon' },
+      { key: 'camurupim', label: 'Camurupim' },
+      { key: 'tambaqui', label: 'Tambaqui' },
+      { key: 'tambacu', label: 'Tambacu' },
+      { key: 'pacu', label: 'Pacu' },
+      { key: 'garoupa', label: 'Garoupa' },
+      { key: 'cherne', label: 'Cherne' },
+      { key: 'mero', label: 'Mero' },
+      { key: 'tilápia', label: 'Tilápia' },
+      { key: 'tilapia', label: 'Tilápia' },
+      { key: 'pampo', label: 'Pampo' },
+    ];
+    const speciesFound = new Set();
+    speciesMap.forEach(s => {
+      if (fullText.includes(s.key)) {
+        speciesFound.add(s.label);
+      }
+    });
+
+    if (speciesFound.size > 0) {
+      specs.push({ label: 'Espécies Alvo', value: Array.from(speciesFound).join(', ') });
+    } else {
+      specs.push({ label: 'Espécies Alvo', value: 'Peixes Predadores de Água Doce e Salgada' });
+    }
+
+    // 10. Status / Disponibilidade
+    specs.push({ label: 'Disponibilidade', value: 'Em Estoque (Pronta Entrega)' });
+
     return specs;
   };
 
