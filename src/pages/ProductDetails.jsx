@@ -1,14 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { loadProducts } from '../utils/csvParser';
-import { ArrowLeft, Loader2, ChevronRight, Check } from 'lucide-react';
+import { ArrowLeft, Loader2, ChevronRight, Info } from 'lucide-react';
+
+// List of available color images
+const colorFiles = [
+  "Beijo-da-sombra.jpg",
+  "Branco-perola.jpg",
+  "Capim-Rubi.jpg",
+  "Chá - Pastel.jpg",
+  "Chá-verde.jpg",
+  "Chá.jpg",
+  "Glow.jpg",
+  "Luz-Laranja.jpg",
+  "Rapadura.jpg",
+  "Roxo-Estrelnar.jpg",
+  "Rubi-Dourado.jpg",
+  "Salmão-Radiante.jpg",
+  "Verde neon.jpg",
+  "Verde-cósmico.jpg",
+  "Vermelho-Holográfico.jpg",
+  "Véu-da-Noite.jpg",
+  "amarelo-neon.jpg",
+  "laranja-Neon.png",
+  "preto-brilhante.png"
+];
+
+// Helper to normalize strings for matching
+const normalizeString = (str) => {
+  return str.toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // remove accents
+    .replace(/[^a-z0-9]/g, ""); // remove spaces, dashes, etc
+};
 
 export default function ProductDetails() {
   const { handle } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [activeImage, setActiveImage] = useState(0);
-  const [activeTab, setActiveTab] = useState('description'); // 'description' | 'specs'
   
   // Selected options state
   const [selectedOptions, setSelectedOptions] = useState({});
@@ -65,7 +94,7 @@ export default function ProductDetails() {
   if (loading) {
     return (
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '60vh' }}>
-        <Loader2 size={48} color="var(--color-primary)" className="animate-spin" style={{ animation: 'spin 1s linear infinite' }} />
+        <Loader2 size={48} color="var(--color-secondary)" className="animate-spin" style={{ animation: 'spin 1s linear infinite' }} />
         <style>{`@keyframes spin { 100% { transform: rotate(360deg); } }`}</style>
       </div>
     );
@@ -88,16 +117,39 @@ export default function ProductDetails() {
     ? `R$ ${currentVariant.price.toFixed(2).replace('.', ',')}` 
     : 'Consulte Preço';
 
+  // Attempt to match a color name to an image file
+  const getColorImage = (colorName) => {
+    const normalizedTarget = normalizeString(colorName);
+    
+    // First, try a direct match after normalization
+    const exactMatch = colorFiles.find(f => {
+      const fileNameNoExt = f.substring(0, f.lastIndexOf('.'));
+      return normalizeString(fileNameNoExt) === normalizedTarget;
+    });
+
+    if (exactMatch) return `${import.meta.env.BASE_URL}cores/${exactMatch}`;
+
+    // If no exact match, try fuzzy (if target is included in file name or vice versa)
+    const fuzzyMatch = colorFiles.find(f => {
+      const fileNameNoExt = normalizeString(f.substring(0, f.lastIndexOf('.')));
+      return fileNameNoExt.includes(normalizedTarget) || normalizedTarget.includes(fileNameNoExt);
+    });
+
+    if (fuzzyMatch) return `${import.meta.env.BASE_URL}cores/${fuzzyMatch}`;
+
+    return null; // Fallback to normal button if no image is found
+  };
+
   return (
     <div className="container details-page">
-      <div style={{ marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>
+      <div style={{ marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-text-muted)', fontSize: '0.9rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
         <Link to="/" style={{ color: 'var(--color-text-muted)', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-          <ArrowLeft size={14} /> Voltar ao Catálogo
+          <ArrowLeft size={16} /> Voltar ao Catálogo
         </Link>
-        <ChevronRight size={14} />
+        <ChevronRight size={16} />
         <span>{product.type || 'Produto'}</span>
-        <ChevronRight size={14} />
-        <span style={{ color: 'var(--color-text)', fontWeight: 500 }}>{product.title}</span>
+        <ChevronRight size={16} />
+        <span style={{ color: 'var(--color-primary)', fontWeight: 800 }}>{product.title}</span>
       </div>
 
       <div className="details-grid">
@@ -133,13 +185,11 @@ export default function ProductDetails() {
         {/* Right Col: Info */}
         <div className="details-info">
           {product.tags && product.tags.includes('Lancamento') && (
-            <span className="badge badge-new" style={{ marginBottom: '1rem', alignSelf: 'flex-start' }}>Lançamento</span>
+            <span className="badge badge-new" style={{ marginBottom: '1.5rem', alignSelf: 'flex-start' }}>Lançamento</span>
           )}
           
-          <h1 className="details-title" style={{ fontSize: '2.25rem', marginBottom: '0.75rem' }}>{product.title}</h1>
-          <div className="details-price" style={{ fontSize: '1.75rem', marginBottom: '1.5rem' }}>{displayPrice}</div>
-
-          <div style={{ borderTop: '1px solid var(--color-border)', margin: '1rem 0 1.5rem 0' }}></div>
+          <h1 className="details-title">{product.title}</h1>
+          <div className="details-price">{displayPrice}</div>
 
           {/* Options */}
           <div className="details-options">
@@ -147,36 +197,36 @@ export default function ProductDetails() {
               const values = product.options[optionName];
               if (!values || values.length === 0) return null;
 
+              const isColorOption = optionName.toLowerCase().includes('cor') || optionName.toLowerCase().includes('color');
+
               return (
-                <div key={optionName} style={{ marginBottom: '1.25rem' }}>
-                  <h3 className="details-options-title" style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.5rem', color: 'var(--color-text)' }}>
-                    Selecionar {optionName}
+                <div key={optionName} style={{ marginBottom: '2rem' }}>
+                  <h3 className="details-options-title">
+                    Selecionar {optionName}: <span style={{color: 'var(--color-primary)', fontWeight: 800}}>{selectedOptions[optionName]}</span>
                   </h3>
                   
-                  {values.length > 6 ? (
-                    <select
-                      value={selectedOptions[optionName]}
-                      onChange={(e) => handleOptionSelect(optionName, e.target.value)}
-                      style={{
-                        padding: '0.6rem 1rem',
-                        borderRadius: 'var(--radius-md)',
-                        border: '1px solid var(--color-border)',
-                        background: 'var(--color-surface)',
-                        fontSize: '0.9rem',
-                        width: '100%',
-                        maxWidth: '320px',
-                        outline: 'none',
-                        cursor: 'pointer',
-                        fontWeight: 500,
-                        color: 'var(--color-text)'
-                      }}
-                    >
-                      {values.map(val => (
-                        <option key={val} value={val}>{val}</option>
-                      ))}
-                    </select>
+                  {isColorOption ? (
+                    <div className="color-swatches">
+                      {values.map(val => {
+                        const imgUrl = getColorImage(val);
+                        return (
+                          <div 
+                            key={val} 
+                            className={`color-swatch-wrapper ${selectedOptions[optionName] === val ? 'active' : ''}`}
+                            onClick={() => handleOptionSelect(optionName, val)}
+                            title={val}
+                          >
+                            <div 
+                              className="color-swatch" 
+                              style={imgUrl ? { backgroundImage: `url('${imgUrl}')` } : { backgroundColor: '#333' }}
+                            />
+                            <span className="color-name">{val}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
                   ) : (
-                    <div className="option-group" style={{ gap: '0.5rem' }}>
+                    <div className="option-group">
                       {values.map(val => (
                         <button
                           key={val}
@@ -192,98 +242,82 @@ export default function ProductDetails() {
               );
             })}
           </div>
-
-          <div style={{ borderTop: '1px solid var(--color-border)', margin: '1.5rem 0 2rem 0' }}></div>
-
-          {/* Tabs for Description and Specs */}
-          <div className="details-tabs-container">
-            <div className="details-tabs">
-              <button 
-                className={`tab-btn ${activeTab === 'description' ? 'active' : ''}`}
-                onClick={() => setActiveTab('description')}
-              >
-                Sobre o Produto
-              </button>
-              <button 
-                className={`tab-btn ${activeTab === 'specs' ? 'active' : ''}`}
-                onClick={() => setActiveTab('specs')}
-              >
-                Ficha Técnica
-              </button>
-            </div>
-            
-            <div className="tab-content">
-              {activeTab === 'description' && (
-                <div 
-                  className="details-description"
-                  dangerouslySetInnerHTML={{ __html: product.description }}
-                  style={{ fontSize: '0.95rem', lineHeight: '1.6' }}
-                />
-              )}
-              
-              {activeTab === 'specs' && (
-                <div className="specs-table-container" style={{ margin: 0 }}>
-                  <table className="specs-table">
-                    <tbody>
-                      {(() => {
-                        const specs = [
-                          { label: 'Modelo', value: product.title },
-                          { label: 'Categoria', value: product.type || 'Artigos de Pesca' },
-                          { label: 'Fabricante', value: product.vendor || 'Chumbada Oficial' },
-                        ];
-
-                        if (currentVariant) {
-                          if (currentVariant.sku) {
-                            specs.push({ label: 'Código SKU', value: currentVariant.sku });
-                          }
-                          
-                          const optionKeys = Object.keys(product.options);
-                          optionKeys.forEach((key) => {
-                            const val = selectedOptions[key];
-                            if (val) {
-                              specs.push({ label: key, value: val });
-                            }
-                          });
-
-                          if (currentVariant.grams > 0) {
-                            specs.push({ label: 'Peso Médio', value: `${currentVariant.grams}g` });
-                          }
-                        }
-
-                        if (product.title.toLowerCase().includes('soft') || product.description.toLowerCase().includes('soft bait') || product.description.toLowerCase().includes('silicone')) {
-                          specs.push({ label: 'Composição', value: 'Plastisol de alta performance (Soft Bait)' });
-                        } else if (product.title.toLowerCase().includes('jig') || product.title.toLowerCase().includes('chumbo')) {
-                          specs.push({ label: 'Composição', value: 'Chumbo de alta pureza e Anzol reforçado' });
-                        }
-
-                        const species = [];
-                        const descLower = product.description.toLowerCase();
-                        if (descLower.includes('tucunaré') || descLower.includes('tucunare')) species.push('Tucunaré');
-                        if (descLower.includes('robalo')) species.push('Robalo');
-                        if (descLower.includes('traíra') || descLower.includes('traira')) species.push('Traíra');
-                        if (descLower.includes('dourado')) species.push('Dourado');
-                        if (descLower.includes('black bass') || descLower.includes('bass')) species.push('Black Bass');
-                        if (descLower.includes('xaréu') || descLower.includes('xareu')) species.push('Xaréu');
-                        if (descLower.includes('tarpon') || descLower.includes('camurupim')) species.push('Tarpon');
-                        
-                        if (species.length > 0) {
-                          specs.push({ label: 'Predadores Indicados', value: species.join(', ') });
-                        }
-
-                        return specs.map((spec, i) => (
-                          <tr key={i}>
-                            <td className="label">{spec.label}</td>
-                            <td className="value">{spec.value}</td>
-                          </tr>
-                        ));
-                      })()}
-                    </tbody>
-                  </table>
-                </div>
-              )}
-            </div>
-          </div>
         </div>
+      </div>
+
+      {/* Specifications Table Section */}
+      <div className="content-section">
+        <h2 className="section-title">
+          <Info size={24} color="var(--color-secondary)" />
+          Ficha Técnica
+        </h2>
+        <div className="specs-table-container">
+          <table className="specs-table">
+            <tbody>
+              {(() => {
+                const specs = [
+                  { label: 'Modelo', value: product.title },
+                  { label: 'Categoria', value: product.type || 'Artigos de Pesca' },
+                  { label: 'Fabricante', value: product.vendor || 'Chumbada Oficial' },
+                ];
+
+                if (currentVariant) {
+                  if (currentVariant.sku) {
+                    specs.push({ label: 'Código SKU', value: currentVariant.sku });
+                  }
+                  
+                  const optionKeys = Object.keys(product.options);
+                  optionKeys.forEach((key) => {
+                    const val = selectedOptions[key];
+                    if (val) {
+                      specs.push({ label: key, value: val });
+                    }
+                  });
+
+                  if (currentVariant.grams > 0) {
+                    specs.push({ label: 'Peso Médio', value: `${currentVariant.grams}g` });
+                  }
+                }
+
+                if (product.title.toLowerCase().includes('soft') || product.description.toLowerCase().includes('soft bait') || product.description.toLowerCase().includes('silicone')) {
+                  specs.push({ label: 'Composição', value: 'Plastisol de alta performance (Soft Bait)' });
+                } else if (product.title.toLowerCase().includes('jig') || product.title.toLowerCase().includes('chumbo')) {
+                  specs.push({ label: 'Composição', value: 'Chumbo de alta pureza e Anzol reforçado' });
+                }
+
+                const species = [];
+                const descLower = product.description.toLowerCase();
+                if (descLower.includes('tucunaré') || descLower.includes('tucunare')) species.push('Tucunaré');
+                if (descLower.includes('robalo')) species.push('Robalo');
+                if (descLower.includes('traíra') || descLower.includes('traira')) species.push('Traíra');
+                if (descLower.includes('dourado')) species.push('Dourado');
+                if (descLower.includes('black bass') || descLower.includes('bass')) species.push('Black Bass');
+                if (descLower.includes('xaréu') || descLower.includes('xareu')) species.push('Xaréu');
+                if (descLower.includes('tarpon') || descLower.includes('camurupim')) species.push('Tarpon');
+                
+                if (species.length > 0) {
+                  specs.push({ label: 'Predadores Indicados', value: species.join(', ') });
+                }
+
+                return specs.map((spec, i) => (
+                  <tr key={i}>
+                    <td className="label">{spec.label}</td>
+                    <td className="value">{spec.value}</td>
+                  </tr>
+                ));
+              })()}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Description Section */}
+      <div className="content-section" style={{ borderTop: 'none', paddingTop: '1rem', marginTop: '1rem' }}>
+        <h2 className="section-title">Sobre o Produto</h2>
+        <div 
+          className="details-description"
+          dangerouslySetInnerHTML={{ __html: product.description }}
+        />
       </div>
     </div>
   );
