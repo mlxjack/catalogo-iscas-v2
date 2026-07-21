@@ -242,8 +242,12 @@ export default function ProductDetails() {
               );
             })}
           </div>
-      {/* Specifications Table Section */}
-      <div className="content-section" style={{ marginTop: '2rem', paddingTop: '2rem' }}>
+        </div>
+
+        {/* Right Col: Extra Info */}
+        <div className="details-extra-info">
+          {/* Specifications Table Section */}
+          <div className="content-section" style={{ marginTop: 0, paddingTop: 0, borderTop: 'none' }}>
         <h2 className="section-title">
           <Info size={24} color="var(--color-secondary)" />
           Ficha Técnica
