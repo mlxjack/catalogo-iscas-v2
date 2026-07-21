@@ -149,11 +149,11 @@ export default function ProductDetails() {
     if (fullText.includes('anteninha') || fullText.includes('átomo') || fullText.includes('eva')) {
       specs.push({ label: 'Material', value: 'EVA de Alta Densidade + Miçanga' });
     } else if (fullText.includes('jig head') || fullText.includes('jig de olho') || fullText.includes('chumbo')) {
-      specs.push({ label: 'Material', value: 'Chumbo Reforçado + Anzol de Aço Carbono 90°' });
+      specs.push({ label: 'Material', value: 'Chumbo + Anzol de Aço Carbono' });
     } else if (fullText.includes('soft') || fullText.includes('camarão') || fullText.includes('plastisol') || fullText.includes('borracha') || fullText.includes('grub') || fullText.includes('worm') || fullText.includes('shad') || fullText.includes('paddle') || fullText.includes('fluke') || fullText.includes('pitu') || fullText.includes('sapo')) {
-      specs.push({ label: 'Material', value: 'Plastisol Soft Bait (Super Flexível e Resistente)' });
+      specs.push({ label: 'Material', value: 'Soft' });
     } else {
-      specs.push({ label: 'Material', value: 'Polímero de Pesca de Alta Resistência' });
+      specs.push({ label: 'Material', value: 'Soft' });
     }
 
     // 6. Flutuabilidade / Ação
