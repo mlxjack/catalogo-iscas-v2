@@ -165,7 +165,7 @@ export default function ProductDetails() {
         {/* Main Grid */}
         <div className="pd-grid">
 
-          {/* Left Column: Gallery only */}
+          {/* Left Column: Gallery */}
           <div className="pd-left-col">
             <div className="pd-gallery">
               <div className="pd-main-img">
@@ -190,7 +190,7 @@ export default function ProductDetails() {
             </div>
           </div>
 
-          {/* Right Column: Info, Specs & CTAs */}
+          {/* Right Column: Info & CTAs (Buy Box Card) */}
           <div className="pd-right-col">
             <div className="pd-info">
               {/* Back link */}
@@ -252,53 +252,56 @@ export default function ProductDetails() {
                   );
                 })}
               </div>
-            </div>
 
-            {/* Specs */}
-            <div className="pd-specs">
-              <h3 className="pd-specs-title">Ficha Técnica</h3>
-              <div className="pd-specs-grid">
-                {buildSpecs().map((spec, i) => (
-                  <div key={i} className="pd-spec-row">
-                    <span className="pd-spec-label">{spec.label}</span>
-                    <span className="pd-spec-value">{spec.value}</span>
-                  </div>
-                ))}
+              {/* CTA Buttons */}
+              <div className="pd-ctas" style={{ marginTop: '1.5rem' }}>
+                <a
+                  href={getWhatsAppLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-whatsapp"
+                >
+                  <MessageCircle size={18} />
+                  Fazer Pedido (WhatsApp)
+                </a>
+                <a
+                  href="https://chumbadas.com.br"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-site"
+                >
+                  <ExternalLink size={18} />
+                  Site Oficial
+                </a>
               </div>
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="pd-ctas">
-              <a
-                href={getWhatsAppLink()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-whatsapp"
-              >
-                <MessageCircle size={18} />
-                Fazer Pedido (WhatsApp)
-              </a>
-              <a
-                href="https://chumbadas.com.br"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-site"
-              >
-                <ExternalLink size={18} />
-                Site Oficial
-              </a>
             </div>
           </div>
 
         </div>
 
-        {/* Description: Full-width underneath the grid */}
-        {product.description && (
-          <div className="pd-description" style={{ marginTop: '1.5rem' }}>
-            <h3 className="pd-desc-title">Sobre o Produto</h3>
-            <div dangerouslySetInnerHTML={{ __html: product.description }} />
+        {/* Bottom Section: Specs & Description */}
+        <div className="pd-details-bottom">
+          {/* Specs (Ficha Técnica) */}
+          <div className="pd-specs">
+            <h3 className="pd-specs-title">Ficha Técnica</h3>
+            <div className="pd-specs-grid">
+              {buildSpecs().map((spec, i) => (
+                <div key={i} className="pd-spec-row">
+                  <span className="pd-spec-label">{spec.label}</span>
+                  <span className="pd-spec-value">{spec.value}</span>
+                </div>
+              ))}
+            </div>
           </div>
-        )}
+
+          {/* Description (Sobre o Produto) */}
+          {product.description && (
+            <div className="pd-description">
+              <h3 className="pd-desc-title">Sobre o Produto</h3>
+              <div dangerouslySetInnerHTML={{ __html: product.description }} />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

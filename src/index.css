@@ -317,11 +317,27 @@ img {
 
 @media (min-width: 768px) {
   .pd-grid {
-    grid-template-columns: 1.05fr 0.95fr;
+    grid-template-columns: 1.15fr 0.85fr; /* Gallery slightly wider, buy box cleaner and more compact */
     gap: 2rem;
     align-items: start;
   }
 }
+
+.pd-details-bottom {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .pd-details-bottom {
+    grid-template-columns: 0.9fr 1.1fr; /* Specs on left (narrower), Description on right (wider) */
+    gap: 2rem;
+    align-items: start;
+  }
+}
+
 
 /* Left and Right Column defaults */
 .pd-left-col, .pd-right-col {
