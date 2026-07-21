@@ -142,19 +142,8 @@ img {
 }
 
 .navbar-logo {
-  font-family: var(--font-heading);
-  font-size: 1.75rem;
-  font-weight: 900;
-  color: white;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.navbar-logo span {
-  color: var(--color-secondary);
 }
 
 /* Product Card */
@@ -408,28 +397,34 @@ img {
   align-items: center;
   gap: 0.5rem;
   cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  background-color: transparent;
+  transition: all var(--transition-fast);
 }
 
 .color-swatch {
-  width: 3.5rem;
-  height: 3.5rem;
-  border-radius: 50%;
-  border: 3px solid transparent;
-  background-color: var(--color-border);
-  background-size: cover;
+  width: 4rem;
+  height: 4rem;
+  background-color: transparent;
+  background-size: contain;
   background-position: center;
+  background-repeat: no-repeat;
   transition: all var(--transition-fast);
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.color-swatch-wrapper:hover {
+  background-color: #f1f5f9;
 }
 
 .color-swatch-wrapper:hover .color-swatch {
-  transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transform: scale(1.05);
 }
 
-.color-swatch-wrapper.active .color-swatch {
+.color-swatch-wrapper.active {
   border-color: var(--color-secondary);
-  box-shadow: 0 0 0 2px var(--color-surface), 0 0 0 5px var(--color-secondary);
+  background-color: #f8fafc;
 }
 
 .color-name {

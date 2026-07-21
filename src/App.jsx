@@ -12,8 +12,7 @@ function App() {
         <header className="navbar">
           <div className="container navbar-container">
             <Link to="/" className="navbar-logo">
-              <Anchor size={32} color="var(--color-secondary)" />
-              Chumbada <span>Oficial</span>
+              <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Chumbada Oficial" style={{ height: '48px' }} />
             </Link>
             <nav>
               <Link to="/" className="btn btn-outline" style={{ border: 'none' }}>Catálogo</Link>
