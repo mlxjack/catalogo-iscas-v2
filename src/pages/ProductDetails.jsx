@@ -45,6 +45,20 @@ export default function ProductDetails() {
         const data = await loadProducts();
         const found = data.find(p => p.id === handle);
         if (found) {
+          // Filter out color swatch images from the product details gallery
+          const cleanImages = found.images.filter(img => {
+            const urlNoParams = img.split('?')[0];
+            const urlFileName = urlNoParams.substring(urlNoParams.lastIndexOf('/') + 1);
+            const urlFileNameNoExt = urlFileName.substring(0, urlFileName.lastIndexOf('.'));
+            const normalizedName = normalizeString(urlFileNameNoExt);
+            return !colorFiles.some(f => {
+              const colorFileNameNoExt = f.substring(0, f.lastIndexOf('.'));
+              return normalizeString(colorFileNameNoExt) === normalizedName;
+            });
+          });
+          
+          found.images = cleanImages.length > 0 ? cleanImages : [found.images[0]];
+
           setProduct(found);
           const initialOptions = {};
           Object.keys(found.options).forEach(optName => {
@@ -52,6 +66,7 @@ export default function ProductDetails() {
           });
           setSelectedOptions(initialOptions);
         }
+
       } catch (error) {
         console.error("Failed to load product", error);
       } finally {
