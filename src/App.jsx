@@ -1,11 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { HashRouter, Routes, Route, Link } from 'react-router-dom';
 import Catalog from './pages/Catalog';
 import ProductDetails from './pages/ProductDetails';
-import { Anchor } from 'lucide-react';
+import { Anchor, Moon, Sun } from 'lucide-react';
 import './index.css';
 
 function App() {
+  const [theme, setTheme] = useState('light');
+
+  // Initialize theme based on system preference
+  useEffect(() => {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initial = prefersDark ? 'dark' : 'light';
+    setTheme(initial);
+    document.documentElement.dataset.theme = initial;
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    document.documentElement.dataset.theme = newTheme;
+  };
+
   return (
     <HashRouter>
       <div className="app">
@@ -17,6 +33,10 @@ function App() {
             <nav>
               <Link to="/" className="btn btn-outline" style={{ border: 'none' }}>Catálogo</Link>
             </nav>
+            {/* Theme toggle */}
+            <button onClick={toggleTheme} className="btn btn-outline" aria-label="Toggle theme" style={{ border: 'none', display: 'flex', alignItems: 'center' }}>
+              {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
+            </button>
           </div>
         </header>
         
