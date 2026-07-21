@@ -25,6 +25,7 @@ export const loadProducts = async () => {
               tags: row.Tags ? row.Tags.split(',').map(t => t.trim()) : [],
               variants: [],
               images: new Set(),
+              optionNames: [row['Option1 Name'], row['Option2 Name'], row['Option3 Name']],
               options: {
                 [row['Option1 Name']]: new Set(),
                 [row['Option2 Name']]: new Set(),
@@ -47,10 +48,11 @@ export const loadProducts = async () => {
           };
           product.variants.push(variant);
 
-          // Add unique options
-          if (row['Option1 Name'] && row['Option1 Value']) product.options[row['Option1 Name']].add(row['Option1 Value']);
-          if (row['Option2 Name'] && row['Option2 Value']) product.options[row['Option2 Name']].add(row['Option2 Value']);
-          if (row['Option3 Name'] && row['Option3 Value']) product.options[row['Option3 Name']].add(row['Option3 Value']);
+          // Add unique options using tracked optionNames
+          const optNames = product.optionNames;
+          if (optNames[0] && row['Option1 Value']) product.options[optNames[0]].add(row['Option1 Value']);
+          if (optNames[1] && row['Option2 Value']) product.options[optNames[1]].add(row['Option2 Value']);
+          if (optNames[2] && row['Option3 Value']) product.options[optNames[2]].add(row['Option3 Value']);
 
           // Add Images
           if (row['Image Src']) {

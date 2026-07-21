@@ -168,27 +168,76 @@ export default function ProductDetails() {
 
           <div style={{ borderTop: '1px solid var(--color-border)', margin: '2rem 0' }}></div>
 
+          {/* Technical Specs Table */}
+          <div className="specs-table-container">
+            <h3 className="details-options-title">Especificações Técnicas</h3>
+            <table className="specs-table">
+              <tbody>
+                {(() => {
+                  const specs = [
+                    { label: 'Modelo', value: product.title },
+                    { label: 'Categoria', value: product.type || 'Artigos de Pesca' },
+                    { label: 'Fabricante', value: product.vendor || 'Chumbada Oficial' },
+                  ];
+
+                  if (currentVariant) {
+                    if (currentVariant.sku) {
+                      specs.push({ label: 'Código SKU', value: currentVariant.sku });
+                    }
+                    
+                    // Add current options values
+                    const optionKeys = Object.keys(product.options);
+                    optionKeys.forEach((key) => {
+                      const val = selectedOptions[key];
+                      if (val) {
+                        specs.push({ label: key, value: val });
+                      }
+                    });
+
+                    if (currentVariant.grams > 0) {
+                      specs.push({ label: 'Peso Médio', value: `${currentVariant.grams}g` });
+                    }
+                  }
+
+                  // Dynamic compositions
+                  if (product.title.toLowerCase().includes('soft') || product.description.toLowerCase().includes('soft bait') || product.description.toLowerCase().includes('silicone')) {
+                    specs.push({ label: 'Composição', value: 'Plastisol de alta performance (Soft Bait)' });
+                  } else if (product.title.toLowerCase().includes('jig') || product.title.toLowerCase().includes('chumbo')) {
+                    specs.push({ label: 'Composição', value: 'Chumbo de alta pureza e Anzol reforçado' });
+                  }
+
+                  // Target species extraction
+                  const species = [];
+                  const descLower = product.description.toLowerCase();
+                  if (descLower.includes('tucunaré') || descLower.includes('tucunare')) species.push('Tucunaré');
+                  if (descLower.includes('robalo')) species.push('Robalo');
+                  if (descLower.includes('traíra') || descLower.includes('traira')) species.push('Traíra');
+                  if (descLower.includes('dourado')) species.push('Dourado');
+                  if (descLower.includes('black bass') || descLower.includes('bass')) species.push('Black Bass');
+                  if (descLower.includes('xaréu') || descLower.includes('xareu')) species.push('Xaréu');
+                  if (descLower.includes('tarpon') || descLower.includes('camurupim')) species.push('Tarpon');
+                  
+                  if (species.length > 0) {
+                    specs.push({ label: 'Predadores Indicados', value: species.join(', ') });
+                  }
+
+                  return specs.map((spec, i) => (
+                    <tr key={i}>
+                      <td className="label">{spec.label}</td>
+                      <td className="value">{spec.value}</td>
+                    </tr>
+                  ));
+                })()}
+              </tbody>
+            </table>
+          </div>
+
           {/* Description HTML (safe since it's from our own CSV) */}
           <h3 className="details-options-title" style={{ marginBottom: '1rem' }}>Descrição do Produto</h3>
           <div 
             className="details-description"
             dangerouslySetInnerHTML={{ __html: product.description }}
           />
-
-          {/* Features list based on tags (example) */}
-          {product.tags && product.tags.length > 0 && (
-            <div style={{ marginTop: '2rem' }}>
-              <h3 className="details-options-title" style={{ marginBottom: '1rem' }}>Características</h3>
-              <ul style={{ listStyle: 'none', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
-                {product.tags.map(tag => (
-                  <li key={tag} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-text-muted)' }}>
-                    <Check size={16} color="var(--color-teal)" />
-                    {tag}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
         </div>
       </div>
     </div>

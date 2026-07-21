@@ -396,3 +396,43 @@ img {
   background-color: #fef08a;
   color: #854d0e;
 }
+
+/* Specs Table styling */
+.specs-table-container {
+  margin-bottom: 2.5rem;
+}
+
+.specs-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.specs-table tr {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.specs-table tr:last-child {
+  border-bottom: none;
+}
+
+.specs-table td {
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+}
+
+.specs-table td.label {
+  font-weight: 600;
+  color: var(--color-primary);
+  width: 35%;
+  background-color: rgba(10, 58, 105, 0.03);
+}
+
+.specs-table td.value {
+  color: var(--color-text);
+}
+
