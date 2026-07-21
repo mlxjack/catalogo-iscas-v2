@@ -165,7 +165,7 @@ export default function ProductDetails() {
         {/* Main Grid */}
         <div className="pd-grid">
 
-          {/* Left Column: Gallery & Description */}
+          {/* Left Column: Gallery only */}
           <div className="pd-left-col">
             <div className="pd-gallery">
               <div className="pd-main-img">
@@ -188,16 +188,9 @@ export default function ProductDetails() {
                 </div>
               )}
             </div>
-
-            {product.description && (
-              <div className="pd-description">
-                <h3 className="pd-desc-title">Sobre o Produto</h3>
-                <div dangerouslySetInnerHTML={{ __html: product.description }} />
-              </div>
-            )}
           </div>
 
-          {/* Right Column: Info & Specs */}
+          {/* Right Column: Info, Specs & CTAs */}
           <div className="pd-right-col">
             <div className="pd-info">
               {/* Back link */}
@@ -298,6 +291,14 @@ export default function ProductDetails() {
           </div>
 
         </div>
+
+        {/* Description: Full-width underneath the grid */}
+        {product.description && (
+          <div className="pd-description" style={{ marginTop: '1.5rem' }}>
+            <h3 className="pd-desc-title">Sobre o Produto</h3>
+            <div dangerouslySetInnerHTML={{ __html: product.description }} />
+          </div>
+        )}
       </div>
     </div>
   );

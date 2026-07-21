@@ -28,7 +28,7 @@ function App() {
         <header className="navbar">
           <div className="container navbar-container">
             <Link to="/" className="navbar-logo">
-              <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Chumbada Oficial" style={{ height: '48px' }} />
+              <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Chumbada Oficial" className="navbar-logo-img" />
             </Link>
             <nav>
               <Link to="/" className="btn btn-outline" style={{ border: 'none' }}>Catálogo</Link>
