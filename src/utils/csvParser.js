@@ -2,7 +2,8 @@ import Papa from 'papaparse';
 
 export const loadProducts = async () => {
   return new Promise((resolve, reject) => {
-    Papa.parse('/products.csv', {
+    const csvPath = `${import.meta.env.BASE_URL}products.csv`;
+    Papa.parse(csvPath, {
       download: true,
       header: true,
       complete: (results) => {

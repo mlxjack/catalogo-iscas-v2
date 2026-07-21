@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { HashRouter, Routes, Route, Link } from 'react-router-dom';
 import Catalog from './pages/Catalog';
 import ProductDetails from './pages/ProductDetails';
 import { Anchor } from 'lucide-react';
@@ -7,7 +7,7 @@ import './index.css';
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="app">
         <header className="navbar">
           <div className="container navbar-container">
@@ -36,7 +36,7 @@ function App() {
           </div>
         </footer>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
