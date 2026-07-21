@@ -8,6 +8,7 @@ export default function ProductDetails() {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [activeImage, setActiveImage] = useState(0);
+  const [activeTab, setActiveTab] = useState('description'); // 'description' | 'specs'
   
   // Selected options state
   const [selectedOptions, setSelectedOptions] = useState({});
@@ -42,9 +43,6 @@ export default function ProductDetails() {
       // Find variant that matches selected options
       const matchedVariant = product.variants.find(v => {
         let match = true;
-        // In CSV, Option1 Value matches Option1 Name
-        // But our options object maps "Name" -> [Values]
-        // We need to check if Variant's option1 matches selectedOptions[option1Name]
         const optionKeys = Object.keys(product.options);
         if (optionKeys[0] && v.option1 !== selectedOptions[optionKeys[0]]) match = false;
         if (optionKeys[1] && v.option2 !== selectedOptions[optionKeys[1]]) match = false;
@@ -92,14 +90,14 @@ export default function ProductDetails() {
 
   return (
     <div className="container details-page">
-      <div style={{ marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-text-muted)' }}>
+      <div style={{ marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>
         <Link to="/" style={{ color: 'var(--color-text-muted)', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-          <ArrowLeft size={16} /> Voltar
+          <ArrowLeft size={14} /> Voltar ao Catálogo
         </Link>
-        <ChevronRight size={16} />
+        <ChevronRight size={14} />
         <span>{product.type || 'Produto'}</span>
-        <ChevronRight size={16} />
-        <span style={{ color: 'var(--color-text)' }}>{product.title}</span>
+        <ChevronRight size={14} />
+        <span style={{ color: 'var(--color-text)', fontWeight: 500 }}>{product.title}</span>
       </div>
 
       <div className="details-grid">
@@ -135,11 +133,13 @@ export default function ProductDetails() {
         {/* Right Col: Info */}
         <div className="details-info">
           {product.tags && product.tags.includes('Lancamento') && (
-            <span className="badge badge-new" style={{ marginBottom: '1rem', alignSelf: 'flex-start' }}>Novo Lançamento</span>
+            <span className="badge badge-new" style={{ marginBottom: '1rem', alignSelf: 'flex-start' }}>Lançamento</span>
           )}
           
-          <h1 className="details-title">{product.title}</h1>
-          <div className="details-price">{displayPrice}</div>
+          <h1 className="details-title" style={{ fontSize: '2.25rem', marginBottom: '0.75rem' }}>{product.title}</h1>
+          <div className="details-price" style={{ fontSize: '1.75rem', marginBottom: '1.5rem' }}>{displayPrice}</div>
+
+          <div style={{ borderTop: '1px solid var(--color-border)', margin: '1rem 0 1.5rem 0' }}></div>
 
           {/* Options */}
           <div className="details-options">
@@ -148,96 +148,141 @@ export default function ProductDetails() {
               if (!values || values.length === 0) return null;
 
               return (
-                <div key={optionName}>
-                  <h3 className="details-options-title">{optionName}</h3>
-                  <div className="option-group">
-                    {values.map(val => (
-                      <button
-                        key={val}
-                        className={`option-btn ${selectedOptions[optionName] === val ? 'active' : ''}`}
-                        onClick={() => handleOptionSelect(optionName, val)}
-                      >
-                        {val}
-                      </button>
-                    ))}
-                  </div>
+                <div key={optionName} style={{ marginBottom: '1.25rem' }}>
+                  <h3 className="details-options-title" style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.5rem', color: 'var(--color-text)' }}>
+                    Selecionar {optionName}
+                  </h3>
+                  
+                  {values.length > 6 ? (
+                    <select
+                      value={selectedOptions[optionName]}
+                      onChange={(e) => handleOptionSelect(optionName, e.target.value)}
+                      style={{
+                        padding: '0.6rem 1rem',
+                        borderRadius: 'var(--radius-md)',
+                        border: '1px solid var(--color-border)',
+                        background: 'var(--color-surface)',
+                        fontSize: '0.9rem',
+                        width: '100%',
+                        maxWidth: '320px',
+                        outline: 'none',
+                        cursor: 'pointer',
+                        fontWeight: 500,
+                        color: 'var(--color-text)'
+                      }}
+                    >
+                      {values.map(val => (
+                        <option key={val} value={val}>{val}</option>
+                      ))}
+                    </select>
+                  ) : (
+                    <div className="option-group" style={{ gap: '0.5rem' }}>
+                      {values.map(val => (
+                        <button
+                          key={val}
+                          className={`option-btn ${selectedOptions[optionName] === val ? 'active' : ''}`}
+                          onClick={() => handleOptionSelect(optionName, val)}
+                        >
+                          {val}
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
               );
             })}
           </div>
 
-          <div style={{ borderTop: '1px solid var(--color-border)', margin: '2rem 0' }}></div>
+          <div style={{ borderTop: '1px solid var(--color-border)', margin: '1.5rem 0 2rem 0' }}></div>
 
-          {/* Technical Specs Table */}
-          <div className="specs-table-container">
-            <h3 className="details-options-title">Especificações Técnicas</h3>
-            <table className="specs-table">
-              <tbody>
-                {(() => {
-                  const specs = [
-                    { label: 'Modelo', value: product.title },
-                    { label: 'Categoria', value: product.type || 'Artigos de Pesca' },
-                    { label: 'Fabricante', value: product.vendor || 'Chumbada Oficial' },
-                  ];
+          {/* Tabs for Description and Specs */}
+          <div className="details-tabs-container">
+            <div className="details-tabs">
+              <button 
+                className={`tab-btn ${activeTab === 'description' ? 'active' : ''}`}
+                onClick={() => setActiveTab('description')}
+              >
+                Sobre o Produto
+              </button>
+              <button 
+                className={`tab-btn ${activeTab === 'specs' ? 'active' : ''}`}
+                onClick={() => setActiveTab('specs')}
+              >
+                Ficha Técnica
+              </button>
+            </div>
+            
+            <div className="tab-content">
+              {activeTab === 'description' && (
+                <div 
+                  className="details-description"
+                  dangerouslySetInnerHTML={{ __html: product.description }}
+                  style={{ fontSize: '0.95rem', lineHeight: '1.6' }}
+                />
+              )}
+              
+              {activeTab === 'specs' && (
+                <div className="specs-table-container" style={{ margin: 0 }}>
+                  <table className="specs-table">
+                    <tbody>
+                      {(() => {
+                        const specs = [
+                          { label: 'Modelo', value: product.title },
+                          { label: 'Categoria', value: product.type || 'Artigos de Pesca' },
+                          { label: 'Fabricante', value: product.vendor || 'Chumbada Oficial' },
+                        ];
 
-                  if (currentVariant) {
-                    if (currentVariant.sku) {
-                      specs.push({ label: 'Código SKU', value: currentVariant.sku });
-                    }
-                    
-                    // Add current options values
-                    const optionKeys = Object.keys(product.options);
-                    optionKeys.forEach((key) => {
-                      const val = selectedOptions[key];
-                      if (val) {
-                        specs.push({ label: key, value: val });
-                      }
-                    });
+                        if (currentVariant) {
+                          if (currentVariant.sku) {
+                            specs.push({ label: 'Código SKU', value: currentVariant.sku });
+                          }
+                          
+                          const optionKeys = Object.keys(product.options);
+                          optionKeys.forEach((key) => {
+                            const val = selectedOptions[key];
+                            if (val) {
+                              specs.push({ label: key, value: val });
+                            }
+                          });
 
-                    if (currentVariant.grams > 0) {
-                      specs.push({ label: 'Peso Médio', value: `${currentVariant.grams}g` });
-                    }
-                  }
+                          if (currentVariant.grams > 0) {
+                            specs.push({ label: 'Peso Médio', value: `${currentVariant.grams}g` });
+                          }
+                        }
 
-                  // Dynamic compositions
-                  if (product.title.toLowerCase().includes('soft') || product.description.toLowerCase().includes('soft bait') || product.description.toLowerCase().includes('silicone')) {
-                    specs.push({ label: 'Composição', value: 'Plastisol de alta performance (Soft Bait)' });
-                  } else if (product.title.toLowerCase().includes('jig') || product.title.toLowerCase().includes('chumbo')) {
-                    specs.push({ label: 'Composição', value: 'Chumbo de alta pureza e Anzol reforçado' });
-                  }
+                        if (product.title.toLowerCase().includes('soft') || product.description.toLowerCase().includes('soft bait') || product.description.toLowerCase().includes('silicone')) {
+                          specs.push({ label: 'Composição', value: 'Plastisol de alta performance (Soft Bait)' });
+                        } else if (product.title.toLowerCase().includes('jig') || product.title.toLowerCase().includes('chumbo')) {
+                          specs.push({ label: 'Composição', value: 'Chumbo de alta pureza e Anzol reforçado' });
+                        }
 
-                  // Target species extraction
-                  const species = [];
-                  const descLower = product.description.toLowerCase();
-                  if (descLower.includes('tucunaré') || descLower.includes('tucunare')) species.push('Tucunaré');
-                  if (descLower.includes('robalo')) species.push('Robalo');
-                  if (descLower.includes('traíra') || descLower.includes('traira')) species.push('Traíra');
-                  if (descLower.includes('dourado')) species.push('Dourado');
-                  if (descLower.includes('black bass') || descLower.includes('bass')) species.push('Black Bass');
-                  if (descLower.includes('xaréu') || descLower.includes('xareu')) species.push('Xaréu');
-                  if (descLower.includes('tarpon') || descLower.includes('camurupim')) species.push('Tarpon');
-                  
-                  if (species.length > 0) {
-                    specs.push({ label: 'Predadores Indicados', value: species.join(', ') });
-                  }
+                        const species = [];
+                        const descLower = product.description.toLowerCase();
+                        if (descLower.includes('tucunaré') || descLower.includes('tucunare')) species.push('Tucunaré');
+                        if (descLower.includes('robalo')) species.push('Robalo');
+                        if (descLower.includes('traíra') || descLower.includes('traira')) species.push('Traíra');
+                        if (descLower.includes('dourado')) species.push('Dourado');
+                        if (descLower.includes('black bass') || descLower.includes('bass')) species.push('Black Bass');
+                        if (descLower.includes('xaréu') || descLower.includes('xareu')) species.push('Xaréu');
+                        if (descLower.includes('tarpon') || descLower.includes('camurupim')) species.push('Tarpon');
+                        
+                        if (species.length > 0) {
+                          specs.push({ label: 'Predadores Indicados', value: species.join(', ') });
+                        }
 
-                  return specs.map((spec, i) => (
-                    <tr key={i}>
-                      <td className="label">{spec.label}</td>
-                      <td className="value">{spec.value}</td>
-                    </tr>
-                  ));
-                })()}
-              </tbody>
-            </table>
+                        return specs.map((spec, i) => (
+                          <tr key={i}>
+                            <td className="label">{spec.label}</td>
+                            <td className="value">{spec.value}</td>
+                          </tr>
+                        ));
+                      })()}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
           </div>
-
-          {/* Description HTML (safe since it's from our own CSV) */}
-          <h3 className="details-options-title" style={{ marginBottom: '1rem' }}>Descrição do Produto</h3>
-          <div 
-            className="details-description"
-            dangerouslySetInnerHTML={{ __html: product.description }}
-          />
         </div>
       </div>
     </div>
