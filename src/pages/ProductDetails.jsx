@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { loadProducts } from '../utils/csvParser';
-import { ArrowLeft, Loader2 } from 'lucide-react';
+import { ArrowLeft, Loader2, MessageCircle, ExternalLink } from 'lucide-react';
 
 // List of available color images - exact filenames in public/cores/
 const colorFiles = [
@@ -151,6 +151,14 @@ export default function ProductDetails() {
     return specs;
   };
 
+  const getWhatsAppLink = () => {
+    const selectedOptionsStr = Object.entries(selectedOptions)
+      .map(([key, val]) => `${key}: ${val}`)
+      .join(', ');
+    const text = `Olá! Gostaria de saber mais sobre a isca: ${product.title}${selectedOptionsStr ? ` (${selectedOptionsStr})` : ''}`;
+    return `https://wa.me/5511941900602?text=${encodeURIComponent(text)}`;
+  };
+
   return (
     <div className="pd-page">
       <div className="pd-container">
@@ -264,6 +272,28 @@ export default function ProductDetails() {
                   </div>
                 ))}
               </div>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="pd-ctas">
+              <a
+                href={getWhatsAppLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-whatsapp"
+              >
+                <MessageCircle size={18} />
+                Fazer Pedido (WhatsApp)
+              </a>
+              <a
+                href="https://chumbadas.com.br"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-site"
+              >
+                <ExternalLink size={18} />
+                Site Oficial
+              </a>
             </div>
           </div>
 
