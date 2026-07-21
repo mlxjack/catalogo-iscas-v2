@@ -242,11 +242,8 @@ export default function ProductDetails() {
               );
             })}
           </div>
-        </div>
-      </div>
-
       {/* Specifications Table Section */}
-      <div className="content-section">
+      <div className="content-section" style={{ marginTop: '2rem', paddingTop: '2rem' }}>
         <h2 className="section-title">
           <Info size={24} color="var(--color-secondary)" />
           Ficha Técnica
@@ -320,5 +317,6 @@ export default function ProductDetails() {
         />
       </div>
     </div>
-  );
+  </div>
+);
 }
