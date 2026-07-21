@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getColorImage } from '../utils/colorHelper';
 
 export default function ProductCard({ product }) {
-  const mainImage = product.images[0] || 'https://via.placeholder.com/400?text=Sem+Imagem';
+  const mainImage = product.images[0] || `${import.meta.env.BASE_URL}logo.png`;
   
   // Format price
   const priceDisplay = product.minPrice > 0 
@@ -10,39 +11,57 @@ export default function ProductCard({ product }) {
     : 'Consulte';
 
   return (
-    <Link to={`/product/${product.id}`} className="product-card">
-      <div className="product-card-img-wrapper">
-        <img 
-          src={mainImage} 
-          alt={product.title} 
-          className="product-card-img"
-          loading="lazy"
-        />
-        {product.tags && product.tags.includes('Lancamento') && (
-          <span className="badge badge-new" style={{ position: 'absolute', top: '1rem', right: '1rem' }}>
-            Novo
-          </span>
-        )}
+    <article className="product-card">
+      <div className="product-card-media">
+        <Link to={`/product/${product.id}`}>
+          <img 
+            src={mainImage} 
+            alt={product.title} 
+            loading="lazy"
+            onError={(e) => { e.target.src = `${import.meta.env.BASE_URL}logo.png`; }}
+          />
+        </Link>
       </div>
       
       <div className="product-card-content">
-        <div className="product-card-category">{product.type || 'Acessórios'}</div>
-        <h3 className="product-card-title">{product.title}</h3>
+        <span className="product-card-cat">{product.type || 'Iscas'}</span>
+        <h3 className="product-card-title">
+          <Link to={`/product/${product.id}`}>
+            {product.title}
+          </Link>
+        </h3>
         
-        {/* Colors Preview */}
+        {/* Color swatches preview inside card */}
         {product.options['Cor'] && product.options['Cor'].length > 0 && (
-          <div style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)', marginBottom: '1rem' }}>
-            {product.options['Cor'].length} Cores Disponíveis
+          <div className="product-card-previews">
+            <div className="card-swatches" aria-label="Cores disponíveis">
+              {product.options['Cor'].slice(0, 8).map(color => {
+                const imgUrl = getColorImage(color);
+                return (
+                  <span 
+                    key={color} 
+                    className="card-swatch" 
+                    style={imgUrl ? { backgroundImage: `url(${imgUrl})` } : { backgroundColor: '#e2e8f0' }} 
+                    title={color}
+                  />
+                );
+              })}
+              {product.options['Cor'].length > 8 && (
+                <span className="card-vars-count" style={{ fontSize: '10px', marginLeft: '4px' }}>
+                  +{product.options['Cor'].length - 8}
+                </span>
+              )}
+            </div>
           </div>
         )}
 
         <div className="product-card-footer">
-          <div className="product-card-price">{priceDisplay}</div>
-          <span className="btn btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.875rem' }}>
-            Detalhes
-          </span>
+          <span className="product-card-price">{priceDisplay}</span>
+          <Link to={`/product/${product.id}`} className="product-card-action">
+            Ver Detalhes
+          </Link>
         </div>
       </div>
-    </Link>
+    </article>
   );
 }

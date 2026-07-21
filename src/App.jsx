@@ -1,57 +1,52 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { HashRouter, Routes, Route, Link } from 'react-router-dom';
 import Catalog from './pages/Catalog';
 import ProductDetails from './pages/ProductDetails';
-import { Anchor, Moon, Sun } from 'lucide-react';
 import './index.css';
 
 function App() {
-  const [theme, setTheme] = useState('light');
-
-  // Initialize theme based on system preference
-  useEffect(() => {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initial = prefersDark ? 'dark' : 'light';
-    setTheme(initial);
-    document.documentElement.dataset.theme = initial;
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    document.documentElement.dataset.theme = newTheme;
-  };
-
   return (
     <HashRouter>
       <div className="app">
-        <header className="navbar">
-          <div className="container navbar-container">
-            <Link to="/" className="navbar-logo">
-              <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Chumbada Oficial" className="navbar-logo-img" />
+        <header className="main-header">
+          <div className="header-container">
+            <Link to="/" className="logo-link">
+              <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Chumbada Oficial Logo" className="brand-logo" />
             </Link>
-            <nav>
-              <Link to="/" className="btn btn-outline" style={{ border: 'none' }}>Catálogo</Link>
+            
+            <nav className="nav-menu" aria-label="Navegação Principal">
+              <Link to="/" className="nav-item active">Produtos</Link>
+              <a href="https://chumbadas.com.br" target="_blank" rel="noopener noreferrer" className="nav-item btn-nav">Site Oficial</a>
             </nav>
-            {/* Theme toggle */}
-            <button onClick={toggleTheme} className="btn btn-outline" aria-label="Toggle theme" style={{ border: 'none', display: 'flex', alignItems: 'center' }}>
-              {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
-            </button>
           </div>
         </header>
         
-        <main>
+        <main className="app-container">
           <Routes>
             <Route path="/" element={<Catalog />} />
             <Route path="/product/:handle" element={<ProductDetails />} />
           </Routes>
         </main>
         
-        <footer style={{ backgroundColor: 'var(--color-primary)', color: 'white', padding: '3rem 0', marginTop: '4rem' }}>
-          <div className="container" style={{ textAlign: 'center' }}>
-            <Anchor size={48} style={{ margin: '0 auto 1rem', opacity: 0.8 }} />
-            <h3 style={{ color: 'white', marginBottom: '1rem' }}>Chumbada Oficial</h3>
-            <p style={{ color: 'var(--color-border)', opacity: 0.7 }}>O melhor equipamento para a sua pescaria esportiva.</p>
+        <footer className="main-footer">
+          <div className="footer-container">
+            <div className="footer-brand">
+              <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Chumbada Oficial Logo" className="footer-logo" style={{ height: '38px', width: 'auto', backgroundColor: '#ffffff', padding: '2px', borderRadius: '6px' }} />
+              <p className="footer-desc">Catálogo de referência oficial para revendedores, parceiros e entusiastas da pesca esportiva de alta performance.</p>
+            </div>
+            
+            <div className="footer-links">
+              <h4 className="footer-title">Links Úteis</h4>
+              <ul>
+                <li><a href="https://chumbadas.com.br" target="_blank" rel="noopener noreferrer">Loja Oficial</a></li>
+                <li><a href="https://www.instagram.com/chumbadaoficial/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                <li><a href="https://wa.me/5511941900602" target="_blank" rel="noopener noreferrer">WhatsApp Suporte</a></li>
+              </ul>
+            </div>
+            
+            <div className="footer-bottom">
+              <p>&copy; 2026 Chumbada Oficial. Todos os direitos reservados. Design premium e esportivo.</p>
+            </div>
           </div>
         </footer>
       </div>
