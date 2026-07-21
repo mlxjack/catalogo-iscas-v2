@@ -180,6 +180,72 @@ export default function ProductDetails() {
               ))}
             </div>
           )}
+
+          {/* Specifications Table Section */}
+          <div className="content-section" style={{ marginTop: '2rem', paddingTop: '2rem' }}>
+            <h2 className="section-title">
+              <Info size={24} color="var(--color-secondary)" />
+              Ficha Técnica
+            </h2>
+            <div className="specs-table-container">
+              <table className="specs-table">
+                <tbody>
+                  {(() => {
+                    const specs = [
+                      { label: 'Modelo', value: product.title },
+                      { label: 'Categoria', value: product.type || 'Artigos de Pesca' },
+                      { label: 'Fabricante', value: product.vendor || 'Chumbada Oficial' },
+                    ];
+
+                    if (currentVariant) {
+                      if (currentVariant.sku) {
+                        specs.push({ label: 'Código SKU', value: currentVariant.sku });
+                      }
+                      
+                      const optionKeys = Object.keys(product.options);
+                      optionKeys.forEach((key) => {
+                        const val = selectedOptions[key];
+                        if (val) {
+                          specs.push({ label: key, value: val });
+                        }
+                      });
+
+                      if (currentVariant.grams > 0) {
+                        specs.push({ label: 'Peso Médio', value: `${currentVariant.grams}g` });
+                      }
+                    }
+
+                    if (product.title.toLowerCase().includes('soft') || product.description.toLowerCase().includes('soft bait') || product.description.toLowerCase().includes('silicone')) {
+                      specs.push({ label: 'Composição', value: 'Plastisol de alta performance (Soft Bait)' });
+                    } else if (product.title.toLowerCase().includes('jig') || product.title.toLowerCase().includes('chumbo')) {
+                      specs.push({ label: 'Composição', value: 'Chumbo de alta pureza e Anzol reforçado' });
+                    }
+
+                    const species = [];
+                    const descLower = product.description.toLowerCase();
+                    if (descLower.includes('tucunaré') || descLower.includes('tucunare')) species.push('Tucunaré');
+                    if (descLower.includes('robalo')) species.push('Robalo');
+                    if (descLower.includes('traíra') || descLower.includes('traira')) species.push('Traíra');
+                    if (descLower.includes('dourado')) species.push('Dourado');
+                    if (descLower.includes('black bass') || descLower.includes('bass')) species.push('Black Bass');
+                    if (descLower.includes('xaréu') || descLower.includes('xareu')) species.push('Xaréu');
+                    if (descLower.includes('tarpon') || descLower.includes('camurupim')) species.push('Tarpon');
+                    
+                    if (species.length > 0) {
+                      specs.push({ label: 'Predadores Indicados', value: species.join(', ') });
+                    }
+
+                    return specs.map((spec, i) => (
+                      <tr key={i}>
+                        <td className="label">{spec.label}</td>
+                        <td className="value">{spec.value}</td>
+                      </tr>
+                    ));
+                  })()}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
 
         {/* Right Col: Info */}
@@ -242,86 +308,17 @@ export default function ProductDetails() {
               );
             })}
           </div>
+
+          {/* Description Section */}
+          <div className="content-section" style={{ borderTop: '2px solid var(--color-border)', paddingTop: '2rem', marginTop: '2rem' }}>
+            <h2 className="section-title">Sobre o Produto</h2>
+            <div 
+              className="details-description"
+              dangerouslySetInnerHTML={{ __html: product.description }}
+            />
+          </div>
         </div>
-
-        {/* Right Col: Extra Info */}
-        <div className="details-extra-info">
-          {/* Specifications Table Section */}
-          <div className="content-section" style={{ marginTop: 0, paddingTop: 0, borderTop: 'none' }}>
-        <h2 className="section-title">
-          <Info size={24} color="var(--color-secondary)" />
-          Ficha Técnica
-        </h2>
-        <div className="specs-table-container">
-          <table className="specs-table">
-            <tbody>
-              {(() => {
-                const specs = [
-                  { label: 'Modelo', value: product.title },
-                  { label: 'Categoria', value: product.type || 'Artigos de Pesca' },
-                  { label: 'Fabricante', value: product.vendor || 'Chumbada Oficial' },
-                ];
-
-                if (currentVariant) {
-                  if (currentVariant.sku) {
-                    specs.push({ label: 'Código SKU', value: currentVariant.sku });
-                  }
-                  
-                  const optionKeys = Object.keys(product.options);
-                  optionKeys.forEach((key) => {
-                    const val = selectedOptions[key];
-                    if (val) {
-                      specs.push({ label: key, value: val });
-                    }
-                  });
-
-                  if (currentVariant.grams > 0) {
-                    specs.push({ label: 'Peso Médio', value: `${currentVariant.grams}g` });
-                  }
-                }
-
-                if (product.title.toLowerCase().includes('soft') || product.description.toLowerCase().includes('soft bait') || product.description.toLowerCase().includes('silicone')) {
-                  specs.push({ label: 'Composição', value: 'Plastisol de alta performance (Soft Bait)' });
-                } else if (product.title.toLowerCase().includes('jig') || product.title.toLowerCase().includes('chumbo')) {
-                  specs.push({ label: 'Composição', value: 'Chumbo de alta pureza e Anzol reforçado' });
-                }
-
-                const species = [];
-                const descLower = product.description.toLowerCase();
-                if (descLower.includes('tucunaré') || descLower.includes('tucunare')) species.push('Tucunaré');
-                if (descLower.includes('robalo')) species.push('Robalo');
-                if (descLower.includes('traíra') || descLower.includes('traira')) species.push('Traíra');
-                if (descLower.includes('dourado')) species.push('Dourado');
-                if (descLower.includes('black bass') || descLower.includes('bass')) species.push('Black Bass');
-                if (descLower.includes('xaréu') || descLower.includes('xareu')) species.push('Xaréu');
-                if (descLower.includes('tarpon') || descLower.includes('camurupim')) species.push('Tarpon');
-                
-                if (species.length > 0) {
-                  specs.push({ label: 'Predadores Indicados', value: species.join(', ') });
-                }
-
-                return specs.map((spec, i) => (
-                  <tr key={i}>
-                    <td className="label">{spec.label}</td>
-                    <td className="value">{spec.value}</td>
-                  </tr>
-                ));
-              })()}
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      {/* Description Section */}
-      <div className="content-section" style={{ borderTop: 'none', paddingTop: '1rem', marginTop: '1rem' }}>
-        <h2 className="section-title">Sobre o Produto</h2>
-        <div 
-          className="details-description"
-          dangerouslySetInnerHTML={{ __html: product.description }}
-        />
       </div>
     </div>
-  </div>
-</div>
   );
 }
