@@ -161,18 +161,7 @@ export default function ProductDetails() {
       specs.push({ label: 'Peso Unitário', value: `${currentVariant.grams}g` });
     }
 
-    // 5. Material / Composição
-    if (fullText.includes('anteninha') || fullText.includes('átomo') || fullText.includes('eva')) {
-      specs.push({ label: 'Material', value: 'EVA de Alta Densidade + Miçanga' });
-    } else if (fullText.includes('jig head') || fullText.includes('jig de olho') || fullText.includes('chumbo') || fullText.includes('jig')) {
-      specs.push({ label: 'Material', value: 'Chumbo e Aço Inoxidável' });
-    } else if (fullText.includes('soft') || fullText.includes('camarão') || fullText.includes('plastisol') || fullText.includes('borracha') || fullText.includes('grub') || fullText.includes('worm') || fullText.includes('shad') || fullText.includes('paddle') || fullText.includes('fluke') || fullText.includes('pitu') || fullText.includes('sapo')) {
-      specs.push({ label: 'Material', value: 'Soft' });
-    } else {
-      specs.push({ label: 'Material', value: 'Soft' });
-    }
-
-    // 6. Flutuabilidade / Ação
+    // 5. Flutuabilidade / Ação
     if (fullText.includes('floating') || fullText.includes('flutuante') || fullText.includes('flutuabilidade')) {
       specs.push({ label: 'Ação / Flutuabilidade', value: 'Floating (Flutuante na Água)' });
     } else if (fullText.includes('sinking') || fullText.includes('afunda')) {
@@ -302,7 +291,6 @@ export default function ProductDetails() {
               <h1 className="info-title">{product.title}</h1>
               
               <div className="info-price-wrapper">
-                <span className="info-price-label">Preço de Referência:</span>
                 <span className="info-price">{displayPrice}</span>
               </div>
             </div>
