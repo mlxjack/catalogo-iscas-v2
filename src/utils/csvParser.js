@@ -75,6 +75,27 @@ export const loadProducts = async () => {
             }
           });
 
+          // Check if product is NOT Jig de Olho and should have standard 13 colors
+          const isJigDeOlho = (p.id && p.id.toLowerCase().includes('jig-head-de-olho')) || (p.title && p.title.toLowerCase().includes('jig de olho'));
+          
+          if (!isJigDeOlho) {
+            cleanOptions['Cor'] = [
+              'Branco Perola',
+              'Glow',
+              'Rapadura',
+              'Roxo Estrelar',
+              'Vermelho Holográfico',
+              'Véu Da Noite',
+              'Amarelo Neon',
+              'Laranja Neon',
+              'Preto Brilhante',
+              'Capim Rubi',
+              'Verde Neon',
+              'Pastel',
+              'Chá'
+            ];
+          }
+
           // Sort images to have a consistent main image
           const imagesArr = Array.from(p.images).filter(i => i);
           

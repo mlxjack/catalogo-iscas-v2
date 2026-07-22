@@ -26,7 +26,14 @@ export const normalizeString = (str) =>
     .replace(/[^a-z0-9]/g, "");
 
 export const getColorImage = (colorName) => {
-  const normalizedTarget = normalizeString(colorName);
+  if (!colorName) return null;
+  const target = colorName.trim();
+  
+  if (target.toLowerCase() === 'pastel') return `${import.meta.env.BASE_URL}cores/Chá - Pastel.jpg`;
+  if (target.toLowerCase().includes('estrelar') || target.toLowerCase().includes('estelar')) return `${import.meta.env.BASE_URL}cores/Roxo-Estelar.jpg`;
+  if (target.toLowerCase().includes('preto') && target.toLowerCase().includes('brilhante')) return `${import.meta.env.BASE_URL}cores/preto-brilhante.png`;
+
+  const normalizedTarget = normalizeString(target);
   const exactMatch = colorFiles.find(f => {
     const fileNameNoExt = f.substring(0, f.lastIndexOf('.'));
     return normalizeString(fileNameNoExt) === normalizedTarget;
