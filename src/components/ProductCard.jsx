@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { getColorImage } from '../utils/colorHelper';
+import { lureColorManifest } from '../utils/lureColorImages';
 
 export default function ProductCard({ product }) {
-  const mainImage = product.images[0] || `${import.meta.env.BASE_URL}logo.png`;
+  const localImg = product.id && lureColorManifest[product.id] ? Object.values(lureColorManifest[product.id])[0] : null;
+  const mainImage = localImg ? `${import.meta.env.BASE_URL}${localImg}` : (product.images[0] || `${import.meta.env.BASE_URL}logo.png`);
   
   // Format price
   const priceDisplay = product.minPrice > 0 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { loadProducts } from '../utils/csvParser';
 import { getColorImage } from '../utils/colorHelper';
+import { getLureColorImage, lureColorManifest } from '../utils/lureColorImages';
 
 export default function ProductDetails() {
   const { handle } = useParams();
@@ -17,14 +18,13 @@ export default function ProductDetails() {
         const data = await loadProducts();
         const found = data.find(p => p.id === handle);
         if (found) {
-          // Filter out color swatch images from the product details gallery
-          const cleanImages = found.images.filter(img => {
+          // Filter out flat color swatch texture images from the product details gallery
+          let cleanImages = found.images.filter(img => {
             const urlNoParams = img.split('?')[0];
             const urlFileName = urlNoParams.substring(urlNoParams.lastIndexOf('/') + 1);
             const urlFileNameNoExt = urlFileName.substring(0, urlFileName.lastIndexOf('.'));
             const normalizedName = urlFileNameNoExt.toLowerCase().replace(/[^a-z0-9]/g, "");
             
-            // Check if it matches any swatch filename
             const swatchesList = [
               "beijodasombra", "brancoperola", "capimrubi", "chapastel", "chaverde", "cha", 
               "glow", "luzlaranja", "rapadura", "roxoestelar", "rubidourado", "salmaoradiante", 
@@ -34,9 +34,17 @@ export default function ProductDetails() {
             return !swatchesList.includes(normalizedName);
           });
           
-          found.images = cleanImages.length > 0 ? cleanImages : [found.images[0]];
+          if (cleanImages.length === 0) cleanImages = [found.images[0]];
 
+          // Prepend real local lure color photos if available in manifest
+          if (lureColorManifest[found.id]) {
+            const localColorImgs = Object.values(lureColorManifest[found.id]).map(relPath => `${import.meta.env.BASE_URL}${relPath}`);
+            cleanImages = Array.from(new Set([...localColorImgs, ...cleanImages]));
+          }
+
+          found.images = cleanImages;
           setProduct(found);
+
           const initialOptions = {};
           Object.keys(found.options).forEach(optName => {
             initialOptions[optName] = found.options[optName][0];
@@ -54,6 +62,17 @@ export default function ProductDetails() {
 
   useEffect(() => {
     if (product && Object.keys(selectedOptions).length > 0) {
+      const selectedColor = selectedOptions['Cor'] || selectedOptions['cor'] || selectedOptions['Color'];
+      if (selectedColor) {
+        const lureImgUrl = getLureColorImage(product.id, selectedColor);
+        if (lureImgUrl) {
+          const imgIndex = product.images.findIndex(i => i === lureImgUrl);
+          if (imgIndex !== -1) {
+            setActiveImage(imgIndex);
+          }
+        }
+      }
+
       const matchedVariant = product.variants.find(v => {
         let match = true;
         const optionKeys = Object.keys(product.options);
@@ -63,10 +82,6 @@ export default function ProductDetails() {
         return match;
       });
       setCurrentVariant(matchedVariant || product.variants[0]);
-      if (matchedVariant && matchedVariant.image) {
-        const imgIndex = product.images.findIndex(i => i === matchedVariant.image);
-        if (imgIndex !== -1) setActiveImage(imgIndex);
-      }
     }
   }, [selectedOptions, product]);
 
