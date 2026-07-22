@@ -215,13 +215,20 @@ export default function ProductDetails() {
     const myIdx = optionKeys.indexOf(optionName);
     if (myIdx === -1) return true;
 
+    // Color swatches for soft lures are always available
+    const isColorOpt = optionName.toLowerCase().includes('cor') || optionName.toLowerCase().includes('color');
+    if (isColorOpt) return true;
+
     return product.variants.some(v => {
       const vVals = [v.option1, v.option2, v.option3];
-      const candidateVals = [...vVals];
-      candidateVals[myIdx] = val;
 
       return optionKeys.every((key, idx) => {
         if (idx === myIdx) return matchOpt(vVals[idx], val);
+
+        // Ignore color when checking availability of sizes/quantities
+        const isKeyColor = key.toLowerCase().includes('cor') || key.toLowerCase().includes('color');
+        if (isKeyColor) return true;
+
         const sel = selectedOptions[key];
         if (!sel) return true;
         return matchOpt(vVals[idx], sel);
