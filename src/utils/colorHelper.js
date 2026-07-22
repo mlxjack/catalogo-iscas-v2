@@ -30,7 +30,7 @@ export const getColorImage = (colorName) => {
   const target = colorName.trim();
   
   if (target.toLowerCase() === 'pastel') return `${import.meta.env.BASE_URL}cores/Pastel.jpg`;
-  if (target.toLowerCase().includes('verde') && target.toLowerCase().includes('neon')) return `${import.meta.env.BASE_URL}cores/Verde neon.jpg`;
+  if (target.toLowerCase().includes('verde') && target.toLowerCase().includes('neon')) return `${import.meta.env.BASE_URL}cores/Verde-neon.jpg`;
   if (target.toLowerCase().includes('estrelar') || target.toLowerCase().includes('estelar')) return `${import.meta.env.BASE_URL}cores/Roxo-Estelar.jpg`;
   if (target.toLowerCase().includes('preto') && target.toLowerCase().includes('brilhante')) return `${import.meta.env.BASE_URL}cores/preto-brilhante.png`;
 

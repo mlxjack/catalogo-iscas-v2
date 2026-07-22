@@ -43,7 +43,7 @@ export default function ProductCard({ product }) {
                   <span 
                     key={color} 
                     className="card-swatch" 
-                    style={imgUrl ? { backgroundImage: `url(${imgUrl})` } : { backgroundColor: '#e2e8f0' }} 
+                    style={imgUrl ? { backgroundImage: `url("${encodeURI(imgUrl)}")` } : { backgroundColor: '#e2e8f0' }} 
                     title={color}
                   />
                 );

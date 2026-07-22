@@ -343,7 +343,7 @@ export default function ProductDetails() {
                           <button
                             key={val}
                             className={`swatch-btn ${selectedOptions[optionName] === val ? 'active' : ''}`}
-                            style={imgUrl ? { backgroundImage: `url(${imgUrl})` } : { backgroundColor: '#e2e8f0' }}
+                            style={imgUrl ? { backgroundImage: `url("${encodeURI(imgUrl)}")` } : { backgroundColor: '#e2e8f0' }}
                             onClick={() => handleOptionSelect(optionName, val)}
                             title={val}
                             type="button"
