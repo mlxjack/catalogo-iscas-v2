@@ -1,282 +1,515 @@
-// Database of recommended hooks by lure model and size
-export const HOOK_RECOMMENDATIONS = {
+// Auto-generated hook recommendations from Iscas (2).xlsx
+export const HOOK_DATABASE = {
   "ajibeast": {
-    default: "90° #4 e #2"
+    "name": "Ajibeast",
+    "sizes": {},
+    "default": "90\u00b0 #4 e 90\u00b0 #2"
+  },
+  "ajinagare": {
+    "name": "AjiNagare",
+    "sizes": {},
+    "default": "#4 e #4 AJI"
   },
   "ajineedle": {
-    default: "90° #4 e 90° #2"
+    "name": "Ajineedle",
+    "sizes": {},
+    "default": "90\u00b0 #4 e 90\u00b0 #2"
   },
   "ajiball": {
-    default: "90° #4 e 90° #2"
+    "name": "AjiBall",
+    "sizes": {},
+    "default": "90\u00b0 #4 e 90\u00b0 #2"
   },
   "ajiaero": {
-    default: "AJI #4 | Jig Head #6, #4"
+    "name": "AjiAero",
+    "sizes": {},
+    "default": "Aji #4 | Jig Head #6, #4"
+  },
+  "ajiegg": {
+    "name": "Ajiegg",
+    "sizes": {},
+    "default": "Aji #4 | Jig Head #6"
   },
   "ajifukura": {
-    default: "#4 e #4 AJI"
+    "name": "Ajifukura",
+    "sizes": {},
+    "default": "#4 e #4 AJI"
   },
   "ajigrub": {
-    default: "90° AJI: #4 | 90°: #6"
+    "name": "Ajigrub",
+    "sizes": {},
+    "default": "90\u00b0Aji: #4 | 90\u00b0: #6"
+  },
+  "ajihane": {
+    "name": "Ajihane",
+    "sizes": {
+      "5.5": "#2 #4 #6  e  #4AJI",
+      "5,5": "#2 #4 #6  e  #4AJI",
+      "7.5": "#2 #4 #6  e  #4AJI",
+      "7,5": "#2 #4 #6  e  #4AJI"
+    },
+    "default": "#2 #4 #6  e  #4AJI"
+  },
+  "ajikaze": {
+    "name": "Ajikaze",
+    "sizes": {},
+    "default": "#4 e #4 AJI"
+  },
+  "ajikoka": {
+    "name": "Ajikoka",
+    "sizes": {},
+    "default": "Aji #4 | Jig Head #6, #4"
+  },
+  "ajimimizu": {
+    "name": "ajimimizu",
+    "sizes": {},
+    "default": "90\u00b0: #6, #4 e Aji #4"
+  },
+  "ajimizu": {
+    "name": "ajimizu",
+    "sizes": {},
+    "default": "#2 , #4 e #4 AJI"
+  },
+  "ajimushi": {
+    "name": "ajimushi",
+    "sizes": {},
+    "default": "Aji #4 | Jig Head #6"
+  },
+  "ajiring": {
+    "name": "ajiring",
+    "sizes": {},
+    "default": "#4 e #4 AJI"
+  },
+  "ajishrimp": {
+    "name": "ajishrimp",
+    "sizes": {},
+    "default": "Aji #4 | Jig Head #6"
+  },
+  "ajisho": {
+    "name": "ajisho",
+    "sizes": {},
+    "default": "#2, #4 e #4 AJI"
+  },
+  "ajistingv": {
+    "name": "ajistingv",
+    "sizes": {},
+    "default": "90\u00b0 #4 e 90\u00b0 #2"
+  },
+  "ajitwin": {
+    "name": "ajitwin",
+    "sizes": {
+      "4,5": "90\u00b0 #4 e 90\u00b0 #2",
+      "4.5": "90\u00b0 #4 e 90\u00b0 #2",
+      "5,5": "90\u00b0 #4 e 90\u00b0 #2",
+      "5.5": "90\u00b0 #4 e 90\u00b0 #2"
+    },
+    "default": "90\u00b0 #4 e 90\u00b0 #2"
+  },
+  "baitboss": {
+    "name": "Baitboss",
+    "sizes": {
+      "7.5": "EWG: 2/0 e 3/0 | 90\u00b0: 4/0 e 5/0",
+      "7,5": "EWG: 2/0 e 3/0 | 90\u00b0: 4/0 e 5/0",
+      "9.5": "EWG: 4/0 e 5/0 || 90\u00b0: 5/0 e 6/0",
+      "9,5": "EWG: 4/0 e 5/0 || 90\u00b0: 5/0 e 6/0",
+      "11.5": "EWG: 6/0 e 7/0 || 90\u00b0: 7/0",
+      "11,5": "EWG: 6/0 e 7/0 || 90\u00b0: 7/0"
+    },
+    "default": "EWG: 2/0 e 3/0 | 90\u00b0: 4/0 e 5/0"
   },
   "batelouca": {
-    sizes: {
-      "7": "Offset 1/0 e 2/0",
-      "9": "Offset 3/0 e 4/0",
+    "name": "Batelouca",
+    "sizes": {
+      "7": "Offset 1/0 e  2/0",
+      "9": "Offset 3/0 e  4/0",
       "11": "Offset 5/0, 6/0 e 7/0"
     },
-    default: "Offset 1/0 até 7/0"
+    "default": "Offset 1/0 e  2/0"
   },
   "bellyfluke": {
-    sizes: {
-      "6": "EWG #6, #4 e #2 || 90° #4 e #2",
-      "10": "EWG 1/0, 2/0 e 3/0 || 90° 1/0, 2/0, 3/0 e 4/0",
-      "13": "EWG 3/0, 4/0, 5/0 e 6/0 || 90° 3/0, 4/0, 5/0 e 6/0"
+    "name": "Belly Fluke",
+    "sizes": {
+      "5.5": "EWG: #6, #4 e #2 | 90\u00b0: #4 e #2",
+      "5,5": "EWG: #6, #4 e #2 | 90\u00b0: #4 e #2",
+      "9": "EWG: 1/0 ~ 3/0 | 90\u00b0: 1/0 ~ 4/0",
+      "12": "EWG: 3/0 ~6/0 | 90\u00b0: 3/0  6/0"
     },
-    default: "EWG & 90°"
+    "default": "EWG: #6, #4 e #2 | 90\u00b0: #4 e #2"
   },
   "boompaddle": {
-    sizes: {
-      "8": "Offset 1/0, 2/0 || 90° 1/0, 2/0",
-      "10": "Offset 4/0",
-      "12": "Offset 5/0",
-      "14": "Offset 7/0"
+    "name": "Boom Paddle",
+    "sizes": {
+      "8": "EWG: 1/0, 2/0 | 90\u00b0 1/0, 2/0",
+      "10": "EWG: 4/0",
+      "12": "EWG: 5/0",
+      "14": "EWG: 7/0",
+      "16": "EWG: 7/0",
+      "18": "EWG: 7/0",
+      "20": "EWG: 7/0"
     },
-    default: "Offset & 90°"
+    "default": "EWG: 1/0, 2/0 | 90\u00b0 1/0, 2/0"
   },
-  "camarao": {
-    sizes: {
-      "5": "Offset EWG #2, #4, #6 | Jig Head 90/60° #2, #4, #6",
-      "7": "Offset EWG 1/0, 2/0, 3/0 | Jig Head 90/60° #2, #4, #6",
-      "9": "Offset EWG 3/0, 4/0, 5/0 | Jig Head 90/60° 3/0, 4/0",
-      "11": "Offset EWG 4/0, 5/0, 6/0, 7/0 | Jig Head 90/60° 5/0, 6/0",
-      "13": "Offset EWG 7/0, 8/0 | Jig Head 90/60° 6/0"
+  "bubbletube": {
+    "name": "Blubble tube",
+    "sizes": {},
+    "default": "90\u00b0: 4/0 | EWG: 3/0"
+  },
+  "camaraojigheadarticulado": {
+    "name": "Caram\u00e3o jig head articulado",
+    "sizes": {
+      "5": "Jig Head 90/60\u00b0 - #2, #4, #6",
+      "7": "Jig Head 90/60\u00b0 - #2, #4, #6",
+      "9": "Jig Head 90/60\u00b0 - 3/0, 4/0",
+      "11": "Jig Head 90/60\u00b0 - 5/0, 6/0",
+      "13": "Jig Head 90/60\u00b0 - 6/0"
     },
-    default: "Offset EWG & Jig Head 90/60°"
+    "default": "Jig Head 90/60\u00b0 - #2, #4, #6"
+  },
+  "camaraooffsetarticulado": {
+    "name": "Caram\u00e3o offset articulado",
+    "sizes": {
+      "5": "EWG: #2, #4, #6",
+      "7": "EWG: 1/0, 2/0, 3/0",
+      "9": "EWG: 3/0, 4/0, 5/0",
+      "11": "EWG: 4/0, 5/0, 6/0, 7/0",
+      "13": "EWG: 7/0, 8/0"
+    },
+    "default": "EWG: #2, #4, #6"
+  },
+  "camaraochiclete": {
+    "name": "Camar\u00e3o chiclete",
+    "sizes": {
+      "3,5": "Jig Head #6, #4 e Aji #4",
+      "3.5": "Jig Head #6, #4 e Aji #4",
+      "5": "Jig Head 90/60\u00b0: #2, #4, #6",
+      "6,5": "Jig Head 90/60\u00b0: #2, #4, #6",
+      "6.5": "Jig Head 90/60\u00b0: #2, #4, #6",
+      "8": "Jig Head 90/60\u00b0: 3/0, 4/0"
+    },
+    "default": "Jig Head #6, #4 e Aji #4"
   },
   "clawstrike": {
-    sizes: {
-      "5": "EWG #6, #4 e #2 || 90° #4, #2 e #1",
-      "7": "EWG 1/0, 2/0 e 3/0 || 90° 1/0, 2/0 e 3/0"
+    "name": "Claw Strike",
+    "sizes": {
+      "5": "EWG: #6 ~ #2 | 90\u00b0: #4, #2 e #1",
+      "7": "EWG: 1/0 a 3/0 | 90\u00b0: 1/0 a 3/0"
     },
-    default: "EWG & 90°"
+    "default": "EWG: #6 ~ #2 | 90\u00b0: #4, #2 e #1"
   },
   "dancadagua": {
-    sizes: {
-      "6": "90° 1/0 || Offset EWG #4 e #2",
-      "9": "90° 2/0 e 3/0 || Offset EWG 1/0",
-      "12": "Offset EWG 5/0 || 90° 4/0"
+    "name": "Dan\u00e7a D'agua",
+    "sizes": {
+      "6": "90\u00b0: 1/0 | Offset EWG: #4 e #2",
+      "9": "90\u00b0: 2/0 e 3/0 | EWG: 1/0",
+      "12": "EWG: 5/0 || 90\u00b0: 4/0"
     },
-    default: "Offset EWG & 90°"
+    "default": "90\u00b0: 1/0 | Offset EWG: #4 e #2"
   },
   "doublegrub": {
-    sizes: {
-      "6": "EWG #2 e #1 || 90° #2 e #1",
-      "8": "EWG 1/0 até 3/0 || 90° 1/0 até 5/0"
+    "name": "Double Grub",
+    "sizes": {
+      "6": "EWG: #2 e #1 | 90\u00b0: #2 e #1",
+      "8": "EWG: 1/0 ~ 3/0 | 90\u00b0: 1/0 ~ 5/0"
     },
-    default: "EWG & 90°"
+    "default": "EWG: #2 e #1 | 90\u00b0: #2 e #1"
+  },
+  "easydrift": {
+    "name": "Easy Drift",
+    "sizes": {
+      "7": "EWG: #2",
+      "10": "EWG: 3/0 e 90\u00b0: 5/0",
+      "13": "EWG: 5/0 e 90\u00b0: 5/0"
+    },
+    "default": "EWG: #2"
+  },
+  "fatworm": {
+    "name": "Fat Worm",
+    "sizes": {
+      "10": "EWG: 3/0 e 4/0 | 90\u00b0: 4/0 e 5/0",
+      "14": "EWG: 6/0 e 7/0 | 90\u00b0: 6/0 e 7/0"
+    },
+    "default": "EWG: 3/0 e 4/0 | 90\u00b0: 4/0 e 5/0"
   },
   "filotail": {
-    sizes: {
-      "5.5": "90° #4 || 90° #4 AJI",
-      "5,5": "90° #4 || 90° #4 AJI",
-      "5": "90° #4 || 90° #4 AJI",
-      "8.5": "Offset EWG #4, #2, #1 e 1/0 || 90° #1, #2 e #4",
-      "8,5": "Offset EWG #4, #2, #1 e 1/0 || 90° #1, #2 e #4",
-      "8": "Offset EWG #4, #2, #1 e 1/0 || 90° #1, #2 e #4",
-      "12": "Offset EWG 1/0, 2/0, 3/0 || 90° 5/0, 4/0, 3/0"
+    "name": "FiloTail",
+    "sizes": {
+      "5,5": "90\u00b0 #4 e #4 AJI",
+      "5.5": "90\u00b0 #4 e #4 AJI",
+      "9": "90\u00b0:#4~#1 | EWG: #4 ~ #1 e 1/0",
+      "12": "EWG: 1/0 ~ 3/0 | 90\u00b0: 3/0 ~ 5/0"
     },
-    default: "Offset EWG & 90°"
+    "default": "90\u00b0 #4 e #4 AJI"
   },
   "folha": {
-    sizes: {
-      "7.5": "Offset EWG 3/0, 2/0 || 90° 3/0, 4/0, 5/0",
-      "7,5": "Offset EWG 3/0, 2/0 || 90° 3/0, 4/0, 5/0",
-      "7": "Offset EWG 3/0, 2/0 || 90° 3/0, 4/0, 5/0",
-      "11": "Offset EWG 4/0, 5/0 e 6/0 || 90° 5/0 e 6/0"
+    "name": "Folha",
+    "sizes": {
+      "7,5": "EWG: 3/0, 2/0 | 90\u00b0: 3/0 ~ 5/0",
+      "7.5": "EWG: 3/0, 2/0 | 90\u00b0: 3/0 ~ 5/0",
+      "11": "EWG: 4/0 ~ 6/0 | 90\u00b0: 5/0 e 6/0"
     },
-    default: "Offset EWG & 90°"
+    "default": "EWG: 3/0, 2/0 | 90\u00b0: 3/0 ~ 5/0"
   },
   "gfluke": {
-    sizes: {
-      "6": "Offset EWG #2 || 90° #2",
-      "8": "Offset EWG 2/0 e 3/0 || 90° 3/0 e 4/0",
-      "10": "Offset EWG 4/0 e 5/0 || 90° 4/0 e 5/0"
+    "name": "Gfluke",
+    "sizes": {
+      "6": "EWG: #2 || 90\u00b0: #2",
+      "8": "EWG: 2/0 e 3/0 | 90\u00b0: 3/0 e 4/0",
+      "10": "EWG: 4/0 e 5/0 | 90\u00b0: 4/0 e 5/0"
     },
-    default: "Offset EWG & 90°"
+    "default": "EWG: #2 || 90\u00b0: #2"
   },
   "garrabraba": {
-    sizes: {
-      "7.5": "EWG 2/0 e 3/0",
-      "7,5": "EWG 2/0 e 3/0",
-      "7": "EWG 2/0 e 3/0",
-      "9": "EWG 3/0 e 4/0",
-      "10.5": "EWG 4/0, 5/0 e 6/0",
-      "10,5": "EWG 4/0, 5/0 e 6/0",
-      "10": "EWG 4/0, 5/0 e 6/0"
+    "name": "Garra Braba",
+    "sizes": {
+      "7,5": "EWG: 2/0 e 3/0",
+      "7.5": "EWG: 2/0 e 3/0",
+      "9": "EWG: 3/0 e 4/0",
+      "10,5": "EWG: 4/0, 5/0 e 6/0",
+      "10.5": "EWG: 4/0, 5/0 e 6/0"
     },
-    default: "EWG 2/0 até 6/0"
+    "default": "EWG: 2/0 e 3/0"
   },
   "grilo": {
-    sizes: {
-      "6": "Offset EWG #2 || 90° 1/0"
-    },
-    default: "Offset EWG #2 || 90° 1/0"
+    "name": "Grilo",
+    "sizes": {},
+    "default": "EWG: #2 | 90\u00b0: 1/0"
   },
   "grub": {
-    sizes: {
-      "5": "90° 1/0 || EWG #2",
-      "7": "90° 3/0 || EWG 3/0",
-      "9": "90° 5/0 || EWG 4/0"
+    "name": "Grub",
+    "sizes": {
+      "5": "90\u00b0: 1/0 | EWG #2",
+      "7": "90\u00b0: 3/0 | EWG: 3/0",
+      "9": "90\u00b0: 5/0 | EWG: 4/0"
     },
-    default: "90° & EWG"
+    "default": "90\u00b0: 1/0 | EWG #2"
+  },
+  "lighthane": {
+    "name": "Light Hane",
+    "sizes": {
+      "5.5": "#2 #4 #6  e  #4AJI",
+      "5,5": "#2 #4 #6  e  #4AJI",
+      "7.5": "#2 #4 #6  e  #4AJI",
+      "7,5": "#2 #4 #6  e  #4AJI"
+    },
+    "default": "#2 #4 #6  e  #4AJI"
   },
   "lacraworm": {
-    sizes: {
-      "8": "Offset EWG #4 || 90° #2, #4 e #4 AJI",
-      "11": "Offset EWG #2 || 90° #1, 1/0, 2/0 e 3/0",
-      "14": "Offset EWG 1/0, 2/0, 3/0, 4/0, 5/0 || 90° 4/0, 5/0 e 6/0"
+    "name": "Lacraworm",
+    "sizes": {
+      "8": "Offset EWG #4 || 90\u00b0 #2, #4 e #4 AJI",
+      "11": "Offset EWG #2 | 90\u00b0 #1, 1/0, 2/0 e 3/0",
+      "14": "Offset EWG 1/0, 2/0, 3/0, 4/0, 5/0 || 90\u00b0 4/0, 5/0 e 6/0"
     },
-    default: "Offset EWG & 90°"
+    "default": "Offset EWG #4 || 90\u00b0 #2, #4 e #4 AJI"
   },
   "lagartail": {
-    sizes: {
-      "6": "Offset EWG 1/0, #1 e #2 || 90° 1/0",
-      "9": "Offset EWG 2/0, 3/0 e 5/0 || 90° 3/0 e 4/0",
-      "12": "Offset EWG 5/0, 6/0 e 7/0 || 90° 6/0 e 7/0"
+    "name": "Lagartail",
+    "sizes": {
+      "6": "Offset EWG: 1/0, #1 e #2 || 90\u00b0: 1/0",
+      "9": "EWG: 2/0, 3/0 e 5/0 || 90\u00b0: 3/0 e 4/0",
+      "12": "EWG: 5/0, 6/0 e 7/0 || 90: 6/0 e 7/0"
     },
-    default: "Offset EWG & 90°"
+    "default": "Offset EWG: 1/0, #1 e #2 || 90\u00b0: 1/0"
   },
   "lagartixa": {
-    sizes: {
-      "6": "EWG #6, #4 e #2 || 90° #6, #4, #2 e AJI #4",
-      "8": "EWG #1, 1/0, 2/0 e 3/0 || 90° #1, 1/0 e 2/0"
+    "name": "Lagartixa",
+    "sizes": {
+      "6": "EWG #6, #4 e #2 || 90\u00b0: #6, #4, #2 e AJI #4",
+      "8": "EWG #1, 1/0, 2/0 e 3/0 || 90\u00b0: #1, 1/0 e 2/0"
     },
-    default: "EWG & 90°"
+    "default": "EWG #6, #4 e #2 || 90\u00b0: #6, #4, #2 e AJI #4"
   },
   "lagostim": {
-    sizes: {
-      "6": "Offset EWG #2, #1, 1/0 || 90° 1/0",
-      "8": "Offset EWG 3/0 e 4/0 || 90° 4/0 e 5/0"
+    "name": "latostim",
+    "sizes": {
+      "6": "Offset EWG: #2, #1, 1/0,  || 90\u00b0: 1/0",
+      "8": "Offset EWG: 3/0 e 4/0 || 90\u00b0: 4/0 e 5/0"
     },
-    default: "Offset EWG & 90°"
+    "default": "Offset EWG: #2, #1, 1/0,  || 90\u00b0: 1/0"
   },
   "legfrog": {
-    sizes: {
-      "6": "Offset EWG 2/0, 1/0, #1, #2 || 90° 4/0",
-      "8": "Offset EWG 4/0, 3/0 || 90° 5/0"
+    "name": "Leg Frog",
+    "sizes": {
+      "6": "Offset EWG: 2/0, 1/0, #1, #2 || 90\u00b0: 4/0",
+      "8": "Offset EWG: 4/0, 3/0 || 90\u00b0: 5/0"
     },
-    default: "Offset EWG & 90°"
+    "default": "Offset EWG: 2/0, 1/0, #1, #2 || 90\u00b0: 4/0"
   },
   "lesma": {
-    sizes: {
-      "5.5": "EWG 3/0 e 4/0 || 90° 2/0, 3/0 e 4/0",
-      "5,5": "EWG 3/0 e 4/0 || 90° 2/0, 3/0 e 4/0",
-      "5": "EWG 3/0 e 4/0 || 90° 2/0, 3/0 e 4/0",
-      "7.5": "EWG 5/0 || 90° 6/0",
-      "7,5": "EWG 5/0 || 90° 6/0",
-      "7": "EWG 5/0 || 90° 6/0"
+    "name": "Lesma",
+    "sizes": {
+      "5,5": "EWG: 3/0 e 4/0 || 90\u00b0: 2/0, 3/0 e 4/0",
+      "5.5": "EWG: 3/0 e 4/0 || 90\u00b0: 2/0, 3/0 e 4/0",
+      "7,5": "EWG: 5/0  || 90\u00b0: 6/0",
+      "7.5": "EWG: 5/0  || 90\u00b0: 6/0"
     },
-    default: "EWG & 90°"
+    "default": "EWG: 3/0 e 4/0 || 90\u00b0: 2/0, 3/0 e 4/0"
+  },
+  "linguado": {
+    "name": "Linguado",
+    "sizes": {
+      "8": "90\u00b0:2/0 e 3/0 | EWG: 1/0 e 2/0",
+      "11": "90\u00b0: 4/0 at\u00e9 6/0  | EWG: 4/0, 5/0"
+    },
+    "default": "90\u00b0:2/0 e 3/0 | EWG: 1/0 e 2/0"
   },
   "minipaddle": {
-    sizes: {
-      "3": "EWG #8",
-      "4.5": "EWG #4 e #2 || 90° 1/0",
-      "4,5": "EWG #4 e #2 || 90° 1/0",
-      "4": "EWG #4 e #2 || 90° 1/0",
-      "6": "EWG 1/0, #1 || 90° 1/0"
+    "name": "Mini Paddle",
+    "sizes": {
+      "3": "EWG: #8",
+      "4,5": "EWG: #4 e #2 || 90\u00b0: 1/0",
+      "4.5": "EWG: #4 e #2 || 90\u00b0: 1/0",
+      "6": "EWG: 1/0, #1 e 90\u00b0 1/0"
     },
-    default: "EWG & 90°"
+    "default": "EWG: #8"
   },
   "morceguinho": {
-    sizes: {
-      "5": "Offset EWG #4 || 90° #2",
-      "7": "Offset EWG #2 || 90° 1/0 e #2",
-      "9": "Offset EWG 1/0 || 90° 3/0"
+    "name": "Morceguinho",
+    "sizes": {
+      "5": "Offset EWG: #4 || 90\u00b0: #2",
+      "7": "EWG: #2 || 90\u00b0: 1/0 e #2",
+      "9": "EWG: 1/0 || 90\u00b0: 3/0"
     },
-    default: "Offset EWG & 90°"
+    "default": "Offset EWG: #4 || 90\u00b0: #2"
+  },
+  "mustachegrub": {
+    "name": "Mustache Grub",
+    "sizes": {
+      "5": "EWG: #4 e #6",
+      "7": "EWG: 1/0 e 2/0 || 90\u00b0: 1/0"
+    },
+    "default": "EWG: #4 e #6"
   },
   "pepinodomar": {
-    sizes: {
-      "8": "EWG 5/0 e 6/0 || 90° 4/0 e 5/0",
-      "10": "EWG 7/0 || 90° 5/0 e 6/0"
+    "name": "Pepino do Mar",
+    "sizes": {
+      "8": "EWG: 5/0 e 6/0 || 90\u00b0: 4/0 e 5/0",
+      "10": "EWG: 7/0 || 90\u00b0: 5/0 e 6/0"
     },
-    default: "EWG & 90°"
+    "default": "EWG: 5/0 e 6/0 || 90\u00b0: 4/0 e 5/0"
   },
   "pitu": {
-    sizes: {
+    "name": "Pitu",
+    "sizes": {
       "8": "Offset 1/0",
-      "7": "Offset 1/0",
-      "10": "Offset 4/0",
-      "11": "Offset 4/0"
+      "10": "Offset 4/0"
     },
-    default: "Offset 1/0 (8cm) | Offset 4/0 (10cm)"
-  },
-  "sapinho": {
-    sizes: {
-      "7": "Offset 4/0, 5/0",
-      "10": "Offset 7/0",
-      "9": "Offset 4/0, 5/0"
-    },
-    default: "Offset 4/0, 5/0 (7cm) | Offset 7/0 (10cm)"
+    "default": "Offset 1/0"
   },
   "sapinhocostela": {
-    sizes: {
+    "name": "Sapinho Costela",
+    "sizes": {
       "7": "Offset 4/0, 5/0",
-      "10": "Offset 7/0",
-      "9": "Offset 4/0, 5/0"
+      "9": "Offset 7/0"
     },
-    default: "Offset 4/0, 5/0 (7cm) | Offset 7/0 (10cm)"
+    "default": "Offset 4/0, 5/0"
+  },
+  "sapoestica": {
+    "name": "Sapo Estica",
+    "sizes": {
+      "6": "EWG: #1 e 1/0 || 90\u00b0: 1/0, 2/0 e 3/0",
+      "8": "EWG: 4/0 e 5/0  ||  90\u00b0: 5/0",
+      "10": "EWG: 6/0 e 7/0 || 90\u00b0: 6/0"
+    },
+    "default": "EWG: #1 e 1/0 || 90\u00b0: 1/0, 2/0 e 3/0"
   },
   "serelepe": {
-    sizes: {
-      "5": "Offset EWG #6",
-      "7": "Offset EWG #1 || 90° 1/0",
-      "9": "Offset EWG 3/0 || 90° 5/0"
+    "name": "Serelepe",
+    "sizes": {
+      "6": "Offset EWG #6",
+      "7": "Offset EWG: # 1 || 90\u00b0: 1/0",
+      "9": "Offset EWG: 3/0 || 90\u00b0: 5/0"
     },
-    default: "Offset EWG & 90°"
+    "default": "Offset EWG #6"
+  },
+  "shadgaikotsu": {
+    "name": "Shad Gaikotsu",
+    "sizes": {
+      "4,5": "90\u00b0: #4 #6 e Aji #4",
+      "4.5": "90\u00b0: #4 #6 e Aji #4",
+      "6": "Jig Head 90\u00b0 #1 e 1/0",
+      "7,5": "Jig Head 1/0 e 2/0",
+      "7.5": "Jig Head 1/0 e 2/0"
+    },
+    "default": "90\u00b0: #4 #6 e Aji #4"
+  },
+  "shadpadoru": {
+    "name": "Shad Padoru",
+    "sizes": {
+      "5,5": "90\u00b0: #2 || EWG: #4 e #1",
+      "5.5": "90\u00b0: #2 || EWG: #4 e #1",
+      "7": "90\u00b0: 5/0 || EWG: 3/0 e 5/0",
+      "8,5": "90\u00b0: 2/0  || EWG: 2/0 e 3/0",
+      "8.5": "90\u00b0: 2/0  || EWG: 2/0 e 3/0"
+    },
+    "default": "90\u00b0: #2 || EWG: #4 e #1"
   },
   "snaketail": {
-    sizes: {
-      "5": "Offset EWG #6, #4 || 90° #2, #4 e #4 AJI",
-      "8": "Offset EWG 2/0, 1/0, #1 e #2 || 90° 1/0, #1 e #2",
-      "10": "Offset EWG 2/0, 3/0 e 4/0 || 90° 2/0, 3/0 e 4/0"
+    "name": "Snake Tail",
+    "sizes": {
+      "5": "Offset EWG: #6, #4 || 90\u00b0: #2, #4 e #4 AJI",
+      "7,5": "Offset EWG: 2/0, 1/0, #1 e #2 || 90\u00b0: 1/0, #1 e #2",
+      "7.5": "Offset EWG: 2/0, 1/0, #1 e #2 || 90\u00b0: 1/0, #1 e #2",
+      "10": "Offset EWG: 2/0, 3/0 e 4/0 || 90\u00b0: 2/0, 3/0 e 4/0"
     },
-    default: "Offset EWG & 90°"
+    "default": "Offset EWG: #6, #4 || 90\u00b0: #2, #4 e #4 AJI"
   },
-  "snakeworm": {
-    sizes: {
-      "5": "Offset EWG #6, #4 || 90° #2, #4 e #4 AJI",
-      "8": "Offset EWG 2/0, 1/0, #1 e #2 || 90° 1/0, #1 e #2",
-      "10": "Offset EWG 2/0, 3/0 e 4/0 || 90° 2/0, 3/0 e 4/0"
+  "tatsumaki": {
+    "name": "Tatsumaki",
+    "sizes": {
+      "8": "90\u00b0:1/0, 2/0 | EWG: 2/0",
+      "9,5": "90\u00b0 ou EWG :2/0, at\u00e9 4/0",
+      "9.5": "90\u00b0 ou EWG :2/0, at\u00e9 4/0"
     },
-    default: "Offset EWG & 90°"
+    "default": "90\u00b0:1/0, 2/0 | EWG: 2/0"
   },
   "tipworm": {
-    sizes: {
-      "11": "Offset EWG 2/0, 3/0 e 4/0",
-      "14": "Offset EWG 5/0, 6/0 e 7/0"
+    "name": "Tip Worm",
+    "sizes": {
+      "11": "Offset EWG: 2/0, 3/0 e 4/0",
+      "14": "Offset EWG: 5/0, 6/0 e 7/0"
     },
-    default: "Offset EWG 2/0 até 7/0"
+    "default": "Offset EWG: 2/0, 3/0 e 4/0"
+  },
+  "tornadoworm": {
+    "name": "Tornado Worm",
+    "sizes": {
+      "3,5": "Vers\u00e1til",
+      "3.5": "Vers\u00e1til",
+      "5": "Vers\u00e1til"
+    },
+    "default": "Vers\u00e1til"
   },
   "vibraworm": {
-    sizes: {
-      "6": "Offset EWG #4 || 90° #1, #2, #4 e #4 AJI",
-      "9": "Offset EWG 2/0 e 3/0 || 90° 2/0 e 3/0",
-      "12": "Offset EWG 5/0 e 6/0 || 90° 5/0 e 6/0"
+    "name": "Vibra Worm",
+    "sizes": {
+      "6": "Offset EWG: #4 || 90\u00b0: #1, #2, #4 e #4 AJI",
+      "9": "Offset EWG: 2/0 e 3/0 || 90\u00b0: 2/0 e 3/0",
+      "12": "Offset EWG: 5/0 e 6/0 || 90\u00b0: 5/0 e 6/0"
     },
-    default: "Offset EWG & 90°"
+    "default": "Offset EWG: #4 || 90\u00b0: #1, #2, #4 e #4 AJI"
+  },
+  "viperbug": {
+    "name": "ViperBug",
+    "sizes": {
+      "5,5": "EWG : #1 e #2 || 90\u00b0: 1/0",
+      "5.5": "EWG : #1 e #2 || 90\u00b0: 1/0",
+      "7,5": "EWG : #1, 1/0 at\u00e9 4/0 || 90\u00b0: 3/0 e 4/0",
+      "7.5": "EWG : #1, 1/0 at\u00e9 4/0 || 90\u00b0: 3/0 e 4/0",
+      "9,5": "EWG : 4/0 e 5/0 || 90\u00b0: 5/0",
+      "9.5": "EWG : 4/0 e 5/0 || 90\u00b0: 5/0"
+    },
+    "default": "EWG : #1 e #2 || 90\u00b0: 1/0"
   },
   "wavegrub": {
-    sizes: {
-      "5.5": "EWG #2 e #1 || 90° #1 e 1/0",
-      "5,5": "EWG #2 e #1 || 90° #1 e 1/0",
-      "5": "EWG #2 e #1 || 90° #1 e 1/0",
-      "7.5": "EWG 2/0 e 3/0 || 90° 2/0, 3/0 e 4/0",
-      "7,5": "EWG 2/0 e 3/0 || 90° 2/0, 3/0 e 4/0",
-      "7": "EWG 2/0 e 3/0 || 90° 2/0, 3/0 e 4/0"
+    "name": "Wave Grub",
+    "sizes": {
+      "5,5": "EWG: #2 e #1 || 90\u00b0: #1 e 1/0",
+      "5.5": "EWG: #2 e #1 || 90\u00b0: #1 e 1/0",
+      "7,5": "EWG: 2/0 e 3/0 || 90\u00b0: 2/0, 3/0 e 4/0",
+      "7.5": "EWG: 2/0 e 3/0 || 90\u00b0: 2/0, 3/0 e 4/0"
     },
-    default: "EWG & 90°"
+    "default": "EWG: #2 e #1 || 90\u00b0: #1 e 1/0"
   }
 };
 
@@ -288,8 +521,10 @@ export const getRecommendedHookForLure = (title, size) => {
     .replace(/[^a-z0-9]/g, "");
 
   let matchedKey = null;
-  for (const key of Object.keys(HOOK_RECOMMENDATIONS)) {
-    if (titleNorm.includes(key)) {
+  // Match longer keys first
+  const keys = Object.keys(HOOK_DATABASE).sort((a, b) => b.length - a.length);
+  for (const key of keys) {
+    if (titleNorm.includes(key) || key.includes(titleNorm)) {
       matchedKey = key;
       break;
     }
@@ -297,9 +532,9 @@ export const getRecommendedHookForLure = (title, size) => {
 
   if (!matchedKey) return null;
 
-  const data = HOOK_RECOMMENDATIONS[matchedKey];
+  const data = HOOK_DATABASE[matchedKey];
   
-  if (size && data.sizes) {
+  if (size && data.sizes && Object.keys(data.sizes).length > 0) {
     const cleanSize = String(size).toLowerCase().replace('cm', '').replace('mm', '').trim();
     
     if (data.sizes[cleanSize]) {
