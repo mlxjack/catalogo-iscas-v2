@@ -1,6 +1,5 @@
 // List of available color images - exact filenames in public/cores/
 export const colorFiles = [
-  "Beijo-da-sombra.jpg",
   "Branco-perola.jpg",
   "Capim-Rubi.jpg",
   "Chá - Pastel.jpg",

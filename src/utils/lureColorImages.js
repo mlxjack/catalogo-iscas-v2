@@ -2,7 +2,6 @@
 export const lureColorManifest = {
   "isca-artificial-ajigrub": {
     "amareloneon": "iscas_cores/isca-artificial-ajigrub/amarelo-neon.png",
-    "beijodasombra": "iscas_cores/isca-artificial-ajigrub/Beijo-da-sombra.png",
     "brancoperola": "iscas_cores/isca-artificial-ajigrub/Branco-perola.png",
     "capimrubi": "iscas_cores/isca-artificial-ajigrub/Capim-Rubi.png",
     "cha": "iscas_cores/isca-artificial-ajigrub/Cha.png",
@@ -15,7 +14,6 @@ export const lureColorManifest = {
   },
   "kit-isca-artificial-aji-fukura": {
     "amareloneon": "iscas_cores/kit-isca-artificial-aji-fukura/amarelo-neon.png",
-    "beijodasombra": "iscas_cores/kit-isca-artificial-aji-fukura/Beijo-da-sombra.png",
     "brancoperola": "iscas_cores/kit-isca-artificial-aji-fukura/Branco-perola.png",
     "capimrubi": "iscas_cores/kit-isca-artificial-aji-fukura/Capim-Rubi.png",
     "cha": "iscas_cores/kit-isca-artificial-aji-fukura/Cha.png",
@@ -28,7 +26,6 @@ export const lureColorManifest = {
   },
   "kit-isca-artificial-ajiaero": {
     "amareloneon": "iscas_cores/kit-isca-artificial-ajiaero/amarelo-neon.png",
-    "beijodasombra": "iscas_cores/kit-isca-artificial-ajiaero/Beijo-da-sombra.png",
     "brancoperola": "iscas_cores/kit-isca-artificial-ajiaero/Branco-perola.png",
     "capimrubi": "iscas_cores/kit-isca-artificial-ajiaero/Capim-Rubi.png",
     "cha": "iscas_cores/kit-isca-artificial-ajiaero/Cha.png",
@@ -41,7 +38,6 @@ export const lureColorManifest = {
   },
   "kit-isca-artificial-ajibeast": {
     "amareloneon": "iscas_cores/kit-isca-artificial-ajibeast/amarelo-neon.png",
-    "beijodasombra": "iscas_cores/kit-isca-artificial-ajibeast/Beijo-da-sombra.png",
     "brancoperola": "iscas_cores/kit-isca-artificial-ajibeast/Branco-perola.png",
     "capimrubi": "iscas_cores/kit-isca-artificial-ajibeast/Capim-Rubi.png",
     "cha": "iscas_cores/kit-isca-artificial-ajibeast/Cha.png",
@@ -54,7 +50,6 @@ export const lureColorManifest = {
   },
   "kit-isca-artificial-ajiegg": {
     "amareloneon": "iscas_cores/kit-isca-artificial-ajiegg/amarelo-neon.png",
-    "beijodasombra": "iscas_cores/kit-isca-artificial-ajiegg/Beijo-da-sombra.png",
     "brancoperola": "iscas_cores/kit-isca-artificial-ajiegg/Branco-perola.png",
     "capimrubi": "iscas_cores/kit-isca-artificial-ajiegg/Capim-Rubi.png",
     "cha": "iscas_cores/kit-isca-artificial-ajiegg/Cha.png",
@@ -68,7 +63,6 @@ export const lureColorManifest = {
   "kit-isca-artificial-ajihane": {
     "amareloneon2": "iscas_cores/kit-isca-artificial-ajihane/amarelo-neon-2.png",
     "amareloneon": "iscas_cores/kit-isca-artificial-ajihane/amarelo-neon.png",
-    "beijodasombra": "iscas_cores/kit-isca-artificial-ajihane/Beijo-da-sombra.png",
     "brancoperola": "iscas_cores/kit-isca-artificial-ajihane/Branco-perola.png",
     "capimrubi": "iscas_cores/kit-isca-artificial-ajihane/Capim-Rubi.png",
     "cha": "iscas_cores/kit-isca-artificial-ajihane/Cha.png",
@@ -81,7 +75,6 @@ export const lureColorManifest = {
   },
   "kit-isca-artificial-ajikaze": {
     "amareloneon": "iscas_cores/kit-isca-artificial-ajikaze/amarelo-neon.png",
-    "beijodasombra": "iscas_cores/kit-isca-artificial-ajikaze/Beijo-da-sombra.png",
     "brancoperola": "iscas_cores/kit-isca-artificial-ajikaze/Branco-perola.png",
     "capimrubi": "iscas_cores/kit-isca-artificial-ajikaze/Capim-Rubi.png",
     "cha": "iscas_cores/kit-isca-artificial-ajikaze/Cha.png",
@@ -94,7 +87,6 @@ export const lureColorManifest = {
   },
   "kit-isca-artificial-ajikoka": {
     "amareloneon": "iscas_cores/kit-isca-artificial-ajikoka/amarelo-neon.png",
-    "beijodasombra": "iscas_cores/kit-isca-artificial-ajikoka/Beijo-da-sombra.png",
     "brancoperola": "iscas_cores/kit-isca-artificial-ajikoka/Branco-perola.png",
     "capimrubi": "iscas_cores/kit-isca-artificial-ajikoka/Capim-Rubi.png",
     "cha": "iscas_cores/kit-isca-artificial-ajikoka/Cha.png",
@@ -107,7 +99,6 @@ export const lureColorManifest = {
   },
   "kit-isca-artificial-wave-grub": {
     "amareloneon": "iscas_cores/kit-isca-artificial-wave-grub/amarelo-neon.png",
-    "beijodasombra": "iscas_cores/kit-isca-artificial-wave-grub/Beijo-da-sombra.png",
     "brancoperola2": "iscas_cores/kit-isca-artificial-wave-grub/Branco-perola-2.png",
     "brancoperola": "iscas_cores/kit-isca-artificial-wave-grub/Branco-perola.png",
     "capimrubi": "iscas_cores/kit-isca-artificial-wave-grub/Capim-Rubi.png",
