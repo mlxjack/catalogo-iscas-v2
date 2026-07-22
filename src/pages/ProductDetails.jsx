@@ -146,6 +146,35 @@ export default function ProductDetails() {
     setSelectedOptions(prev => ({ ...prev, [optionName]: value }));
   };
 
+  const normalizeOpt2 = (str) =>
+    str ? str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "") : "";
+
+  const matchOpt = (a, b) => {
+    if (!a && !b) return true;
+    if (!a || !b) return false;
+    return a === b || normalizeOpt2(a) === normalizeOpt2(b);
+  };
+
+  const isValueAvailable = (optionName, val) => {
+    if (!product) return true;
+    const optionKeys = Object.keys(product.options);
+    const myIdx = optionKeys.indexOf(optionName);
+    if (myIdx === -1) return true;
+
+    return product.variants.some(v => {
+      const vVals = [v.option1, v.option2, v.option3];
+      const candidateVals = [...vVals];
+      candidateVals[myIdx] = val;
+
+      return optionKeys.every((key, idx) => {
+        if (idx === myIdx) return matchOpt(vVals[idx], val);
+        const sel = selectedOptions[key];
+        if (!sel) return true;
+        return matchOpt(vVals[idx], sel);
+      });
+    });
+  };
+
   const displayPrice = currentVariant && currentVariant.price > 0
     ? `R$ ${currentVariant.price.toFixed(2).replace('.', ',')}`
     : 'Consulte Preço';
@@ -339,34 +368,41 @@ export default function ProductDetails() {
                     <div className="swatches-selector" role="radiogroup" aria-label={`Seleção de ${optionName}`}>
                       {values.map(val => {
                         const imgUrl = getColorImage(val);
+                        const available = isValueAvailable(optionName, val);
                         return (
                           <button
                             key={val}
-                            className={`swatch-btn ${selectedOptions[optionName] === val ? 'active' : ''}`}
+                            className={`swatch-btn ${selectedOptions[optionName] === val ? 'active' : ''} ${!available ? 'unavailable' : ''}`}
                             style={imgUrl ? { backgroundImage: `url("${encodeURI(imgUrl)}")` } : { backgroundColor: '#e2e8f0' }}
-                            onClick={() => handleOptionSelect(optionName, val)}
-                            title={val}
+                            onClick={() => available && handleOptionSelect(optionName, val)}
+                            title={available ? val : `${val} — Indisponível nesta combinação`}
                             type="button"
                             role="radio"
                             aria-checked={selectedOptions[optionName] === val ? 'true' : 'false'}
+                            aria-disabled={!available}
                           />
                         );
                       })}
                     </div>
                   ) : (
                     <div className="vars-selector" role="radiogroup" aria-label={`Seleção de ${optionName}`}>
-                      {values.map(val => (
-                        <button
-                          key={val}
-                          className={`var-btn ${selectedOptions[optionName] === val ? 'active' : ''}`}
-                          onClick={() => handleOptionSelect(optionName, val)}
-                          type="button"
-                          role="radio"
-                          aria-checked={selectedOptions[optionName] === val ? 'true' : 'false'}
-                        >
-                          <span className="var-name">{val}</span>
-                        </button>
-                      ))}
+                      {values.map(val => {
+                        const available = isValueAvailable(optionName, val);
+                        return (
+                          <button
+                            key={val}
+                            className={`var-btn ${selectedOptions[optionName] === val ? 'active' : ''} ${!available ? 'unavailable' : ''}`}
+                            onClick={() => available && handleOptionSelect(optionName, val)}
+                            type="button"
+                            role="radio"
+                            aria-checked={selectedOptions[optionName] === val ? 'true' : 'false'}
+                            aria-disabled={!available}
+                            title={available ? val : `${val} — Indisponível nesta combinação`}
+                          >
+                            <span className="var-name">{val}</span>
+                          </button>
+                        );
+                      })}
                     </div>
                   )}
                 </div>
