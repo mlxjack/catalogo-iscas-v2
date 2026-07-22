@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { loadProducts } from '../utils/csvParser';
 import { getColorImage } from '../utils/colorHelper';
 import { getLureColorImage, lureColorManifest } from '../utils/lureColorImages';
+import { getRecommendedHookForLure } from '../utils/hookRecommendations';
 
 export default function ProductDetails() {
   const { handle } = useParams();
@@ -197,13 +198,19 @@ export default function ProductDetails() {
       specs.push({ label: 'Técnica Indicada', value: tecnicas.join(', ') });
     }
 
-    // 8. Montagens / Anzóis Compatíveis
-    const montagens = [];
-    if (fullText.includes('jig head 90') || fullText.includes('jig head comum') || fullText.includes('jig head')) montagens.push('Jig Head 90°');
-    if (fullText.includes('offset ewg') || fullText.includes('anzol offset') || fullText.includes('offset')) montagens.push('Anzol Offset EWG');
-    if (fullText.includes('articulado')) montagens.push('Jig Head / Offset Articulado');
-    if (montagens.length > 0) {
-      specs.push({ label: 'Montagem Compatível', value: montagens.join(', ') });
+    // 8. Anzol Ideal / Recomendado
+    const selectedSizeVal = selectedOptions['Tamanho'] || selectedOptions['tamanho'] || selectedOptions['Size'] || selectedOptions['size'];
+    const hookRec = getRecommendedHookForLure(product.title, selectedSizeVal);
+    if (hookRec) {
+      specs.push({ label: 'Anzol Ideal / Recomendado', value: hookRec });
+    } else {
+      const montagens = [];
+      if (fullText.includes('jig head 90') || fullText.includes('jig head comum') || fullText.includes('jig head')) montagens.push('Jig Head 90°');
+      if (fullText.includes('offset ewg') || fullText.includes('anzol offset') || fullText.includes('offset')) montagens.push('Anzol Offset EWG');
+      if (fullText.includes('articulado')) montagens.push('Jig Head / Offset Articulado');
+      if (montagens.length > 0) {
+        specs.push({ label: 'Montagem Compatível', value: montagens.join(', ') });
+      }
     }
 
     // 9. Espécies Alvo (Target Species)
