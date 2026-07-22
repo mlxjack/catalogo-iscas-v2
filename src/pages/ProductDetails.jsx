@@ -211,13 +211,16 @@ export default function ProductDetails() {
 
   const isValueAvailable = (optionName, val) => {
     if (!product) return true;
+    const optNameLower = optionName.toLowerCase();
+
+    // Tamanho and Cor buttons should ALWAYS be 100% clickable and available
+    if (optNameLower.includes('tamanho') || optNameLower.includes('size') || optNameLower.includes('cor') || optNameLower.includes('color')) {
+      return true;
+    }
+
     const optionKeys = Object.keys(product.options);
     const myIdx = optionKeys.indexOf(optionName);
     if (myIdx === -1) return true;
-
-    // Color swatches for soft lures are always available
-    const isColorOpt = optionName.toLowerCase().includes('cor') || optionName.toLowerCase().includes('color');
-    if (isColorOpt) return true;
 
     return product.variants.some(v => {
       const vVals = [v.option1, v.option2, v.option3];
@@ -225,7 +228,7 @@ export default function ProductDetails() {
       return optionKeys.every((key, idx) => {
         if (idx === myIdx) return matchOpt(vVals[idx], val);
 
-        // Ignore color when checking availability of sizes/quantities
+        // Ignore color when checking availability of secondary options (like kit quantity)
         const isKeyColor = key.toLowerCase().includes('cor') || key.toLowerCase().includes('color');
         if (isKeyColor) return true;
 
