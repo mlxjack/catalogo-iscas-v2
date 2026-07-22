@@ -142,10 +142,6 @@ export default function ProductDetails() {
     );
   }
 
-  const handleOptionSelect = (optionName, value) => {
-    setSelectedOptions(prev => ({ ...prev, [optionName]: value }));
-  };
-
   const normalizeOpt2 = (str) =>
     str ? str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "") : "";
 
@@ -153,6 +149,64 @@ export default function ProductDetails() {
     if (!a && !b) return true;
     if (!a || !b) return false;
     return a === b || normalizeOpt2(a) === normalizeOpt2(b);
+  };
+
+  const handleOptionSelect = (optionName, value) => {
+    setSelectedOptions(prev => {
+      const nextOptions = { ...prev, [optionName]: value };
+      if (!product) return nextOptions;
+
+      const optionKeys = Object.keys(product.options);
+      
+      // 1. Check if nextOptions forms an exact valid variant
+      const exactMatch = product.variants.find(v => {
+        const vVals = [v.option1, v.option2, v.option3];
+        return optionKeys.every((key, idx) => {
+          return matchOpt(vVals[idx], nextOptions[key]);
+        });
+      });
+
+      if (exactMatch) {
+        return nextOptions;
+      }
+
+      // 2. If combo is invalid (e.g. 7cm + Kit 5un), find a valid variant matching the clicked option
+      const targetColor = nextOptions['Cor'] || nextOptions['cor'] || nextOptions['Color'];
+      
+      let candidateVariant = product.variants.find(v => {
+        const myIdx = optionKeys.indexOf(optionName);
+        const vVal = myIdx === 0 ? v.option1 : myIdx === 1 ? v.option2 : v.option3;
+        if (!matchOpt(vVal, value)) return false;
+
+        if (targetColor) {
+          const colorIdx = optionKeys.findIndex(k => k.toLowerCase().includes('cor') || k.toLowerCase().includes('color'));
+          if (colorIdx !== -1) {
+            const vColor = colorIdx === 0 ? v.option1 : colorIdx === 1 ? v.option2 : v.option3;
+            if (!matchOpt(vColor, targetColor)) return false;
+          }
+        }
+        return true;
+      });
+
+      if (!candidateVariant) {
+        candidateVariant = product.variants.find(v => {
+          const myIdx = optionKeys.indexOf(optionName);
+          const vVal = myIdx === 0 ? v.option1 : myIdx === 1 ? v.option2 : v.option3;
+          return matchOpt(vVal, value);
+        });
+      }
+
+      if (candidateVariant) {
+        const vVals = [candidateVariant.option1, candidateVariant.option2, candidateVariant.option3];
+        optionKeys.forEach((key, idx) => {
+          if (vVals[idx]) {
+            nextOptions[key] = vVals[idx];
+          }
+        });
+      }
+
+      return nextOptions;
+    });
   };
 
   const isValueAvailable = (optionName, val) => {
