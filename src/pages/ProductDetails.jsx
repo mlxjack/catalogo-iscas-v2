@@ -74,14 +74,42 @@ export default function ProductDetails() {
         }
       }
 
-      const matchedVariant = product.variants.find(v => {
+      const normalizeOpt = (str) =>
+        str ? str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "") : "";
+
+      const matchOptionValue = (val1, val2) => {
+        if (!val1 && !val2) return true;
+        if (!val1 || !val2) return false;
+        if (val1 === val2) return true;
+        return normalizeOpt(val1) === normalizeOpt(val2);
+      };
+
+      const optionKeys = Object.keys(product.options);
+
+      // 1. Match exact or normalized option values
+      let matchedVariant = product.variants.find(v => {
         let match = true;
-        const optionKeys = Object.keys(product.options);
-        if (optionKeys[0] && v.option1 !== selectedOptions[optionKeys[0]]) match = false;
-        if (optionKeys[1] && v.option2 !== selectedOptions[optionKeys[1]]) match = false;
-        if (optionKeys[2] && v.option3 !== selectedOptions[optionKeys[2]]) match = false;
+        if (optionKeys[0] && !matchOptionValue(v.option1, selectedOptions[optionKeys[0]])) match = false;
+        if (optionKeys[1] && !matchOptionValue(v.option2, selectedOptions[optionKeys[1]])) match = false;
+        if (optionKeys[2] && !matchOptionValue(v.option3, selectedOptions[optionKeys[2]])) match = false;
         return match;
       });
+
+      // 2. Fallback: match by non-color options (e.g. Tamanho, Quantidade) if color option is flexible
+      if (!matchedVariant) {
+        matchedVariant = product.variants.find(v => {
+          let match = true;
+          optionKeys.forEach((key, idx) => {
+            if (!key.toLowerCase().includes('cor') && !key.toLowerCase().includes('color')) {
+              const vVal = idx === 0 ? v.option1 : idx === 1 ? v.option2 : v.option3;
+              const selVal = selectedOptions[key];
+              if (vVal && selVal && !matchOptionValue(vVal, selVal)) match = false;
+            }
+          });
+          return match;
+        });
+      }
+
       setCurrentVariant(matchedVariant || product.variants[0]);
     }
   }, [selectedOptions, product]);
