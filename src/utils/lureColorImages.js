@@ -1,5 +1,20 @@
 // Auto-generated lure color images manifest
 export const lureColorManifest = {
+  "kit-isca-artificial-ajimizu": {
+    "amareloneon": "iscas_cores/kit-isca-artificial-ajimizu/amarelo-neon.png",
+    "brancoperola": "iscas_cores/kit-isca-artificial-ajimizu/Branco-perola.png",
+    "capimrubi": "iscas_cores/kit-isca-artificial-ajimizu/Capim-Rubi.png",
+    "cha": "iscas_cores/kit-isca-artificial-ajimizu/Cha.png",
+    "glow": "iscas_cores/kit-isca-artificial-ajimizu/Glow.png",
+    "laranjaneon": "iscas_cores/kit-isca-artificial-ajimizu/laranja-Neon.png",
+    "pastel": "iscas_cores/kit-isca-artificial-ajimizu/Pastel.png",
+    "pretobrilhante": "iscas_cores/kit-isca-artificial-ajimizu/preto-brilhante.png",
+    "rapadura": "iscas_cores/kit-isca-artificial-ajimizu/Rapadura.png",
+    "roxoestrelar": "iscas_cores/kit-isca-artificial-ajimizu/Roxo-Estrelnar.png",
+    "verdeneon": "iscas_cores/kit-isca-artificial-ajimizu/Verde neon.png",
+    "vermelhoholografico": "iscas_cores/kit-isca-artificial-ajimizu/Vermelho-Holografico.png",
+    "veudanoite": "iscas_cores/kit-isca-artificial-ajimizu/Veu-da-noite.png"
+  },
   "isca-artificial-shad-padoru": {
     "amareloneon": "iscas_cores/isca-artificial-shad-padoru/amarelo-neon.png",
     "brancoperola": "iscas_cores/isca-artificial-shad-padoru/Branco-perola.png",
