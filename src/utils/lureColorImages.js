@@ -1,5 +1,50 @@
 // Auto-generated lure color images manifest
 export const lureColorManifest = {
+  "kit-isca-artificial-belly-fluke": {
+    "amareloneon": "iscas_cores/kit-isca-artificial-belly-fluke/amarelo-neon.png",
+    "brancoperola": "iscas_cores/kit-isca-artificial-belly-fluke/Branco-perola.png",
+    "capimrubi": "iscas_cores/kit-isca-artificial-belly-fluke/Capim-Rubi.png",
+    "cha": "iscas_cores/kit-isca-artificial-belly-fluke/Cha.png",
+    "glow": "iscas_cores/kit-isca-artificial-belly-fluke/Glow.png",
+    "laranjaneon": "iscas_cores/kit-isca-artificial-belly-fluke/laranja-Neon.png",
+    "pastel": "iscas_cores/kit-isca-artificial-belly-fluke/Pastel.png",
+    "pretobrilhante": "iscas_cores/kit-isca-artificial-belly-fluke/preto-brilhante.png",
+    "rapadura": "iscas_cores/kit-isca-artificial-belly-fluke/Rapadura.png",
+    "roxoestrelar": "iscas_cores/kit-isca-artificial-belly-fluke/Roxo-Estrelnar.png",
+    "verdeneon": "iscas_cores/kit-isca-artificial-belly-fluke/Verde neon.png",
+    "vermelhoholografico": "iscas_cores/kit-isca-artificial-belly-fluke/Vermelho-Holografico.png",
+    "veudanoite": "iscas_cores/kit-isca-artificial-belly-fluke/Veu-da-noite.png"
+  },
+  "isca-artificial-bubble-tube": {
+    "amareloneon": "iscas_cores/isca-artificial-bubble-tube/amarelo-neon.png",
+    "brancoperola": "iscas_cores/isca-artificial-bubble-tube/Branco-perola.png",
+    "capimrubi": "iscas_cores/isca-artificial-bubble-tube/Capim-Rubi.png",
+    "cha": "iscas_cores/isca-artificial-bubble-tube/Cha.png",
+    "glow": "iscas_cores/isca-artificial-bubble-tube/Glow.png",
+    "laranjaneon": "iscas_cores/isca-artificial-bubble-tube/laranja-Neon.png",
+    "pastel": "iscas_cores/isca-artificial-bubble-tube/Pastel.png",
+    "pretobrilhante": "iscas_cores/isca-artificial-bubble-tube/preto-brilhante.png",
+    "rapadura": "iscas_cores/isca-artificial-bubble-tube/Rapadura.png",
+    "roxoestrelar": "iscas_cores/isca-artificial-bubble-tube/Roxo-Estrelnar.png",
+    "verdeneon": "iscas_cores/isca-artificial-bubble-tube/Verde neon.png",
+    "vermelhoholografico": "iscas_cores/isca-artificial-bubble-tube/Vermelho-Holografico.png",
+    "veudanoite": "iscas_cores/isca-artificial-bubble-tube/Veu-da-noite.png"
+  },
+  "kit-isca-artificial-ajitwin": {
+    "amareloneon": "iscas_cores/kit-isca-artificial-ajitwin/amarelo-neon.png",
+    "brancoperola": "iscas_cores/kit-isca-artificial-ajitwin/Branco-perola.png",
+    "capimrubi": "iscas_cores/kit-isca-artificial-ajitwin/Capim-Rubi.png",
+    "cha": "iscas_cores/kit-isca-artificial-ajitwin/Cha.png",
+    "glow": "iscas_cores/kit-isca-artificial-ajitwin/Glow.png",
+    "laranjaneon": "iscas_cores/kit-isca-artificial-ajitwin/laranja-Neon.png",
+    "pastel": "iscas_cores/kit-isca-artificial-ajitwin/Pastel.png",
+    "pretobrilhante": "iscas_cores/kit-isca-artificial-ajitwin/preto-brilhante.png",
+    "rapadura": "iscas_cores/kit-isca-artificial-ajitwin/Rapadura.png",
+    "roxoestrelar": "iscas_cores/kit-isca-artificial-ajitwin/Roxo-Estrelnar.png",
+    "verdeneon": "iscas_cores/kit-isca-artificial-ajitwin/Verde neon.png",
+    "vermelhoholografico": "iscas_cores/kit-isca-artificial-ajitwin/Vermelho-Holografico.png",
+    "veudanoite": "iscas_cores/kit-isca-artificial-ajitwin/Veu-da-noite.png"
+  },
   "kit-isca-artificial-ajineedle-1": {
     "amareloneon": "iscas_cores/kit-isca-artificial-ajineedle-1/amarelo-neon.png",
     "brancoperola": "iscas_cores/kit-isca-artificial-ajineedle-1/Branco-perola.png",
