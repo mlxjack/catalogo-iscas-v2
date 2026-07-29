@@ -1,5 +1,35 @@
 // Auto-generated lure color images manifest
 export const lureColorManifest = {
+  "kit-isca-artificial-claw-strike": {
+    "amareloneon": "iscas_cores/kit-isca-artificial-claw-strike/amarelo-neon.png",
+    "brancoperola": "iscas_cores/kit-isca-artificial-claw-strike/Branco-perola.png",
+    "capimrubi": "iscas_cores/kit-isca-artificial-claw-strike/Capim-Rubi.png",
+    "cha": "iscas_cores/kit-isca-artificial-claw-strike/Cha.png",
+    "glow": "iscas_cores/kit-isca-artificial-claw-strike/Glow.png",
+    "laranjaneon": "iscas_cores/kit-isca-artificial-claw-strike/laranja-Neon.png",
+    "pastel": "iscas_cores/kit-isca-artificial-claw-strike/Pastel.png",
+    "pretobrilhante": "iscas_cores/kit-isca-artificial-claw-strike/preto-brilhante.png",
+    "rapadura": "iscas_cores/kit-isca-artificial-claw-strike/Rapadura.png",
+    "roxoestrelar": "iscas_cores/kit-isca-artificial-claw-strike/Roxo-Estrelnar.png",
+    "verdeneon": "iscas_cores/kit-isca-artificial-claw-strike/Verde neon.png",
+    "vermelhoholografico": "iscas_cores/kit-isca-artificial-claw-strike/Vermelho-Holografico.png",
+    "veudanoite": "iscas_cores/kit-isca-artificial-claw-strike/Veu-da-noite.png"
+  },
+  "isca-artificial-camarao-chiclete": {
+    "amareloneon": "iscas_cores/isca-artificial-camarao-chiclete/amarelo-neon.png",
+    "brancoperola": "iscas_cores/isca-artificial-camarao-chiclete/Branco-perola.png",
+    "capimrubi": "iscas_cores/isca-artificial-camarao-chiclete/Capim-Rubi.png",
+    "cha": "iscas_cores/isca-artificial-camarao-chiclete/Cha.png",
+    "glow": "iscas_cores/isca-artificial-camarao-chiclete/Glow.png",
+    "laranjaneon": "iscas_cores/isca-artificial-camarao-chiclete/laranja-Neon.png",
+    "pastel": "iscas_cores/isca-artificial-camarao-chiclete/Pastel.png",
+    "pretobrilhante": "iscas_cores/isca-artificial-camarao-chiclete/preto-brilhante.png",
+    "rapadura": "iscas_cores/isca-artificial-camarao-chiclete/Rapadura.png",
+    "roxoestrelar": "iscas_cores/isca-artificial-camarao-chiclete/Roxo-Estrelnar.png",
+    "verdeneon": "iscas_cores/isca-artificial-camarao-chiclete/Verde neon.png",
+    "vermelhoholografico": "iscas_cores/isca-artificial-camarao-chiclete/Vermelho-Holografico.png",
+    "veudanoite": "iscas_cores/isca-artificial-camarao-chiclete/Veu-da-noite.png"
+  },
   "kit-isca-artificial-belly-fluke": {
     "amareloneon": "iscas_cores/kit-isca-artificial-belly-fluke/amarelo-neon.png",
     "brancoperola": "iscas_cores/kit-isca-artificial-belly-fluke/Branco-perola.png",
