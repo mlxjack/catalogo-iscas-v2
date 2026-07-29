@@ -1,5 +1,50 @@
 // Auto-generated lure color images manifest
 export const lureColorManifest = {
+  "isca-artificial-boom-paddle": {
+    "amareloneon": "iscas_cores/isca-artificial-boom-paddle/amarelo-neon.png",
+    "brancoperola": "iscas_cores/isca-artificial-boom-paddle/Branco-perola.png",
+    "capimrubi": "iscas_cores/isca-artificial-boom-paddle/Capim-Rubi.png",
+    "cha": "iscas_cores/isca-artificial-boom-paddle/Cha.png",
+    "glow": "iscas_cores/isca-artificial-boom-paddle/Glow.png",
+    "laranjaneon": "iscas_cores/isca-artificial-boom-paddle/laranja-Neon.png",
+    "pastel": "iscas_cores/isca-artificial-boom-paddle/Pastel.png",
+    "pretobrilhante": "iscas_cores/isca-artificial-boom-paddle/preto-brilhante.png",
+    "rapadura": "iscas_cores/isca-artificial-boom-paddle/Rapadura.png",
+    "roxoestrelar": "iscas_cores/isca-artificial-boom-paddle/Roxo-Estrelnar.png",
+    "verdeneon": "iscas_cores/isca-artificial-boom-paddle/Verde neon.png",
+    "vermelhoholografico": "iscas_cores/isca-artificial-boom-paddle/Vermelho-Holografico.png",
+    "veudanoite": "iscas_cores/isca-artificial-boom-paddle/Veu-da-noite.png"
+  },
+  "isca-artificial-batelouca": {
+    "amareloneon": "iscas_cores/isca-artificial-batelouca/amarelo-neon.png",
+    "brancoperola": "iscas_cores/isca-artificial-batelouca/Branco-perola.png",
+    "capimrubi": "iscas_cores/isca-artificial-batelouca/Capim-Rubi.png",
+    "cha": "iscas_cores/isca-artificial-batelouca/Cha.png",
+    "glow": "iscas_cores/isca-artificial-batelouca/Glow.png",
+    "laranjaneon": "iscas_cores/isca-artificial-batelouca/laranja-Neon.png",
+    "pastel": "iscas_cores/isca-artificial-batelouca/Pastel.png",
+    "pretobrilhante": "iscas_cores/isca-artificial-batelouca/preto-brilhante.png",
+    "rapadura": "iscas_cores/isca-artificial-batelouca/Rapadura.png",
+    "roxoestrelar": "iscas_cores/isca-artificial-batelouca/Roxo-Estrelnar.png",
+    "verdeneon": "iscas_cores/isca-artificial-batelouca/Verde neon.png",
+    "vermelhoholografico": "iscas_cores/isca-artificial-batelouca/Vermelho-Holografico.png",
+    "veudanoite": "iscas_cores/isca-artificial-batelouca/Veu-da-noite.png"
+  },
+  "isca-artificial-bait-boss": {
+    "amareloneon": "iscas_cores/isca-artificial-bait-boss/amarelo-neon.png",
+    "brancoperola": "iscas_cores/isca-artificial-bait-boss/Branco-perola.png",
+    "capimrubi": "iscas_cores/isca-artificial-bait-boss/Capim-Rubi.png",
+    "cha": "iscas_cores/isca-artificial-bait-boss/Cha.png",
+    "glow": "iscas_cores/isca-artificial-bait-boss/Glow.png",
+    "laranjaneon": "iscas_cores/isca-artificial-bait-boss/laranja-Neon.png",
+    "pastel": "iscas_cores/isca-artificial-bait-boss/Pastel.png",
+    "pretobrilhante": "iscas_cores/isca-artificial-bait-boss/preto-brilhante.png",
+    "rapadura": "iscas_cores/isca-artificial-bait-boss/Rapadura.png",
+    "roxoestrelar": "iscas_cores/isca-artificial-bait-boss/Roxo-Estrelnar.png",
+    "verdeneon": "iscas_cores/isca-artificial-bait-boss/Verde neon.png",
+    "vermelhoholografico": "iscas_cores/isca-artificial-bait-boss/Vermelho-Holografico.png",
+    "veudanoite": "iscas_cores/isca-artificial-bait-boss/Veu-da-noite.png"
+  },
   "kit-isca-artificial-claw-strike": {
     "amareloneon": "iscas_cores/kit-isca-artificial-claw-strike/amarelo-neon.png",
     "brancoperola": "iscas_cores/kit-isca-artificial-claw-strike/Branco-perola.png",
