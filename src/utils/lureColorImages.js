@@ -1,5 +1,10 @@
 // Auto-generated lure color images manifest
 export const lureColorManifest = {
+  "kit-anteninha-2-unidades": {
+    "preto": "iscas_cores/kit-anteninha-2-unidades/Preto.jpg",
+    "marromclaro": "iscas_cores/kit-anteninha-2-unidades/Marrom-claro.jpg",
+    "marromescuro": "iscas_cores/kit-anteninha-2-unidades/Marrom-escuro.jpg"
+  },
   "isca-artificial-boom-paddle": {
     "amareloneon": "iscas_cores/isca-artificial-boom-paddle/amarelo-neon.png",
     "brancoperola": "iscas_cores/isca-artificial-boom-paddle/Branco-perola.png",

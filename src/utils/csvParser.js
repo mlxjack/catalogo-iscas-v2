@@ -77,8 +77,12 @@ export const loadProducts = async () => {
 
           // Check if product is NOT Jig de Olho and should have standard 13 colors
           const isJigDeOlho = (p.id && p.id.toLowerCase().includes('jig-head-de-olho')) || (p.title && p.title.toLowerCase().includes('jig de olho'));
-          
-          if (!isJigDeOlho) {
+
+          // Produtos com paleta de cores propria (nao usam as 13 cores padrao)
+          const CUSTOM_COLOR_PRODUCTS = ['kit-anteninha-2-unidades'];
+          const hasCustomColors = CUSTOM_COLOR_PRODUCTS.includes(p.id);
+
+          if (!isJigDeOlho && !hasCustomColors) {
             cleanOptions['Cor'] = [
               'Branco Perola',
               'Glow',

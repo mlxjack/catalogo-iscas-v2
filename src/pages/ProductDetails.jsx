@@ -40,7 +40,7 @@ export default function ProductDetails() {
           // Prepend real local lure color photos if available in manifest
           if (lureColorManifest[found.id]) {
             const localColorImgs = Object.values(lureColorManifest[found.id]).map(relPath => `${import.meta.env.BASE_URL}${relPath}`);
-            cleanImages = Array.from(new Set([...localColorImgs, ...cleanImages]));
+            cleanImages = Array.from(new Set([...localColorImgs, ...cleanImages])).filter(Boolean);
           }
 
           found.images = cleanImages;
