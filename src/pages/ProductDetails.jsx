@@ -37,10 +37,11 @@ export default function ProductDetails() {
           
           if (cleanImages.length === 0) cleanImages = [found.images[0]];
 
-          // Prepend real local lure color photos if available in manifest
+          // If real local lure color photos exist for this product, they are the only
+          // gallery images used (replaces any Shopify/CDN images from the CSV)
           if (lureColorManifest[found.id]) {
             const localColorImgs = Object.values(lureColorManifest[found.id]).map(relPath => `${import.meta.env.BASE_URL}${relPath}`);
-            cleanImages = Array.from(new Set([...localColorImgs, ...cleanImages])).filter(Boolean);
+            cleanImages = Array.from(new Set(localColorImgs)).filter(Boolean);
           }
 
           found.images = cleanImages;
