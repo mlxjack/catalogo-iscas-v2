@@ -1,5 +1,20 @@
 // Auto-generated lure color images manifest
 export const lureColorManifest = {
+  "isca-artificial-ajimimizu": {
+    "amareloneon": "iscas_cores/isca-artificial-ajimimizu/amarelo-neon.png",
+    "brancoperola": "iscas_cores/isca-artificial-ajimimizu/Branco-perola.png",
+    "capimrubi": "iscas_cores/isca-artificial-ajimimizu/Capim-Rubi.png",
+    "cha": "iscas_cores/isca-artificial-ajimimizu/Cha.png",
+    "glow": "iscas_cores/isca-artificial-ajimimizu/Glow.png",
+    "laranjaneon": "iscas_cores/isca-artificial-ajimimizu/laranja-Neon.png",
+    "pastel": "iscas_cores/isca-artificial-ajimimizu/Pastel.png",
+    "pretobrilhante": "iscas_cores/isca-artificial-ajimimizu/preto-brilhante.png",
+    "rapadura": "iscas_cores/isca-artificial-ajimimizu/Rapadura.png",
+    "roxoestrelar": "iscas_cores/isca-artificial-ajimimizu/Roxo-Estrelnar.png",
+    "verdeneon": "iscas_cores/isca-artificial-ajimimizu/Verde neon.png",
+    "vermelhoholografico": "iscas_cores/isca-artificial-ajimimizu/Vermelho-Holografico.png",
+    "veudanoite": "iscas_cores/isca-artificial-ajimimizu/Veu-da-noite.png"
+  },
   "kit-isca-artificial-aji-nagare": {
     "amareloneon": "iscas_cores/kit-isca-artificial-aji-nagare/amarelo-neon.png",
     "brancoperola": "iscas_cores/kit-isca-artificial-aji-nagare/Branco-perola.png",
