@@ -1,16 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { getColorImage } from '../utils/colorHelper';
-import { getLureColorImage, lureColorManifest } from '../utils/lureColorImages';
+import { getVariedCoverImage } from '../utils/lureColorImages';
 
 export default function ProductCard({ product }) {
-  const manifestEntry = product.id && lureColorManifest[product.id];
-  // Usa a mesma cor padrao que a pagina de detalhe abre (primeira da lista de Cor)
-  const firstColor = product.options['Cor'] && product.options['Cor'][0];
-  const localImg = manifestEntry
-    ? (firstColor && getLureColorImage(product.id, firstColor)) || `${import.meta.env.BASE_URL}${Object.values(manifestEntry)[0]}`
-    : null;
-  const mainImage = localImg || product.images[0] || `${import.meta.env.BASE_URL}logo.png`;
+  const mainImage = getVariedCoverImage(product) || product.images[0] || `${import.meta.env.BASE_URL}logo.png`;
   
   // Format price
   const priceDisplay = product.minPrice > 0 

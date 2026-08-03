@@ -738,3 +738,28 @@ export const getLureColorImage = (handle, colorName) => {
   
   return null;
 };
+
+// Hash simples e estavel de uma string (mesmo produto sempre cai na mesma cor)
+const hashString = (str) => {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = (hash << 5) - hash + str.charCodeAt(i);
+    hash |= 0;
+  }
+  return Math.abs(hash);
+};
+
+// Escolhe uma foto de capa variada (mas estavel) entre as cores disponiveis do produto,
+// usada no card do catalogo e no destaque da home para nao repetir sempre a mesma cor.
+export const getVariedCoverImage = (product) => {
+  if (!product || !product.id || !lureColorManifest[product.id]) return null;
+  const manifestEntry = lureColorManifest[product.id];
+  const colors = (product.options && product.options['Cor']) || [];
+  if (colors.length > 0) {
+    const index = hashString(product.id) % colors.length;
+    const img = getLureColorImage(product.id, colors[index]);
+    if (img) return img;
+  }
+  const firstPath = Object.values(manifestEntry)[0];
+  return firstPath ? `${import.meta.env.BASE_URL}${firstPath}` : null;
+};

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { loadProducts } from '../utils/csvParser';
 import ProductCard from '../components/ProductCard';
+import { getVariedCoverImage } from '../utils/lureColorImages';
 
 export default function Catalog() {
   const [products, setProducts] = useState([]);
@@ -85,7 +86,7 @@ export default function Catalog() {
             <div className="hero-card" aria-label="Destaque">
               <Link to={`/product/${featuredProduct.id}`}>
                 <div className="hero-card-media">
-                  <img src={featuredProduct.images[0] || `${import.meta.env.BASE_URL}logo.png`} alt={featuredProduct.title} />
+                  <img src={getVariedCoverImage(featuredProduct) || featuredProduct.images[0] || `${import.meta.env.BASE_URL}logo.png`} alt={featuredProduct.title} />
                 </div>
               </Link>
               <div className="hero-card-body">
