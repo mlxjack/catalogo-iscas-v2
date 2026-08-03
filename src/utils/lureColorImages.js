@@ -1,5 +1,35 @@
 // Auto-generated lure color images manifest
 export const lureColorManifest = {
+  "kit-isca-artificial-aji-nagare": {
+    "amareloneon": "iscas_cores/kit-isca-artificial-aji-nagare/amarelo-neon.png",
+    "brancoperola": "iscas_cores/kit-isca-artificial-aji-nagare/Branco-perola.png",
+    "capimrubi": "iscas_cores/kit-isca-artificial-aji-nagare/Capim-Rubi.png",
+    "cha": "iscas_cores/kit-isca-artificial-aji-nagare/Cha.png",
+    "glow": "iscas_cores/kit-isca-artificial-aji-nagare/Glow.png",
+    "laranjaneon": "iscas_cores/kit-isca-artificial-aji-nagare/laranja-Neon.png",
+    "pastel": "iscas_cores/kit-isca-artificial-aji-nagare/Pastel.png",
+    "pretobrilhante": "iscas_cores/kit-isca-artificial-aji-nagare/preto-brilhante.png",
+    "rapadura": "iscas_cores/kit-isca-artificial-aji-nagare/Rapadura.png",
+    "roxoestrelar": "iscas_cores/kit-isca-artificial-aji-nagare/Roxo-Estrelnar.png",
+    "verdeneon": "iscas_cores/kit-isca-artificial-aji-nagare/Verde neon.png",
+    "vermelhoholografico": "iscas_cores/kit-isca-artificial-aji-nagare/Vermelho-Holografico.png",
+    "veudanoite": "iscas_cores/kit-isca-artificial-aji-nagare/Veu-da-noite.png"
+  },
+  "kit-isca-artificial-ajineedle": {
+    "amareloneon": "iscas_cores/kit-isca-artificial-ajineedle/amarelo-neon.png",
+    "brancoperola": "iscas_cores/kit-isca-artificial-ajineedle/Branco-perola.png",
+    "capimrubi": "iscas_cores/kit-isca-artificial-ajineedle/Capim-Rubi.png",
+    "cha": "iscas_cores/kit-isca-artificial-ajineedle/Cha.png",
+    "glow": "iscas_cores/kit-isca-artificial-ajineedle/Glow.png",
+    "laranjaneon": "iscas_cores/kit-isca-artificial-ajineedle/laranja-Neon.png",
+    "pastel": "iscas_cores/kit-isca-artificial-ajineedle/Pastel.png",
+    "pretobrilhante": "iscas_cores/kit-isca-artificial-ajineedle/preto-brilhante.png",
+    "rapadura": "iscas_cores/kit-isca-artificial-ajineedle/Rapadura.png",
+    "roxoestrelar": "iscas_cores/kit-isca-artificial-ajineedle/Roxo-Estrelnar.png",
+    "verdeneon": "iscas_cores/kit-isca-artificial-ajineedle/Verde neon.png",
+    "vermelhoholografico": "iscas_cores/kit-isca-artificial-ajineedle/Vermelho-Holografico.png",
+    "veudanoite": "iscas_cores/kit-isca-artificial-ajineedle/Veu-da-noite.png"
+  },
   "isca-artificial-sapinho-costela": {
     "amareloneon": "iscas_cores/isca-artificial-sapinho-costela/amarelo-neon.png",
     "brancoperola": "iscas_cores/isca-artificial-sapinho-costela/Branco-perola.png",
