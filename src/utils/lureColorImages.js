@@ -1,5 +1,20 @@
 // Auto-generated lure color images manifest
 export const lureColorManifest = {
+  "isca-artificial-linguado": {
+    "amareloneon": "iscas_cores/isca-artificial-linguado/amarelo-neon.png",
+    "brancoperola": "iscas_cores/isca-artificial-linguado/Branco-perola.png",
+    "capimrubi": "iscas_cores/isca-artificial-linguado/Capim-Rubi.png",
+    "cha": "iscas_cores/isca-artificial-linguado/Cha.png",
+    "glow": "iscas_cores/isca-artificial-linguado/Glow.png",
+    "laranjaneon": "iscas_cores/isca-artificial-linguado/laranja-Neon.png",
+    "pastel": "iscas_cores/isca-artificial-linguado/Pastel.png",
+    "pretobrilhante": "iscas_cores/isca-artificial-linguado/preto-brilhante.png",
+    "rapadura": "iscas_cores/isca-artificial-linguado/Rapadura.png",
+    "roxoestrelar": "iscas_cores/isca-artificial-linguado/Roxo-Estrelnar.png",
+    "verdeneon": "iscas_cores/isca-artificial-linguado/Verde neon.png",
+    "vermelhoholografico": "iscas_cores/isca-artificial-linguado/Vermelho-Holografico.png",
+    "veudanoite": "iscas_cores/isca-artificial-linguado/Veu-da-noite.png"
+  },
   "kit-isca-artificial-mini-paddle": {
     "amareloneon": "iscas_cores/kit-isca-artificial-mini-paddle/amarelo-neon.png",
     "brancoperola": "iscas_cores/kit-isca-artificial-mini-paddle/Branco-perola.png",
