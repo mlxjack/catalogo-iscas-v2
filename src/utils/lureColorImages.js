@@ -1,5 +1,18 @@
 // Auto-generated lure color images manifest
 export const lureColorManifest = {
+  "isca-artificial-shad-gaikotsu": {
+    "amareloneon": "iscas_cores/isca-artificial-shad-gaikotsu/amarelo-neon.png",
+    "brancoperola": "iscas_cores/isca-artificial-shad-gaikotsu/Branco-perola.png",
+    "capimrubi": "iscas_cores/isca-artificial-shad-gaikotsu/Capim-Rubi.png",
+    "cha": "iscas_cores/isca-artificial-shad-gaikotsu/Cha.png",
+    "glow": "iscas_cores/isca-artificial-shad-gaikotsu/Glow.png",
+    "laranjaneon": "iscas_cores/isca-artificial-shad-gaikotsu/laranja-Neon.png",
+    "pretobrilhante": "iscas_cores/isca-artificial-shad-gaikotsu/preto-brilhante.png",
+    "roxoestrelar": "iscas_cores/isca-artificial-shad-gaikotsu/Roxo-Estrelnar.png",
+    "verdeneon": "iscas_cores/isca-artificial-shad-gaikotsu/Verde neon.png",
+    "vermelhoholografico": "iscas_cores/isca-artificial-shad-gaikotsu/Vermelho-Holografico.png",
+    "veudanoite": "iscas_cores/isca-artificial-shad-gaikotsu/Veu-da-noite.png"
+  },
   "isca-artificial-ajimimizu": {
     "amareloneon": "iscas_cores/isca-artificial-ajimimizu/amarelo-neon.png",
     "brancoperola": "iscas_cores/isca-artificial-ajimimizu/Branco-perola.png",
