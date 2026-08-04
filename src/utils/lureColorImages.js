@@ -819,9 +819,12 @@ export const lureColorManifest = {
     "glow": "iscas_cores/isca-artificial-ajigrub/Glow.png",
     "laranjaneon": "iscas_cores/isca-artificial-ajigrub/laranja-Neon.png",
     "pretobrilhante": "iscas_cores/isca-artificial-ajigrub/preto-brilhante.png",
-    "roxoestrelnar": "iscas_cores/isca-artificial-ajigrub/Roxo-Estrelnar.png",
+    "roxoestrelar": "iscas_cores/isca-artificial-ajigrub/Roxo-Estrelnar.png",
     "verdeneon": "iscas_cores/isca-artificial-ajigrub/Verde neon.png",
-    "vermelhoholografico": "iscas_cores/isca-artificial-ajigrub/Vermelho-Holografico.png"
+    "vermelhoholografico": "iscas_cores/isca-artificial-ajigrub/Vermelho-Holografico.png",
+    "pastel": "iscas_cores/isca-artificial-ajigrub/Pastel.png",
+    "rapadura": "iscas_cores/isca-artificial-ajigrub/Rapadura.png",
+    "veudanoite": "iscas_cores/isca-artificial-ajigrub/Veu-da-noite.png",
   },
   "kit-isca-artificial-aji-fukura": {
     "amareloneon": "iscas_cores/kit-isca-artificial-aji-fukura/amarelo-neon.png",
@@ -831,9 +834,12 @@ export const lureColorManifest = {
     "glow": "iscas_cores/kit-isca-artificial-aji-fukura/Glow.png",
     "laranjaneon": "iscas_cores/kit-isca-artificial-aji-fukura/laranja-Neon.png",
     "pretobrilhante": "iscas_cores/kit-isca-artificial-aji-fukura/preto-brilhante.png",
-    "roxoestrelnar": "iscas_cores/kit-isca-artificial-aji-fukura/Roxo-Estrelnar.png",
+    "roxoestrelar": "iscas_cores/kit-isca-artificial-aji-fukura/Roxo-Estrelnar.png",
     "verdeneon": "iscas_cores/kit-isca-artificial-aji-fukura/Verde neon.png",
-    "vermelhoholografico": "iscas_cores/kit-isca-artificial-aji-fukura/Vermelho-Holografico.png"
+    "vermelhoholografico": "iscas_cores/kit-isca-artificial-aji-fukura/Vermelho-Holografico.png",
+    "pastel": "iscas_cores/kit-isca-artificial-aji-fukura/Pastel.png",
+    "rapadura": "iscas_cores/kit-isca-artificial-aji-fukura/Rapadura.png",
+    "veudanoite": "iscas_cores/kit-isca-artificial-aji-fukura/Veu-da-noite.png",
   },
   "kit-isca-artificial-ajiaero": {
     "amareloneon": "iscas_cores/kit-isca-artificial-ajiaero/amarelo-neon.png",
@@ -843,9 +849,12 @@ export const lureColorManifest = {
     "glow": "iscas_cores/kit-isca-artificial-ajiaero/Glow.png",
     "laranjaneon": "iscas_cores/kit-isca-artificial-ajiaero/laranja-Neon.png",
     "pretobrilhante": "iscas_cores/kit-isca-artificial-ajiaero/preto-brilhante.png",
-    "roxoestrelnar": "iscas_cores/kit-isca-artificial-ajiaero/Roxo-Estrelnar.png",
+    "roxoestrelar": "iscas_cores/kit-isca-artificial-ajiaero/Roxo-Estrelnar.png",
     "verdeneon": "iscas_cores/kit-isca-artificial-ajiaero/Verde neon.png",
-    "vermelhoholografico": "iscas_cores/kit-isca-artificial-ajiaero/Vermelho-Holografico.png"
+    "vermelhoholografico": "iscas_cores/kit-isca-artificial-ajiaero/Vermelho-Holografico.png",
+    "pastel": "iscas_cores/kit-isca-artificial-ajiaero/Pastel.png",
+    "rapadura": "iscas_cores/kit-isca-artificial-ajiaero/Rapadura.png",
+    "veudanoite": "iscas_cores/kit-isca-artificial-ajiaero/Veu-da-noite.png",
   },
   "kit-isca-artificial-ajibeast": {
     "amareloneon": "iscas_cores/kit-isca-artificial-ajibeast/amarelo-neon.png",
@@ -855,9 +864,12 @@ export const lureColorManifest = {
     "glow": "iscas_cores/kit-isca-artificial-ajibeast/Glow.png",
     "laranjaneon": "iscas_cores/kit-isca-artificial-ajibeast/laranja-Neon.png",
     "pretobrilhante": "iscas_cores/kit-isca-artificial-ajibeast/preto-brilhante.png",
-    "roxoestrelnar": "iscas_cores/kit-isca-artificial-ajibeast/Roxo-Estrelnar.png",
+    "roxoestrelar": "iscas_cores/kit-isca-artificial-ajibeast/Roxo-Estrelnar.png",
     "verdeneon": "iscas_cores/kit-isca-artificial-ajibeast/Verde neon.png",
-    "vermelhoholografico": "iscas_cores/kit-isca-artificial-ajibeast/Vermelho-Holografico.png"
+    "vermelhoholografico": "iscas_cores/kit-isca-artificial-ajibeast/Vermelho-Holografico.png",
+    "pastel": "iscas_cores/kit-isca-artificial-ajibeast/Pastel.png",
+    "rapadura": "iscas_cores/kit-isca-artificial-ajibeast/Rapadura.png",
+    "veudanoite": "iscas_cores/kit-isca-artificial-ajibeast/Veu-da-noite.png",
   },
   "kit-isca-artificial-ajiegg": {
     "amareloneon": "iscas_cores/kit-isca-artificial-ajiegg/amarelo-neon.png",
@@ -867,9 +879,12 @@ export const lureColorManifest = {
     "glow": "iscas_cores/kit-isca-artificial-ajiegg/Glow.png",
     "laranjaneon": "iscas_cores/kit-isca-artificial-ajiegg/laranja-Neon.png",
     "pretobrilhante": "iscas_cores/kit-isca-artificial-ajiegg/preto-brilhante.png",
-    "roxoestrelnar": "iscas_cores/kit-isca-artificial-ajiegg/Roxo-Estrelnar.png",
+    "roxoestrelar": "iscas_cores/kit-isca-artificial-ajiegg/Roxo-Estrelnar.png",
     "verdeneon": "iscas_cores/kit-isca-artificial-ajiegg/Verde neon.png",
-    "vermelhoholografico": "iscas_cores/kit-isca-artificial-ajiegg/Vermelho-Holografico.png"
+    "vermelhoholografico": "iscas_cores/kit-isca-artificial-ajiegg/Vermelho-Holografico.png",
+    "pastel": "iscas_cores/kit-isca-artificial-ajiegg/Pastel.png",
+    "rapadura": "iscas_cores/kit-isca-artificial-ajiegg/Rapadura.png",
+    "veudanoite": "iscas_cores/kit-isca-artificial-ajiegg/Veu-da-noite.png",
   },
   "kit-isca-artificial-ajihane": {
     "amareloneon2": "iscas_cores/kit-isca-artificial-ajihane/amarelo-neon-2.png",
@@ -880,9 +895,12 @@ export const lureColorManifest = {
     "glow": "iscas_cores/kit-isca-artificial-ajihane/Glow.png",
     "laranjaneon": "iscas_cores/kit-isca-artificial-ajihane/laranja-Neon.png",
     "pretobrilhante": "iscas_cores/kit-isca-artificial-ajihane/preto-brilhante.png",
-    "roxoestrelnar": "iscas_cores/kit-isca-artificial-ajihane/Roxo-Estrelnar.png",
+    "roxoestrelar": "iscas_cores/kit-isca-artificial-ajihane/Roxo-Estrelnar.png",
     "verdeneon": "iscas_cores/kit-isca-artificial-ajihane/Verde neon.png",
-    "vermelhoholografico": "iscas_cores/kit-isca-artificial-ajihane/Vermelho-Holografico.png"
+    "vermelhoholografico": "iscas_cores/kit-isca-artificial-ajihane/Vermelho-Holografico.png",
+    "pastel": "iscas_cores/kit-isca-artificial-ajihane/Pastel.png",
+    "rapadura": "iscas_cores/kit-isca-artificial-ajihane/Rapadura.png",
+    "veudanoite": "iscas_cores/kit-isca-artificial-ajihane/Veu-da-noite.png",
   },
   "kit-isca-artificial-ajikaze": {
     "amareloneon": "iscas_cores/kit-isca-artificial-ajikaze/amarelo-neon.png",
@@ -892,9 +910,12 @@ export const lureColorManifest = {
     "glow": "iscas_cores/kit-isca-artificial-ajikaze/Glow.png",
     "laranjaneon": "iscas_cores/kit-isca-artificial-ajikaze/laranja-Neon.png",
     "pretobrilhante": "iscas_cores/kit-isca-artificial-ajikaze/preto-brilhante.png",
-    "roxoestrelnar": "iscas_cores/kit-isca-artificial-ajikaze/Roxo-Estrelnar.png",
+    "roxoestrelar": "iscas_cores/kit-isca-artificial-ajikaze/Roxo-Estrelnar.png",
     "verdeneon": "iscas_cores/kit-isca-artificial-ajikaze/Verde neon.png",
-    "vermelhoholografico": "iscas_cores/kit-isca-artificial-ajikaze/Vermelho-Holografico.png"
+    "vermelhoholografico": "iscas_cores/kit-isca-artificial-ajikaze/Vermelho-Holografico.png",
+    "pastel": "iscas_cores/kit-isca-artificial-ajikaze/Pastel.png",
+    "rapadura": "iscas_cores/kit-isca-artificial-ajikaze/Rapadura.png",
+    "veudanoite": "iscas_cores/kit-isca-artificial-ajikaze/Veu-da-noite.png",
   },
   "kit-isca-artificial-ajikoka": {
     "amareloneon": "iscas_cores/kit-isca-artificial-ajikoka/amarelo-neon.png",
@@ -904,9 +925,12 @@ export const lureColorManifest = {
     "glow": "iscas_cores/kit-isca-artificial-ajikoka/Glow.png",
     "laranjaneon": "iscas_cores/kit-isca-artificial-ajikoka/laranja-Neon.png",
     "pretobrilhante": "iscas_cores/kit-isca-artificial-ajikoka/preto-brilhante.png",
-    "roxoestrelnar": "iscas_cores/kit-isca-artificial-ajikoka/Roxo-Estrelnar.png",
+    "roxoestrelar": "iscas_cores/kit-isca-artificial-ajikoka/Roxo-Estrelnar.png",
     "verdeneon": "iscas_cores/kit-isca-artificial-ajikoka/Verde neon.png",
-    "vermelhoholografico": "iscas_cores/kit-isca-artificial-ajikoka/Vermelho-Holografico.png"
+    "vermelhoholografico": "iscas_cores/kit-isca-artificial-ajikoka/Vermelho-Holografico.png",
+    "pastel": "iscas_cores/kit-isca-artificial-ajikoka/Pastel.png",
+    "rapadura": "iscas_cores/kit-isca-artificial-ajikoka/Rapadura.png",
+    "veudanoite": "iscas_cores/kit-isca-artificial-ajikoka/Veu-da-noite.png",
   },
   "kit-isca-artificial-wave-grub": {
     "amareloneon": "iscas_cores/kit-isca-artificial-wave-grub/amarelo-neon.png",
@@ -917,9 +941,12 @@ export const lureColorManifest = {
     "glow": "iscas_cores/kit-isca-artificial-wave-grub/Glow.png",
     "laranjaneon": "iscas_cores/kit-isca-artificial-wave-grub/laranja-Neon.png",
     "pretobrilhante": "iscas_cores/kit-isca-artificial-wave-grub/preto-brilhante.png",
-    "roxoestrelnar": "iscas_cores/kit-isca-artificial-wave-grub/Roxo-Estrelnar.png",
+    "roxoestrelar": "iscas_cores/kit-isca-artificial-wave-grub/Roxo-Estrelnar.png",
     "verdeneon": "iscas_cores/kit-isca-artificial-wave-grub/Verde neon.png",
-    "vermelhoholografico": "iscas_cores/kit-isca-artificial-wave-grub/Vermelho-Holografico.png"
+    "vermelhoholografico": "iscas_cores/kit-isca-artificial-wave-grub/Vermelho-Holografico.png",
+    "pastel": "iscas_cores/kit-isca-artificial-wave-grub/Pastel.png",
+    "rapadura": "iscas_cores/kit-isca-artificial-wave-grub/Rapadura.png",
+    "veudanoite": "iscas_cores/kit-isca-artificial-wave-grub/Veu-da-noite.png",
   }
 };
 
