@@ -811,7 +811,9 @@ export const lureColorManifest = {
     "roxoestrelar": "iscas_cores/isca-artificial-shad-padoru/Roxo-Estrelnar.png",
     "verdeneon": "iscas_cores/isca-artificial-shad-padoru/Verde neon.png",
     "vermelhoholografico": "iscas_cores/isca-artificial-shad-padoru/Vermelho-Holografico.png",
-    "veudanoite": "iscas_cores/isca-artificial-shad-padoru/Veu-da-noite.png"
+    "veudanoite": "iscas_cores/isca-artificial-shad-padoru/Veu-da-noite.png",
+    "pastel": "iscas_cores/isca-artificial-shad-padoru/Pastel.png",
+    "rapadura": "iscas_cores/isca-artificial-shad-padoru/Rapadura.png",
   },
   "isca-artificial-ajigrub": {
     "amareloneon": "iscas_cores/isca-artificial-ajigrub/amarelo-neon.png",
