@@ -26,7 +26,9 @@ export const lureColorManifest = {
     "roxoestrelar": "iscas_cores/isca-artificial-shad-gaikotsu/Roxo-Estrelnar.png",
     "verdeneon": "iscas_cores/isca-artificial-shad-gaikotsu/Verde neon.png",
     "vermelhoholografico": "iscas_cores/isca-artificial-shad-gaikotsu/Vermelho-Holografico.png",
-    "veudanoite": "iscas_cores/isca-artificial-shad-gaikotsu/Veu-da-noite.png"
+    "veudanoite": "iscas_cores/isca-artificial-shad-gaikotsu/Veu-da-noite.png",
+    "pastel": "iscas_cores/isca-artificial-shad-gaikotsu/Pastel.png",
+    "rapadura": "iscas_cores/isca-artificial-shad-gaikotsu/Rapadura.png",
   },
   "isca-artificial-ajimimizu": {
     "amareloneon": "iscas_cores/isca-artificial-ajimimizu/amarelo-neon.png",
