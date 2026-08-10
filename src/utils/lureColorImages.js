@@ -1,5 +1,20 @@
 // Auto-generated lure color images manifest
 export const lureColorManifest = {
+  "isca-artificial-camarao-offset-articulado": {
+    "amareloneon": "iscas_cores/isca-artificial-camarao-offset-articulado/amarelo-neon.png",
+    "brancoperola": "iscas_cores/isca-artificial-camarao-offset-articulado/Branco-perola.png",
+    "capimrubi": "iscas_cores/isca-artificial-camarao-offset-articulado/Capim-Rubi.png",
+    "cha": "iscas_cores/isca-artificial-camarao-offset-articulado/Cha.png",
+    "glow": "iscas_cores/isca-artificial-camarao-offset-articulado/Glow.png",
+    "laranjaneon": "iscas_cores/isca-artificial-camarao-offset-articulado/laranja-Neon.png",
+    "pastel": "iscas_cores/isca-artificial-camarao-offset-articulado/Pastel.png",
+    "pretobrilhante": "iscas_cores/isca-artificial-camarao-offset-articulado/preto-brilhante.png",
+    "rapadura": "iscas_cores/isca-artificial-camarao-offset-articulado/Rapadura.png",
+    "roxoestrelar": "iscas_cores/isca-artificial-camarao-offset-articulado/Roxo-Estrelnar.png",
+    "verdeneon": "iscas_cores/isca-artificial-camarao-offset-articulado/Verde neon.png",
+    "vermelhoholografico": "iscas_cores/isca-artificial-camarao-offset-articulado/Vermelho-Holografico.png",
+    "veudanoite": "iscas_cores/isca-artificial-camarao-offset-articulado/Veu-da-noite.png"
+  },
   "isca-artificial-camarao-articulado": {
     "amareloneon": "iscas_cores/isca-artificial-camarao-articulado/amarelo-neon.png",
     "brancoperola": "iscas_cores/isca-artificial-camarao-articulado/Branco-perola.png",
