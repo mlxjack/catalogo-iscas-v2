@@ -1,5 +1,20 @@
 // Auto-generated lure color images manifest
 export const lureColorManifest = {
+  "isca-artificial-camarao-articulado": {
+    "amareloneon": "iscas_cores/isca-artificial-camarao-articulado/amarelo-neon.png",
+    "brancoperola": "iscas_cores/isca-artificial-camarao-articulado/Branco-perola.png",
+    "capimrubi": "iscas_cores/isca-artificial-camarao-articulado/Capim-Rubi.png",
+    "cha": "iscas_cores/isca-artificial-camarao-articulado/Cha.png",
+    "glow": "iscas_cores/isca-artificial-camarao-articulado/Glow.png",
+    "laranjaneon": "iscas_cores/isca-artificial-camarao-articulado/laranja-Neon.png",
+    "pastel": "iscas_cores/isca-artificial-camarao-articulado/Pastel.png",
+    "pretobrilhante": "iscas_cores/isca-artificial-camarao-articulado/preto-brilhante.png",
+    "rapadura": "iscas_cores/isca-artificial-camarao-articulado/Rapadura.png",
+    "roxoestrelar": "iscas_cores/isca-artificial-camarao-articulado/Roxo-Estrelnar.png",
+    "verdeneon": "iscas_cores/isca-artificial-camarao-articulado/Verde neon.png",
+    "vermelhoholografico": "iscas_cores/isca-artificial-camarao-articulado/Vermelho-Holografico.png",
+    "veudanoite": "iscas_cores/isca-artificial-camarao-articulado/Veu-da-noite.png"
+  },
   "isca-artificial-serelepe": {
     "amareloneon": "iscas_cores/isca-artificial-serelepe/amarelo-neon.png",
     "brancoperola": "iscas_cores/isca-artificial-serelepe/Branco-perola.png",
