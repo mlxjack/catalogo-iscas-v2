@@ -1,5 +1,20 @@
 // Auto-generated lure color images manifest
 export const lureColorManifest = {
+  "isca-artificial-camarao-jig-head-articulado": {
+    "amareloneon": "iscas_cores/isca-artificial-camarao-jig-head-articulado/amarelo-neon.png",
+    "brancoperola": "iscas_cores/isca-artificial-camarao-jig-head-articulado/Branco-perola.png",
+    "capimrubi": "iscas_cores/isca-artificial-camarao-jig-head-articulado/Capim-Rubi.png",
+    "cha": "iscas_cores/isca-artificial-camarao-jig-head-articulado/Cha.png",
+    "glow": "iscas_cores/isca-artificial-camarao-jig-head-articulado/Glow.png",
+    "laranjaneon": "iscas_cores/isca-artificial-camarao-jig-head-articulado/laranja-Neon.png",
+    "pastel": "iscas_cores/isca-artificial-camarao-jig-head-articulado/Pastel.png",
+    "pretobrilhante": "iscas_cores/isca-artificial-camarao-jig-head-articulado/preto-brilhante.png",
+    "rapadura": "iscas_cores/isca-artificial-camarao-jig-head-articulado/Rapadura.png",
+    "roxoestrelar": "iscas_cores/isca-artificial-camarao-jig-head-articulado/Roxo-Estrelnar.png",
+    "verdeneon": "iscas_cores/isca-artificial-camarao-jig-head-articulado/Verde neon.png",
+    "vermelhoholografico": "iscas_cores/isca-artificial-camarao-jig-head-articulado/Vermelho-Holografico.png",
+    "veudanoite": "iscas_cores/isca-artificial-camarao-jig-head-articulado/Veu-da-noite.png"
+  },
   "isca-artificial-camarao-offset-articulado": {
     "amareloneon": "iscas_cores/isca-artificial-camarao-offset-articulado/amarelo-neon.png",
     "brancoperola": "iscas_cores/isca-artificial-camarao-offset-articulado/Branco-perola.png",
