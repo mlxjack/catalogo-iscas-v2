@@ -4,6 +4,7 @@ import { loadProducts } from '../utils/csvParser';
 import { getColorImage } from '../utils/colorHelper';
 import { getLureColorImage, lureColorManifest } from '../utils/lureColorImages';
 import { getRecommendedHookForLure } from '../utils/hookRecommendations';
+import { isPromoActive, isPromoColor, getPromoPrice, PROMO_DISCOUNT_PCT } from '../utils/promo';
 
 export default function ProductDetails() {
   const { handle } = useParams();
@@ -240,9 +241,13 @@ export default function ProductDetails() {
     });
   };
 
-  const displayPrice = currentVariant && currentVariant.price > 0
-    ? `R$ ${currentVariant.price.toFixed(2).replace('.', ',')}`
-    : 'Consulte Preço';
+  const selectedColorForPromo = selectedOptions['Cor'] || selectedOptions['cor'] || selectedOptions['Color'];
+  const promoApplies = isPromoActive() && isPromoColor(selectedColorForPromo);
+  const rawPrice = currentVariant && currentVariant.price > 0 ? currentVariant.price : null;
+  const promoPrice = promoApplies && rawPrice ? getPromoPrice(rawPrice) : null;
+
+  const formatPrice = (v) => `R$ ${v.toFixed(2).replace('.', ',')}`;
+  const displayPrice = rawPrice ? formatPrice(rawPrice) : 'Consulte Preço';
 
   const getWhatsAppLink = () => {
     const selectedOptionsStr = Object.entries(selectedOptions)
@@ -413,7 +418,15 @@ export default function ProductDetails() {
               <h1 className="info-title">{product.title}</h1>
               
               <div className="info-price-wrapper">
-                <span className="info-price">{displayPrice}</span>
+                {promoPrice ? (
+                  <>
+                    <span className="info-price-old">{formatPrice(rawPrice)}</span>
+                    <span className="info-price info-price-promo">{formatPrice(promoPrice)}</span>
+                    <span className="info-promo-badge">-{PROMO_DISCOUNT_PCT}%</span>
+                  </>
+                ) : (
+                  <span className="info-price">{displayPrice}</span>
+                )}
               </div>
             </div>
 

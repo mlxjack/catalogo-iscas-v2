@@ -81,6 +81,18 @@ a {
   padding: 14px 5%;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.01);
 }
+.promo-banner {
+  background-color: var(--color-brand);
+  color: #ffffff;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 16px;
+  letter-spacing: 0.01em;
+}
+.promo-banner strong {
+  font-weight: 800;
+}
 .header-container {
   max-width: 1300px;
   margin: 0 auto;
@@ -878,6 +890,24 @@ a {
   font-weight: 800;
   font-size: 28px;
   color: var(--color-text-primary);
+}
+.info-price-old {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+.info-price-promo {
+  color: var(--color-brand);
+}
+.info-promo-badge {
+  background-color: var(--color-brand);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.02em;
 }
 
 .info-section {

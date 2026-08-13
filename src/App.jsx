@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { HashRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
 import Catalog from './pages/Catalog';
 import ProductDetails from './pages/ProductDetails';
+import { isPromoActive, PROMO_LABEL_COLORS, PROMO_DISCOUNT_PCT } from './utils/promo';
 import './index.css';
 
 function ScrollToTop() {
@@ -10,6 +11,15 @@ function ScrollToTop() {
     window.scrollTo(0, 0);
   }, [pathname]);
   return null;
+}
+
+function PromoBanner() {
+  if (!isPromoActive()) return null;
+  return (
+    <div className="promo-banner" role="status">
+      🔥 Promoção de Setembro: <strong>{PROMO_DISCOUNT_PCT}% OFF</strong> nas cores {PROMO_LABEL_COLORS.join(', ')} — válido até 30/09!
+    </div>
+  );
 }
 
 function App() {
@@ -29,7 +39,9 @@ function App() {
             </nav>
           </div>
         </header>
-        
+
+        <PromoBanner />
+
         <main className="app-container">
           <Routes>
             <Route path="/" element={<Catalog />} />
