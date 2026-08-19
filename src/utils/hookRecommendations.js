@@ -356,12 +356,12 @@ export const HOOK_DATABASE = {
   "minipaddle": {
     "name": "Mini Paddle",
     "sizes": {
-      "3": "EWG: #8",
+      "3": "EWG: #6",
       "4,5": "EWG: #4 e #2 || 90\u00b0: 1/0",
       "4.5": "EWG: #4 e #2 || 90\u00b0: 1/0",
       "6": "EWG: 1/0, #1 e 90\u00b0 1/0"
     },
-    "default": "EWG: #8"
+    "default": "EWG: #6"
   },
   "morceguinho": {
     "name": "Morceguinho",
