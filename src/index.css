@@ -552,6 +552,20 @@ a {
 .product-card:hover .product-card-media img {
   transform: scale(1.05);
 }
+.product-card-promo-ribbon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  background-color: var(--color-brand);
+  color: #ffffff;
+  font-family: var(--font-sport);
+  font-weight: 800;
+  font-size: 12px;
+  padding: 4px 9px;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+}
 .product-card-content {
   padding: 20px;
   display: flex;
@@ -635,6 +649,9 @@ a {
   box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.2);
   background-size: cover;
   background-position: center;
+}
+.card-swatch-promo {
+  box-shadow: 0 0 0 2px var(--color-brand), inset 0 0 2px rgba(0, 0, 0, 0.2);
 }
 .card-vars-count {
   font-size: 11px;
