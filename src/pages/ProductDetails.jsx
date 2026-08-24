@@ -447,18 +447,24 @@ export default function ProductDetails() {
                       {values.map(val => {
                         const imgUrl = getColorImage(val);
                         const available = isValueAvailable(optionName, val);
+                        const isPromo = isPromoActive() && isPromoColor(val);
+                        const label = available
+                          ? (isPromo ? `${val} — ${PROMO_DISCOUNT_PCT}% OFF` : val)
+                          : `${val} — Indisponível nesta combinação`;
                         return (
                           <button
                             key={val}
-                            className={`swatch-btn ${selectedOptions[optionName] === val ? 'active' : ''} ${!available ? 'unavailable' : ''}`}
+                            className={`swatch-btn ${selectedOptions[optionName] === val ? 'active' : ''} ${!available ? 'unavailable' : ''} ${isPromo ? 'swatch-btn-promo' : ''}`}
                             style={imgUrl ? { backgroundImage: `url("${encodeURI(imgUrl)}")` } : { backgroundColor: '#e2e8f0' }}
                             onClick={() => available && handleOptionSelect(optionName, val)}
-                            title={available ? val : `${val} — Indisponível nesta combinação`}
+                            title={label}
                             type="button"
                             role="radio"
                             aria-checked={selectedOptions[optionName] === val ? 'true' : 'false'}
                             aria-disabled={!available}
-                          />
+                          >
+                            {isPromo && <span className="swatch-promo-tag">-{PROMO_DISCOUNT_PCT}%</span>}
+                          </button>
                         );
                       })}
                     </div>
