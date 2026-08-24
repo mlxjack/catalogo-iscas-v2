@@ -1,9 +1,11 @@
-// Promocao de Setembro/2026: 12% OFF nas cores Preto Brilhante, Amarelo Neon,
-// Glow e Branco Perola, entre 01/09 e 30/09/2026. Ativa/desativa sozinha
-// com base na data local do visitante -- nao precisa de nenhuma acao manual
-// no dia em que comeca ou termina.
+// Promocao das Cores: 12% OFF nas cores Preto Brilhante, Amarelo Neon,
+// Glow e Branco Perola, antecipada para 24/08/2026 (decisao do usuario;
+// a arte do banner ainda imprime "01/09 a 30/09" -- aceito assim por ora)
+// ate 30/09/2026. Ativa/desativa sozinha com base na data local do
+// visitante -- nao precisa de nenhuma acao manual no dia em que comeca
+// ou termina.
 
-const PROMO_START = new Date(2026, 8, 1, 0, 0, 0);   // 1 de setembro de 2026, 00:00
+const PROMO_START = new Date(2026, 7, 24, 0, 0, 0);  // 24 de agosto de 2026, 00:00
 const PROMO_END = new Date(2026, 8, 30, 23, 59, 59); // 30 de setembro de 2026, 23:59
 const PROMO_DISCOUNT = 0.12; // 12%
 
