@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { HashRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
 import Catalog from './pages/Catalog';
 import ProductDetails from './pages/ProductDetails';
-import { isPromoActive, PROMO_LABEL_COLORS, PROMO_DISCOUNT_PCT } from './utils/promo';
+import { isPromoActive } from './utils/promo';
 import './index.css';
 
 function ScrollToTop() {
@@ -16,8 +16,12 @@ function ScrollToTop() {
 function PromoBanner() {
   if (!isPromoActive()) return null;
   return (
-    <div className="promo-banner" role="status">
-      🔥 Promoção de Setembro: <strong>{PROMO_DISCOUNT_PCT}% OFF</strong> nas cores {PROMO_LABEL_COLORS.join(', ')} — válido até 30/09!
+    <div className="promo-banner">
+      <img
+        src={`${import.meta.env.BASE_URL}promo/octa-promo-cores-set.png`}
+        alt="Promoção das Cores — 12% OFF em Preto Brilhante, Amarelo Neon, Glow e Branco Pérola, de 01/09 até 30/09"
+        className="promo-banner-img"
+      />
     </div>
   );
 }
