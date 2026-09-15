@@ -340,6 +340,110 @@ a {
   text-transform: uppercase;
 }
 
+/* Linha Aji Showcase */
+.aji-line {
+  position: relative;
+  background: linear-gradient(160deg, #0b1120 0%, #0f172a 55%, #111827 100%);
+  padding: 56px 0 44px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+.aji-line::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 12% 20%, rgba(234, 88, 12, 0.16), transparent 45%),
+    radial-gradient(circle at 88% 75%, rgba(234, 88, 12, 0.10), transparent 40%);
+  pointer-events: none;
+}
+.aji-line-container {
+  position: relative;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+.aji-line-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  margin-bottom: 28px;
+}
+.aji-line-kana {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: rgba(234, 88, 12, 0.75);
+  text-transform: uppercase;
+}
+.aji-line-title {
+  font-family: var(--font-sport);
+  font-weight: 800;
+  font-size: clamp(28px, 4vw, 40px);
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0;
+}
+.aji-line-title span {
+  color: var(--color-brand);
+}
+.aji-line-subtitle {
+  color: rgba(226, 232, 240, 0.7);
+  font-size: 14px;
+  max-width: 520px;
+  line-height: 1.5;
+  margin: 0 0 6px;
+}
+.aji-line-cta {
+  background-color: var(--color-brand);
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-family: var(--font-sport);
+  font-weight: 700;
+  font-size: 13px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  margin-top: 6px;
+}
+.aji-line-cta:hover {
+  background-color: var(--color-brand-hover);
+  box-shadow: var(--shadow-glow);
+}
+.aji-line-scroll {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+}
+.aji-line-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+.aji-line-scroll::-webkit-scrollbar-thumb {
+  background-color: rgba(234, 88, 12, 0.4);
+  border-radius: 99px;
+}
+.aji-line-scroll::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+.aji-line-card {
+  flex: 0 0 220px;
+  scroll-snap-align: start;
+}
+.aji-line-card .product-card {
+  height: 100%;
+  background-color: var(--bg-secondary);
+}
+@media (max-width: 640px) {
+  .aji-line-card {
+    flex-basis: 180px;
+  }
+}
+
 /* Wrap / Main Layout */
 .main-wrap {
   max-width: 1300px;

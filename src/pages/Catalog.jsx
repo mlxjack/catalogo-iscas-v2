@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { loadProducts } from '../utils/csvParser';
 import ProductCard from '../components/ProductCard';
 import { getVariedCoverImage } from '../utils/lureColorImages';
+import { getLinhaAjiProducts } from '../utils/ajiLine';
 
 export default function Catalog() {
   const [products, setProducts] = useState([]);
@@ -34,12 +35,16 @@ export default function Catalog() {
     return () => document.removeEventListener('click', handleOutsideClick);
   }, []);
 
-  const categories = ['All', ...new Set(products.map(p => p.type).filter(Boolean))];
+  const categories = ['All', 'Linha Aji', ...new Set(products.map(p => p.type).filter(Boolean))];
+
+  const ajiProducts = getLinhaAjiProducts(products);
+  const ajiIds = new Set(ajiProducts.map(p => p.id));
 
   const filteredProducts = products.filter(product => {
-    const matchesSearch = product.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+    const matchesSearch = product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                           (product.type && product.type.toLowerCase().includes(searchTerm.toLowerCase()));
-    const matchesCategory = filterCategory === 'All' || product.type === filterCategory;
+    const matchesCategory = filterCategory === 'All'
+      || (filterCategory === 'Linha Aji' ? ajiIds.has(product.id) : product.type === filterCategory);
     return matchesSearch && matchesCategory;
   });
 
@@ -100,6 +105,39 @@ export default function Catalog() {
           )}
         </div>
       </section>
+
+      {/* Linha Aji Showcase */}
+      {ajiProducts.length > 0 && (
+        <section className="aji-line" aria-label="Linha Aji">
+          <div className="aji-line-container">
+            <div className="aji-line-header">
+              <span className="aji-line-kana">アジング</span>
+              <h2 className="aji-line-title">Linha <span>Aji</span></h2>
+              <p className="aji-line-subtitle">
+                Iscas de precisão para Ajing: finesse, ataques curtos e presença sutil na água — até 5cm.
+              </p>
+              <button
+                type="button"
+                className="aji-line-cta"
+                onClick={() => {
+                  setFilterCategory('Linha Aji');
+                  document.getElementById('catalogo-secao')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Ver todas ({ajiProducts.length})
+              </button>
+            </div>
+
+            <div className="aji-line-scroll">
+              {ajiProducts.map(product => (
+                <div className="aji-line-card" key={product.id}>
+                  <ProductCard product={product} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Main Catalog View */}
       <main className="main-wrap" id="catalogo-secao" style={{ paddingTop: '3rem' }}>
