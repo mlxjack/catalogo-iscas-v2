@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { HashRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
 import Catalog from './pages/Catalog';
 import ProductDetails from './pages/ProductDetails';
-import { isPromoActive } from './utils/promo';
+import { isPromoActive, isCustomerDayActive, CUSTOMER_DAY_BANNER } from './utils/promo';
 import './index.css';
 
 function ScrollToTop() {
@@ -14,6 +14,27 @@ function ScrollToTop() {
 }
 
 function PromoBanner() {
+  // Reavalia a cada minuto para trocar sozinho de banner nas viradas de
+  // janela (ex.: Dia do Cliente encerrando a meia-noite), sem precisar
+  // de reload da pagina.
+  const [, forceTick] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => forceTick((n) => n + 1), 60000);
+    return () => clearInterval(id);
+  }, []);
+
+  if (isCustomerDayActive()) {
+    return (
+      <div className="promo-banner">
+        <img
+          src={`${import.meta.env.BASE_URL}${CUSTOMER_DAY_BANNER}`}
+          alt="Dia do Cliente — Frete Grátis, somente 15/09 até 23h59"
+          className="promo-banner-img"
+        />
+      </div>
+    );
+  }
+
   if (!isPromoActive()) return null;
   return (
     <div className="promo-banner">

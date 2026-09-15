@@ -31,3 +31,16 @@ export const getPromoPrice = (price) => Math.round(price * (1 - PROMO_DISCOUNT) 
 
 export const PROMO_LABEL_COLORS = PROMO_COLORS;
 export const PROMO_DISCOUNT_PCT = Math.round(PROMO_DISCOUNT * 100);
+
+// Banner especial "Dia do Cliente" (frete gratis), so 15/09/2026 ate 23:59.
+// Tem prioridade visual sobre o banner da Promocao das Cores enquanto
+// estiver na janela; depois volta sozinho para o banner normal, sem
+// precisar de nenhuma acao manual a meia-noite.
+const CUSTOMER_DAY_START = new Date(2026, 8, 15, 0, 0, 0);
+const CUSTOMER_DAY_END = new Date(2026, 8, 15, 23, 59, 59);
+export const CUSTOMER_DAY_BANNER = 'promo/dia-do-cliente-2026-09-15.png';
+
+export const isCustomerDayActive = () => {
+  const now = new Date();
+  return now >= CUSTOMER_DAY_START && now <= CUSTOMER_DAY_END;
+};
