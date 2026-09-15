@@ -991,6 +991,22 @@ a {
   color: var(--color-text-primary);
   margin-top: 4px;
 }
+.info-extra-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+.info-extra-badge {
+  background-color: #0f172a;
+  color: #fb923c;
+  font-family: var(--font-sport);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  padding: 5px 11px;
+  border-radius: var(--radius-sm);
+}
 .info-price-wrapper {
   display: flex;
   align-items: baseline;

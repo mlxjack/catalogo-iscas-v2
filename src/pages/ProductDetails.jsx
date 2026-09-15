@@ -6,16 +6,23 @@ import { getLureColorImage, lureColorManifest } from '../utils/lureColorImages';
 import { getRecommendedHookForLure } from '../utils/hookRecommendations';
 import { isPromoActive, isPromoColor, getPromoPrice, PROMO_DISCOUNT_PCT } from '../utils/promo';
 import { isAjingSize } from '../utils/ajiLine';
+import { getProductVideo } from '../utils/productVideos';
+import { getProductBadges } from '../utils/productBadges';
 
 export default function ProductDetails() {
   const { handle } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [activeImage, setActiveImage] = useState(0);
+  const [showVideo, setShowVideo] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState({});
   const [currentVariant, setCurrentVariant] = useState(null);
 
+  const productVideo = getProductVideo(handle);
+  const productBadges = getProductBadges(handle);
+
   useEffect(() => {
+    setShowVideo(false);
     const fetchProduct = async () => {
       try {
         const data = await loadProducts();
@@ -389,19 +396,39 @@ export default function ProductDetails() {
           {/* Left Column: Gallery */}
           <section className="detail-gallery" aria-label="Imagens do Produto">
             <div className="gallery-main" id="gallery-main-container">
-              {product.images.length > 0
-                ? <img id="main-product-img" src={product.images[activeImage]} alt={product.title} />
-                : <div className="pd-no-img">Sem imagem</div>
-              }
+              {showVideo && productVideo ? (
+                <div className="gallery-video-wrapper">
+                  <video src={productVideo} controls autoPlay muted playsInline />
+                </div>
+              ) : product.images.length > 0 ? (
+                <img id="main-product-img" src={product.images[activeImage]} alt={product.title} />
+              ) : (
+                <div className="pd-no-img">Sem imagem</div>
+              )}
             </div>
-            
-            {product.images.length > 1 && (
+
+            {(product.images.length > 1 || productVideo) && (
               <div className="gallery-thumbs" id="gallery-thumbs">
+                {productVideo && (
+                  <button
+                    className={`thumb-btn thumb-video-btn ${showVideo ? 'active' : ''}`}
+                    onClick={() => setShowVideo(true)}
+                    type="button"
+                    aria-label="Ver vídeo do produto"
+                  >
+                    <img src={product.images[0]} alt="Vídeo do produto" onError={(e) => { e.target.src = `${import.meta.env.BASE_URL}logo.png`; }} />
+                    <span className="play-icon-overlay">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </span>
+                  </button>
+                )}
                 {product.images.map((img, i) => (
                   <button
                     key={i}
-                    className={`thumb-btn ${i === activeImage ? 'active' : ''}`}
-                    onClick={() => setActiveImage(i)}
+                    className={`thumb-btn ${!showVideo && i === activeImage ? 'active' : ''}`}
+                    onClick={() => { setShowVideo(false); setActiveImage(i); }}
                     type="button"
                     aria-label={`Ver imagem ${i + 1}`}
                   >
@@ -417,7 +444,15 @@ export default function ProductDetails() {
             <div className="info-header">
               <span className="info-cat">{product.type || 'Iscas'}</span>
               <h1 className="info-title">{product.title}</h1>
-              
+
+              {productBadges.length > 0 && (
+                <div className="info-extra-badges">
+                  {productBadges.map(badge => (
+                    <span key={badge} className="info-extra-badge">{badge}</span>
+                  ))}
+                </div>
+              )}
+
               <div className="info-price-wrapper">
                 {promoPrice ? (
                   <>
