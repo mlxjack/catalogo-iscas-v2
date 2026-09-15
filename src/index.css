@@ -1204,6 +1204,18 @@ a {
   font-size: 13px;
   font-weight: 600;
 }
+.var-ajing-tag {
+  align-self: flex-start;
+  background-color: #0f172a;
+  color: #fb923c;
+  font-family: var(--font-sport);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 99px;
+}
 .var-price {
   font-family: var(--font-sport);
   font-size: 12px;

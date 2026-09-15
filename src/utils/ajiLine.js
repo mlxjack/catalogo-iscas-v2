@@ -3,9 +3,16 @@
 // tamanho disponivel for ate 5cm -- mesmo sem "Aji" no nome, iscas
 // pequenas seguem a mesma filosofia de uso e entram na linha.
 
-const parseSizeCm = (sizeStr) => {
+export const parseSizeCm = (sizeStr) => {
   const m = String(sizeStr).match(/(\d+(?:[.,]\d+)?)/);
   return m ? parseFloat(m[1].replace(',', '.')) : null;
+};
+
+// Um valor de Tamanho individual (ex.: "4,5cm") e considerado Ajing
+// quando o numero extraido e menor ou igual a 5.
+export const isAjingSize = (sizeStr) => {
+  const n = parseSizeCm(sizeStr);
+  return n !== null && n <= 5;
 };
 
 export const isLinhaAji = (product) => {

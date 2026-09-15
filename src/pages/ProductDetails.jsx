@@ -5,6 +5,7 @@ import { getColorImage } from '../utils/colorHelper';
 import { getLureColorImage, lureColorManifest } from '../utils/lureColorImages';
 import { getRecommendedHookForLure } from '../utils/hookRecommendations';
 import { isPromoActive, isPromoColor, getPromoPrice, PROMO_DISCOUNT_PCT } from '../utils/promo';
+import { isAjingSize } from '../utils/ajiLine';
 
 export default function ProductDetails() {
   const { handle } = useParams();
@@ -472,6 +473,9 @@ export default function ProductDetails() {
                     <div className="vars-selector" role="radiogroup" aria-label={`Seleção de ${optionName}`}>
                       {values.map(val => {
                         const available = isValueAvailable(optionName, val);
+                        const isSizeOption = optionName.toLowerCase().includes('tamanho');
+                        const isAjing = isSizeOption && isAjingSize(val);
+                        const label = isAjing ? `${val} — ideal para Ajing (finesse)` : val;
                         return (
                           <button
                             key={val}
@@ -481,9 +485,10 @@ export default function ProductDetails() {
                             role="radio"
                             aria-checked={selectedOptions[optionName] === val ? 'true' : 'false'}
                             aria-disabled={!available}
-                            title={available ? val : `${val} — Indisponível nesta combinação`}
+                            title={available ? label : `${val} — Indisponível nesta combinação`}
                           >
                             <span className="var-name">{val}</span>
+                            {isAjing && <span className="var-ajing-tag">Ajing</span>}
                           </button>
                         );
                       })}
