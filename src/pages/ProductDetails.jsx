@@ -506,14 +506,6 @@ export default function ProductDetails() {
               </table>
             </div>
 
-            {/* Description */}
-            {product.description && (
-              <div className="info-section">
-                <h2 className="info-section-title">Descrição</h2>
-                <div className="info-desc" dangerouslySetInnerHTML={{ __html: product.description }} />
-              </div>
-            )}
-
             {/* CTA Actions */}
             <div className="detail-actions">
               <button 
@@ -552,6 +544,14 @@ export default function ProductDetails() {
                 </Link>
               </div>
             </div>
+
+            {/* Description */}
+            {product.description && (
+              <div className="info-section">
+                <h2 className="info-section-title">Descrição</h2>
+                <div className="info-desc" dangerouslySetInnerHTML={{ __html: product.description }} />
+              </div>
+            )}
           </section>
         </div>
       </main>
