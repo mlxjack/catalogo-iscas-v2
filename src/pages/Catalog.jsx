@@ -81,7 +81,6 @@ export default function Catalog() {
               Explore o novo Catálogo de Iscas da Chumbada Oficial. Desenvolvido no padrão das grandes marcas mundiais, trazendo riqueza de detalhes, fotos e as especificações técnicas completas de nossas iscas esportivas de alta performance.
             </p>
             <div className="hero-actions">
-              <a href="#catalogo-secao" className="btn btn-primary">Ver Catálogo</a>
               <a href="https://chumbadas.com.br" target="_blank" rel="noopener noreferrer" className="btn btn-secondary">Visitar Loja</a>
             </div>
           </div>
