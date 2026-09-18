@@ -220,6 +220,24 @@ export default function ProductDetails() {
     });
   };
 
+  const handleThumbnailClick = (img, index) => {
+    setShowVideo(false);
+    setActiveImage(index);
+    if (!product) return;
+
+    const colorKey = Object.keys(product.options).find(
+      key => key.toLowerCase().includes('cor') || key.toLowerCase().includes('color')
+    );
+    if (!colorKey) return;
+
+    const matchedColor = product.options[colorKey].find(
+      val => getLureColorImage(product.id, val) === img
+    );
+    if (matchedColor && matchedColor !== selectedOptions[colorKey]) {
+      handleOptionSelect(colorKey, matchedColor);
+    }
+  };
+
   const isValueAvailable = (optionName, val) => {
     if (!product) return true;
     const optNameLower = optionName.toLowerCase();
@@ -446,7 +464,7 @@ export default function ProductDetails() {
                   <button
                     key={i}
                     className={`thumb-btn ${!showVideo && i === activeImage ? 'active' : ''}`}
-                    onClick={() => { setShowVideo(false); setActiveImage(i); }}
+                    onClick={() => handleThumbnailClick(img, i)}
                     type="button"
                     aria-label={`Ver imagem ${i + 1}`}
                   >
@@ -551,25 +569,10 @@ export default function ProductDetails() {
               );
             })}
 
-            {/* Technical Specs */}
-            <div className="info-section">
-              <h2 className="info-section-title">Especificações Técnicas</h2>
-              <table className="specs-table">
-                <tbody>
-                  {buildSpecs().map((spec, i) => (
-                    <tr key={i}>
-                      <td className="specs-label">{spec.label}</td>
-                      <td className="specs-val">{spec.value}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
             {/* CTA Actions */}
             <div className="detail-actions">
-              <button 
-                className="btn btn-primary btn-whatsapp" 
+              <button
+                className="btn btn-primary btn-whatsapp"
                 onClick={() => window.open(getWhatsAppLink(), '_blank', 'noopener noreferrer')}
                 type="button"
               >
@@ -603,6 +606,21 @@ export default function ProductDetails() {
                   Voltar ao Catálogo
                 </Link>
               </div>
+            </div>
+
+            {/* Technical Specs */}
+            <div className="info-section">
+              <h2 className="info-section-title">Especificações Técnicas</h2>
+              <table className="specs-table">
+                <tbody>
+                  {buildSpecs().map((spec, i) => (
+                    <tr key={i}>
+                      <td className="specs-label">{spec.label}</td>
+                      <td className="specs-val">{spec.value}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
 
             {/* Description */}
