@@ -8,6 +8,7 @@ import { isPromoActive, isPromoColor, getPromoPrice, PROMO_DISCOUNT_PCT } from '
 import { isAjingSize } from '../utils/ajiLine';
 import { getProductVideo } from '../utils/productVideos';
 import { getProductBadges } from '../utils/productBadges';
+import { getLureShapeCategoryLabel } from '../utils/lureShapeCategories';
 
 export default function ProductDetails() {
   const { handle } = useParams();
@@ -310,7 +311,7 @@ export default function ProductDetails() {
     const fullText = `${titleLower} ${descLower}`;
 
     // 1. Categoria & Marca
-    specs.push({ label: 'Categoria', value: product.type || 'Iscas Artificiais' });
+    specs.push({ label: 'Categoria', value: getLureShapeCategoryLabel(product) || 'Iscas Artificiais' });
     specs.push({ label: 'Fabricante', value: product.vendor || 'Chumbada Oficial' });
 
     // 2. Código SKU (se houver variação ativa)
@@ -423,7 +424,7 @@ export default function ProductDetails() {
         <nav className="breadcrumb" aria-label="Navegação de trilha">
           <Link to="/">Home</Link>
           <span className="breadcrumb-separator">/</span>
-          <Link to="/" onClick={() => {}}>{product.type || 'Iscas'}</Link>
+          <Link to="/" onClick={() => {}}>{getLureShapeCategoryLabel(product) || 'Iscas'}</Link>
           <span className="breadcrumb-separator">/</span>
           <span className="breadcrumb-current" aria-current="page">{product.title}</span>
         </nav>
@@ -478,7 +479,7 @@ export default function ProductDetails() {
           {/* Right Column: Info & Details */}
           <section className="detail-info" aria-label="Informações do Produto">
             <div className="info-header">
-              <span className="info-cat">{product.type || 'Iscas'}</span>
+              <span className="info-cat">{getLureShapeCategoryLabel(product) || 'Iscas'}</span>
               <h1 className="info-title">{product.title}</h1>
 
               {productBadges.length > 0 && (
