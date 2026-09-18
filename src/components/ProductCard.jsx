@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { getColorImage } from '../utils/colorHelper';
 import { getVariedCoverImage } from '../utils/lureColorImages';
 import { isPromoActive, isPromoColor, PROMO_DISCOUNT_PCT } from '../utils/promo';
+import { getLureShapeCategoryLabel } from '../utils/lureShapeCategories';
 
 export default function ProductCard({ product }) {
   const mainImage = getVariedCoverImage(product) || product.images[0] || `${import.meta.env.BASE_URL}logo.png`;
@@ -33,7 +34,7 @@ export default function ProductCard({ product }) {
       </div>
       
       <div className="product-card-content">
-        <span className="product-card-cat">{product.type || 'Iscas'}</span>
+        <span className="product-card-cat">{getLureShapeCategoryLabel(product) || 'Iscas'}</span>
         <h3 className="product-card-title">
           <Link to={`/product/${product.id}`}>
             {product.title}

@@ -4,6 +4,7 @@ import { loadProducts } from '../utils/csvParser';
 import ProductCard from '../components/ProductCard';
 import { getVariedCoverImage } from '../utils/lureColorImages';
 import { getLinhaAjiProducts } from '../utils/ajiLine';
+import { LURE_SHAPE_CATEGORIES, getLureShapeCategoryLabel } from '../utils/lureShapeCategories';
 
 export default function Catalog() {
   const [products, setProducts] = useState([]);
@@ -35,7 +36,7 @@ export default function Catalog() {
     return () => document.removeEventListener('click', handleOutsideClick);
   }, []);
 
-  const categories = ['All', 'Linha Aji', ...new Set(products.map(p => p.type).filter(Boolean))];
+  const categories = ['All', 'Linha Aji', ...LURE_SHAPE_CATEGORIES.map(c => c.label)];
 
   const ajiProducts = getLinhaAjiProducts(products);
   const ajiIds = new Set(ajiProducts.map(p => p.id));
@@ -44,7 +45,7 @@ export default function Catalog() {
     const matchesSearch = product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                           (product.type && product.type.toLowerCase().includes(searchTerm.toLowerCase()));
     const matchesCategory = filterCategory === 'All'
-      || (filterCategory === 'Linha Aji' ? ajiIds.has(product.id) : product.type === filterCategory);
+      || (filterCategory === 'Linha Aji' ? ajiIds.has(product.id) : getLureShapeCategoryLabel(product) === filterCategory);
     return matchesSearch && matchesCategory;
   });
 
