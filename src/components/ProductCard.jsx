@@ -17,6 +17,12 @@ export default function ProductCard({ product }) {
   const productColors = product.options['Cor'] || [];
   const hasPromoColor = promoActive && productColors.some(isPromoColor);
 
+  // A previa do card mostra so as 8 primeiras cores; durante a promocao,
+  // as cores com desconto vem primeiro pra nao ficarem escondidas no "+N".
+  const previewColors = promoActive
+    ? [...productColors.filter(isPromoColor), ...productColors.filter((c) => !isPromoColor(c))]
+    : productColors;
+
   return (
     <article className="product-card">
       <div className="product-card-media">
@@ -45,7 +51,7 @@ export default function ProductCard({ product }) {
         {product.options['Cor'] && product.options['Cor'].length > 0 && (
           <div className="product-card-previews">
             <div className="card-swatches" aria-label="Cores disponíveis">
-              {product.options['Cor'].slice(0, 8).map(color => {
+              {previewColors.slice(0, 8).map(color => {
                 const imgUrl = getColorImage(color);
                 const isPromo = promoActive && isPromoColor(color);
                 return (

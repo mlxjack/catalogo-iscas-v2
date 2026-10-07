@@ -39,8 +39,8 @@ function PromoBanner() {
   return (
     <div className="promo-banner">
       <img
-        src={`${import.meta.env.BASE_URL}promo/octa-promo-cores-set.png`}
-        alt="Promoção das Cores — 12% OFF em Preto Brilhante, Amarelo Neon, Glow e Branco Pérola, de 01/09 até 30/09"
+        src={`${import.meta.env.BASE_URL}promo/promocao-cores-outubro-2026.webp`}
+        alt="Promoção das Cores — 12% OFF em todos os modelos nas cores Laranja Neon, Verde Neon, Capim Rubi e Preto Brilhante. Válido durante outubro"
         className="promo-banner-img"
       />
     </div>
