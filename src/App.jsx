@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { HashRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
 import Catalog from './pages/Catalog';
 import ProductDetails from './pages/ProductDetails';
-import { isPromoActive, isCustomerDayActive, CUSTOMER_DAY_BANNER } from './utils/promo';
+import { isPromoActive, isCustomerDayActive, isBlackNovemberActive, CUSTOMER_DAY_BANNER } from './utils/promo';
 import './index.css';
 
 function ScrollToTop() {
@@ -22,6 +22,9 @@ function PromoBanner() {
     const id = setInterval(() => forceTick((n) => n + 1), 60000);
     return () => clearInterval(id);
   }, []);
+
+  // Na Black November o carrossel de banners (public/black-november/bn.js) assume o topo da home.
+  if (isBlackNovemberActive()) return null;
 
   if (isCustomerDayActive()) {
     return (
