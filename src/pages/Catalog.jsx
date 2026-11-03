@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
-import { isPesqueiro } from '../utils/pesqueiro';
+import { Link } from 'react-router-dom';
 import { loadProducts } from '../utils/csvParser';
 import ProductCard from '../components/ProductCard';
 import { getVariedCoverImage } from '../utils/lureColorImages';
@@ -10,13 +9,8 @@ import { LURE_SHAPE_CATEGORIES, getLureShapeCategoryLabel } from '../utils/lureS
 export default function Catalog() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState('');
   const [filterCategory, setFilterCategory] = useState('All');
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  // Filtro "Pesqueiro" vive na URL (#/?pesqueiro=1) para poder ser compartilhado
-  const [searchParams, setSearchParams] = useSearchParams();
-  const onlyPesqueiro = searchParams.get('pesqueiro') === '1';
-  const togglePesqueiro = () => setSearchParams(onlyPesqueiro ? {} : { pesqueiro: '1' }, { replace: true });
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -47,11 +41,9 @@ export default function Catalog() {
   const ajiIds = new Set(ajiProducts.map(p => p.id));
 
   const filteredProducts = products.filter(product => {
-    const matchesSearch = product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                          (product.type && product.type.toLowerCase().includes(searchTerm.toLowerCase()));
     const matchesCategory = filterCategory === 'All'
       || (filterCategory === 'Linha Aji' ? ajiIds.has(product.id) : getLureShapeCategoryLabel(product) === filterCategory);
-    return matchesSearch && matchesCategory && (!onlyPesqueiro || isPesqueiro(product));
+    return matchesCategory;
   });
 
   const featuredProduct = products.find(p => p.tags && p.tags.includes('Destaque')) || products[0];
@@ -112,7 +104,7 @@ export default function Catalog() {
       </section>
 
       {/* Linha Aji Showcase */}
-      {ajiProducts.length > 0 && !onlyPesqueiro && (
+      {ajiProducts.length > 0 && (
         <section className="aji-line" aria-label="Linha Aji">
           <div className="aji-line-container">
             <div className="aji-line-header">
@@ -149,34 +141,6 @@ export default function Catalog() {
         {/* Search and Filters Panel */}
         <section className="panel" aria-label="Painel de Busca e Filtros">
           <div className="tools">
-            <div className="search-wrapper">
-              <svg className="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-              </svg>
-              <input 
-                type="search" 
-                className="search-input" 
-                placeholder="O que você está procurando?" 
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                autoComplete="off"
-              />
-            </div>
-            
-            <button
-              className={`pesqueiro-toggle ${onlyPesqueiro ? 'active' : ''}`}
-              onClick={togglePesqueiro}
-              type="button"
-              aria-pressed={onlyPesqueiro}
-              title="Mostrar só os produtos para pesqueiro"
-            >
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M3 21L17 5" /><path d="M17 5c3 0 4 2 4 5" /><circle cx="21" cy="13" r="1.6" />
-              </svg>
-              <span>Pesqueiro</span>
-            </button>
-
             <div className="menu-dropdown-wrapper">
               <button 
                 className="hamburger-menu-btn" 
@@ -230,7 +194,7 @@ export default function Catalog() {
             <p>Selecione uma isca artificial para ver tamanhos, cores disponíveis, fotos detalhadas e solicitar orçamento.</p>
           </div>
           <div className="summary-count">
-            {filteredProducts.length} produto{filteredProducts.length === 1 ? '' : 's'}{onlyPesqueiro ? ' para pesqueiro' : ''}
+            {filteredProducts.length} produto{filteredProducts.length === 1 ? '' : 's'}
           </div>
         </div>
 

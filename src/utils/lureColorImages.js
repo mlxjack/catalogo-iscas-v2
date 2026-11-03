@@ -1004,7 +1004,8 @@ export const getLureColorImage = (handle, colorName) => {
   
   const normColor = colorName.toLowerCase()
     .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-z0-9]/g, '');
+    .replace(/[^a-z0-9]/g, '')
+    .replace('estelar', 'estrelar'); // a loja grafa "Estelar"; as fotos usam a chave "estrelar"
     
   const handleMap = lureColorManifest[handle];
   

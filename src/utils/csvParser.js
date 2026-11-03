@@ -75,29 +75,20 @@ export const loadProducts = async () => {
             }
           });
 
-          // Check if product is NOT Jig de Olho and should have standard 13 colors
-          const isJigDeOlho = (p.id && p.id.toLowerCase().includes('jig-head-de-olho')) || (p.title && p.title.toLowerCase().includes('jig de olho'));
-
-          // Produtos com paleta de cores propria (nao usam as 13 cores padrao)
-          const CUSTOM_COLOR_PRODUCTS = ['kit-anteninha-2-unidades'];
-          const hasCustomColors = CUSTOM_COLOR_PRODUCTS.includes(p.id);
-
-          if (!isJigDeOlho && !hasCustomColors) {
-            cleanOptions['Cor'] = [
-              'Branco Perola',
-              'Glow',
-              'Rapadura',
-              'Roxo Estrelar',
-              'Vermelho Holográfico',
-              'Véu Da Noite',
-              'Amarelo Neon',
-              'Laranja Neon',
-              'Preto Brilhante',
-              'Capim Rubi',
-              'Verde Neon',
-              'Pastel',
-              'Chá'
-            ];
+          // Cores: somente as que existem como variacao no CSV (nenhuma cor "inventada").
+          // A ordem segue a paleta padrao da marca; cores fora dela vao depois, na ordem do CSV.
+          const COLOR_ORDER = ['brancoperola', 'glow', 'rapadura', 'roxoestelar', 'roxoestrelar',
+            'vermelhoholografico', 'veudanoite', 'amareloneon', 'laranjaneon', 'pretobrilhante',
+            'capimrubi', 'verdeneon', 'pastel', 'cha', 'chapastel'];
+          const colorRank = (c) => {
+            const i = COLOR_ORDER.indexOf(c.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]/g, ''));
+            return i === -1 ? COLOR_ORDER.length : i;
+          };
+          if (cleanOptions['Cor']) {
+            cleanOptions['Cor'] = cleanOptions['Cor']
+              .map((c, idx) => [c, idx])
+              .sort((a, b) => colorRank(a[0]) - colorRank(b[0]) || a[1] - b[1])
+              .map(([c]) => c);
           }
 
           // Sort images to have a consistent main image

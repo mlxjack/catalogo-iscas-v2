@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { HashRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
 import Catalog from './pages/Catalog';
 import ProductDetails from './pages/ProductDetails';
-import { isPromoActive, isCustomerDayActive, CUSTOMER_DAY_BANNER } from './utils/promo';
+import { isPromoActive, isCustomerDayActive, isBlackNovemberActive, CUSTOMER_DAY_BANNER } from './utils/promo';
 import './index.css';
 
 function ScrollToTop() {
@@ -22,6 +22,9 @@ function PromoBanner() {
     const id = setInterval(() => forceTick((n) => n + 1), 60000);
     return () => clearInterval(id);
   }, []);
+
+  // Na Black November o carrossel de banners (public/black-november/bn.js) assume o topo da home.
+  if (isBlackNovemberActive()) return null;
 
   if (isCustomerDayActive()) {
     return (
@@ -60,7 +63,6 @@ function App() {
             
             <nav className="nav-menu" aria-label="Navegação Principal">
               <Link to="/" className="nav-item active">Produtos</Link>
-              <Link to="/?pesqueiro=1" className="nav-item nav-item-pesqueiro">Pesqueiro</Link>
               <a href="https://chumbadas.com.br" target="_blank" rel="noopener noreferrer" className="nav-item btn-nav">Site Oficial</a>
             </nav>
           </div>

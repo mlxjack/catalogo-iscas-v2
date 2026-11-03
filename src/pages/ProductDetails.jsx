@@ -4,11 +4,12 @@ import { loadProducts } from '../utils/csvParser';
 import { getColorImage } from '../utils/colorHelper';
 import { getLureColorImage, lureColorManifest } from '../utils/lureColorImages';
 import { getRecommendedHookForLure } from '../utils/hookRecommendations';
-import { isPromoActive, isPromoColor, getPromoPrice, PROMO_DISCOUNT_PCT } from '../utils/promo';
+import { isPromoActive, getColorDiscount, getPromoPrice, discountPct, getOffPatternColors } from '../utils/promo';
 import { isAjingSize } from '../utils/ajiLine';
 import { getProductVideo } from '../utils/productVideos';
 import { getProductBadges } from '../utils/productBadges';
 import { getLureShapeCategoryLabel } from '../utils/lureShapeCategories';
+import { getSkuNote } from '../utils/skuAlerts';
 
 export default function ProductDetails() {
   const { handle } = useParams();
@@ -19,6 +20,7 @@ export default function ProductDetails() {
   const [selectedOptions, setSelectedOptions] = useState({});
   const [currentVariant, setCurrentVariant] = useState(null);
   const [selecaoQty, setSelecaoQty] = useState(1);
+  const [offColor, setOffColor] = useState(null);
 
   const productVideo = getProductVideo(handle);
   const productBadges = getProductBadges(handle);
@@ -164,6 +166,7 @@ export default function ProductDetails() {
   };
 
   const handleOptionSelect = (optionName, value) => {
+    setOffColor(null);
     setSelectedOptions(prev => {
       const nextOptions = { ...prev, [optionName]: value };
       if (!product) return nextOptions;
@@ -270,15 +273,50 @@ export default function ProductDetails() {
   };
 
   const selectedColorForPromo = selectedOptions['Cor'] || selectedOptions['cor'] || selectedOptions['Color'];
-  const promoApplies = isPromoActive() && isPromoColor(selectedColorForPromo);
+  const selectedDiscount = offColor ? 0.3 : (isPromoActive() ? getColorDiscount(selectedColorForPromo, product.id) : 0);
+
+  const handleOffColor = (c) => {
+    const next = offColor === c ? null : c;
+    setOffColor(next);
+    if (next) {
+      setShowVideo(false);
+      const url = getLureColorImage(product.id, next);
+      const idx = url ? product.images.findIndex((i) => i === url) : -1;
+      if (idx !== -1) setActiveImage(idx);
+    }
+  };
+
+  // cor "fora de padrao" escolhida substitui a cor do seletor no texto enviado
+  const optionsWithOff = () => {
+    const out = { ...selectedOptions };
+    if (offColor) {
+      const key = Object.keys(product.options).find((k) => k.toLowerCase().includes('cor') || k.toLowerCase().includes('color'));
+      if (key) out[key] = `${offColor} (Black November -30%)`;
+    }
+    return out;
+  };
+  const promoApplies = selectedDiscount > 0;
+  const offPatternColors = getOffPatternColors(product.id);
   const rawPrice = currentVariant && currentVariant.price > 0 ? currentVariant.price : null;
-  const promoPrice = promoApplies && rawPrice ? getPromoPrice(rawPrice) : null;
+  const promoPrice = promoApplies && rawPrice ? getPromoPrice(rawPrice, selectedDiscount) : null;
 
   const formatPrice = (v) => `R$ ${v.toFixed(2).replace('.', ',')}`;
   const displayPrice = rawPrice ? formatPrice(rawPrice) : 'Consulte Preço';
 
+  // SKU so vale se a variacao encontrada tem mesmo a cor escolhida (cor sem variacao
+  // real ou cor 'fora de padrao' nunca herda o SKU de outra cor).
+  const skuForSelection = () => {
+    if (!currentVariant || !currentVariant.sku) return null;
+    const colorKey = Object.keys(product.options).find((k) => k.toLowerCase().includes('cor') || k.toLowerCase().includes('color'));
+    if (!colorKey) return currentVariant.sku;
+    if (offColor) return null;
+    const idx = Object.keys(product.options).indexOf(colorKey);
+    const vColor = idx === 0 ? currentVariant.option1 : idx === 1 ? currentVariant.option2 : currentVariant.option3;
+    return normalizeOpt2(vColor) === normalizeOpt2(selectedOptions[colorKey]) ? currentVariant.sku : null;
+  };
+
   const getWhatsAppLink = () => {
-    const selectedOptionsStr = Object.entries(selectedOptions)
+    const selectedOptionsStr = Object.entries(optionsWithOff())
       .map(([key, val]) => `${key}: ${val}`)
       .join(', ');
     const text = `Olá! Gostaria de saber mais sobre a isca: ${product.title}${selectedOptionsStr ? ` (${selectedOptionsStr})` : ''}`;
@@ -289,12 +327,14 @@ export default function ProductDetails() {
 
   const handleAddToSelecao = () => {
     if (!window.MinhaSelecao || !canAddToSelecao) return;
-    const variant = Object.entries(selectedOptions).map(([k, v]) => `${k}: ${v}`).join(', ');
+    const sku = skuForSelection();
+    const note = getSkuNote(sku);
+    const variant = Object.entries(optionsWithOff()).map(([k, v]) => `${k}: ${v}`).join(', ') + (note ? ` ${note}` : '');
     window.MinhaSelecao.addItem({
       catalog: 'iscas',
       productId: product.id,
       name: product.title,
-      sku: currentVariant.sku || null,
+      sku,
       variant,
       qty: selecaoQty,
       unitPrice: currentVariant.price,
@@ -315,8 +355,8 @@ export default function ProductDetails() {
     specs.push({ label: 'Fabricante', value: product.vendor || 'Chumbada Oficial' });
 
     // 2. Código SKU (se houver variação ativa)
-    if (currentVariant?.sku) {
-      specs.push({ label: 'SKU / Código', value: currentVariant.sku });
+    if (skuForSelection()) {
+      specs.push({ label: 'SKU / Código', value: skuForSelection() });
     }
 
     // 3. Opções dinâmicas ativas (Cor, Tamanho, Quantidade, etc.)
@@ -495,7 +535,7 @@ export default function ProductDetails() {
                   <>
                     <span className="info-price-old">{formatPrice(rawPrice)}</span>
                     <span className="info-price info-price-promo">{formatPrice(promoPrice)}</span>
-                    <span className="info-promo-badge">-{PROMO_DISCOUNT_PCT}%</span>
+                    <span className="info-promo-badge">-{discountPct(selectedDiscount)}%</span>
                   </>
                 ) : (
                   <span className="info-price">{displayPrice}</span>
@@ -520,9 +560,10 @@ export default function ProductDetails() {
                       {values.map(val => {
                         const imgUrl = getColorImage(val);
                         const available = isValueAvailable(optionName, val);
-                        const isPromo = isPromoActive() && isPromoColor(val);
+                        const valDiscount = isPromoActive() ? getColorDiscount(val, product.id) : 0;
+                        const isPromo = valDiscount > 0;
                         const label = available
-                          ? (isPromo ? `${val} — ${PROMO_DISCOUNT_PCT}% OFF` : val)
+                          ? (isPromo ? `${val} — ${discountPct(valDiscount)}% OFF` : val)
                           : `${val} — Indisponível nesta combinação`;
                         return (
                           <button
@@ -536,7 +577,7 @@ export default function ProductDetails() {
                             aria-checked={selectedOptions[optionName] === val ? 'true' : 'false'}
                             aria-disabled={!available}
                           >
-                            {isPromo && <span className="swatch-promo-tag">-{PROMO_DISCOUNT_PCT}%</span>}
+                            {isPromo && <span className="swatch-promo-tag">-{discountPct(valDiscount)}%</span>}
                           </button>
                         );
                       })}
@@ -569,6 +610,40 @@ export default function ProductDetails() {
                 </div>
               );
             })}
+
+            {/* Black November: cores fora de padrao / inativas (30% OFF), fora do seletor de 13 cores */}
+            {offPatternColors.length > 0 && (
+              <div className="info-section bn-offpattern">
+                <h2 className="info-section-title">
+                  Black November — cores fora de padrão <span className="bn-offpattern-pct">-30%</span>
+                </h2>
+                <div className="bn-offpattern-chips">
+                  {offPatternColors.map((c) => {
+                    const img = getColorImage(c);
+                    return (
+                      <button
+                        key={c}
+                        type="button"
+                        className={`bn-offpattern-chip${offColor === c ? ' active' : ''}`}
+                        title={`${c} — 30% OFF`}
+                        aria-pressed={offColor === c}
+                        onClick={() => handleOffColor(c)}
+                      >
+                        <span
+                          className="bn-offpattern-dot"
+                          style={img ? { backgroundImage: `url("${encodeURI(img)}")` } : undefined}
+                        />
+                        {c}
+                      </button>
+                    );
+                  })}
+                </div>
+                <p className="bn-offpattern-note">
+                  {rawPrice ? `${formatPrice(getPromoPrice(rawPrice, 0.3))} (de ${formatPrice(rawPrice)}) nessas cores. ` : ''}
+                  Disponibilidade limitada ao estoque — confirme a cor pelo WhatsApp.
+                </p>
+              </div>
+            )}
 
             {/* CTA Actions */}
             <div className="detail-actions">

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { getColorImage } from '../utils/colorHelper';
 import { getVariedCoverImage } from '../utils/lureColorImages';
-import { isPromoActive, isPromoColor, PROMO_DISCOUNT_PCT } from '../utils/promo';
+import { isPromoActive, getColorDiscount, getProductMaxDiscount, discountPct } from '../utils/promo';
 import { getLureShapeCategoryLabel } from '../utils/lureShapeCategories';
 
 export default function ProductCard({ product }) {
@@ -15,7 +15,9 @@ export default function ProductCard({ product }) {
 
   const promoActive = isPromoActive();
   const productColors = product.options['Cor'] || [];
-  const hasPromoColor = promoActive && productColors.some(isPromoColor);
+  const isPromoColor = (c) => getColorDiscount(c, product.id) > 0;
+  const maxDiscount = getProductMaxDiscount(product.id, productColors);
+  const hasPromoColor = promoActive && maxDiscount > 0;
 
   // A previa do card mostra so as 8 primeiras cores; durante a promocao,
   // as cores com desconto vem primeiro pra nao ficarem escondidas no "+N".
@@ -27,7 +29,7 @@ export default function ProductCard({ product }) {
     <article className="product-card">
       <div className="product-card-media">
         {hasPromoColor && (
-          <span className="product-card-promo-ribbon">-{PROMO_DISCOUNT_PCT}%</span>
+          <span className="product-card-promo-ribbon">{maxDiscount >= 0.3 ? `até -${discountPct(maxDiscount)}%` : `-${discountPct(maxDiscount)}%`}</span>
         )}
         <Link to={`/product/${product.id}`}>
           <img
@@ -59,7 +61,7 @@ export default function ProductCard({ product }) {
                     key={color}
                     className={`card-swatch${isPromo ? ' card-swatch-promo' : ''}`}
                     style={imgUrl ? { backgroundImage: `url("${encodeURI(imgUrl)}")` } : { backgroundColor: '#e2e8f0' }}
-                    title={isPromo ? `${color} — ${PROMO_DISCOUNT_PCT}% OFF` : color}
+                    title={isPromo ? `${color} — ${discountPct(getColorDiscount(color, product.id))}% OFF` : color}
                   />
                 );
               })}
