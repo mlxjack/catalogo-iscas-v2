@@ -9,6 +9,7 @@ import { isAjingSize } from '../utils/ajiLine';
 import { getProductVideo } from '../utils/productVideos';
 import { getProductBadges } from '../utils/productBadges';
 import { getLureShapeCategoryLabel } from '../utils/lureShapeCategories';
+import { getSkuNote } from '../utils/skuAlerts';
 
 export default function ProductDetails() {
   const { handle } = useParams();
@@ -302,6 +303,18 @@ export default function ProductDetails() {
   const formatPrice = (v) => `R$ ${v.toFixed(2).replace('.', ',')}`;
   const displayPrice = rawPrice ? formatPrice(rawPrice) : 'Consulte Preço';
 
+  // SKU so vale se a variacao encontrada tem mesmo a cor escolhida (cor sem variacao
+  // real ou cor 'fora de padrao' nunca herda o SKU de outra cor).
+  const skuForSelection = () => {
+    if (!currentVariant || !currentVariant.sku) return null;
+    const colorKey = Object.keys(product.options).find((k) => k.toLowerCase().includes('cor') || k.toLowerCase().includes('color'));
+    if (!colorKey) return currentVariant.sku;
+    if (offColor) return null;
+    const idx = Object.keys(product.options).indexOf(colorKey);
+    const vColor = idx === 0 ? currentVariant.option1 : idx === 1 ? currentVariant.option2 : currentVariant.option3;
+    return normalizeOpt2(vColor) === normalizeOpt2(selectedOptions[colorKey]) ? currentVariant.sku : null;
+  };
+
   const getWhatsAppLink = () => {
     const selectedOptionsStr = Object.entries(optionsWithOff())
       .map(([key, val]) => `${key}: ${val}`)
@@ -314,12 +327,14 @@ export default function ProductDetails() {
 
   const handleAddToSelecao = () => {
     if (!window.MinhaSelecao || !canAddToSelecao) return;
-    const variant = Object.entries(optionsWithOff()).map(([k, v]) => `${k}: ${v}`).join(', ');
+    const sku = skuForSelection();
+    const note = getSkuNote(sku);
+    const variant = Object.entries(optionsWithOff()).map(([k, v]) => `${k}: ${v}`).join(', ') + (note ? ` ${note}` : '');
     window.MinhaSelecao.addItem({
       catalog: 'iscas',
       productId: product.id,
       name: product.title,
-      sku: currentVariant.sku || null,
+      sku,
       variant,
       qty: selecaoQty,
       unitPrice: currentVariant.price,
@@ -340,8 +355,8 @@ export default function ProductDetails() {
     specs.push({ label: 'Fabricante', value: product.vendor || 'Chumbada Oficial' });
 
     // 2. Código SKU (se houver variação ativa)
-    if (currentVariant?.sku) {
-      specs.push({ label: 'SKU / Código', value: currentVariant.sku });
+    if (skuForSelection()) {
+      specs.push({ label: 'SKU / Código', value: skuForSelection() });
     }
 
     // 3. Opções dinâmicas ativas (Cor, Tamanho, Quantidade, etc.)

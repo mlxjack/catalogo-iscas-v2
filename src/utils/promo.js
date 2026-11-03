@@ -31,7 +31,7 @@ const PROMO_COLORS_NORM = new Set(PROMO_COLORS.map(normalize));
 // Se o mesmo par estiver nas duas regras, vale o de 30% (par listado no estoque).
 const BN_DISCOUNT_STOCK = 0.3;
 const BN_DISCOUNT_COLORS = 0.12;
-const BN_COLORS_12 = ['Vermelho Holográfico', 'Véu da Noite', 'Pastel', 'Preto Brilhante'];
+const BN_COLORS_12 = ['Vermelho Holográfico', 'Véu da Noite', 'Pastel', 'Chá/Pastel', 'Preto Brilhante'];
 const BN_COLORS_12_NORM = new Set(BN_COLORS_12.map(normalize));
 const BN_30_NORM = Object.fromEntries(
   Object.entries(BLACK_NOVEMBER_30).map(([h, cs]) => [h, new Set(cs.map(normalize))])
@@ -40,7 +40,7 @@ const BN_30_NORM = Object.fromEntries(
 // sao 'fora de padrao' e aparecem num bloco proprio na pagina do produto.
 const STANDARD_COLORS_NORM = new Set(
   ['Branco Perola', 'Glow', 'Rapadura', 'Roxo Estrelar', 'Vermelho Holográfico', 'Véu Da Noite', 'Amarelo Neon',
-    'Laranja Neon', 'Preto Brilhante', 'Capim Rubi', 'Verde Neon', 'Pastel', 'Chá'].map(normalize)
+    'Laranja Neon', 'Preto Brilhante', 'Capim Rubi', 'Verde Neon', 'Pastel', 'Chá', 'Chá/Pastel'].map(normalize)
 );
 
 export const isBlackNovemberActive = () =>
@@ -56,7 +56,9 @@ export const isPromoActive = () => {
 export const getColorDiscount = (colorName, productId) => {
   const n = normalize(colorName);
   if (isBlackNovemberActive()) {
-    if (productId && BN_30_NORM[productId] && BN_30_NORM[productId].has(n)) return BN_DISCOUNT_STOCK;
+    // 'Chá/Pastel' (cor unificada na loja) herda a regra de 'Chá' e de 'Pastel'.
+    const keys = n === 'chapastel' ? ['chapastel', 'pastel', 'cha'] : [n];
+    if (productId && BN_30_NORM[productId] && keys.some((k) => BN_30_NORM[productId].has(k))) return BN_DISCOUNT_STOCK;
     return BN_COLORS_12_NORM.has(n) ? BN_DISCOUNT_COLORS : 0;
   }
   const now = new Date();
