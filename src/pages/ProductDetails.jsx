@@ -296,7 +296,12 @@ export default function ProductDetails() {
     return out;
   };
   const promoApplies = selectedDiscount > 0;
-  const offPatternColors = getOffPatternColors(product.id);
+  // cor que ja existe como variacao no seletor nao se repete no bloco "fora de padrao"
+  const offPatternColors = getOffPatternColors(product.id).filter(
+    (c) => !Object.entries(product.options).some(
+      ([k, vals]) => /cor|color/i.test(k) && vals.some((v) => normalizeOpt2(v) === normalizeOpt2(c))
+    )
+  );
   const rawPrice = currentVariant && currentVariant.price > 0 ? currentVariant.price : null;
   const promoPrice = promoApplies && rawPrice ? getPromoPrice(rawPrice, selectedDiscount) : null;
 
