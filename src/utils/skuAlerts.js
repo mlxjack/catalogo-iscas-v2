@@ -21,7 +21,6 @@ export const SKU_ALERTS = {
   "PA10511": "produto ausente do export da loja",
   "PA10512": "produto ausente do export da loja",
   "PA10513": "produto ausente do export da loja",
-  "PA10857": "sem equivalente no export da loja (cor/variação mudou ou saiu)",
 };
 
 export const SKU_NOTE = '⚠ Conferir SKU';
