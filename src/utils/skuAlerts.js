@@ -14,8 +14,6 @@ export const SKU_ALERTS = {
   "IS4931045006": "sem equivalente no export da loja (cor/variação mudou ou saiu)",
   "IS4931045020": "sem equivalente no export da loja (cor/variação mudou ou saiu)",
   "IS4931045100": "sem equivalente no export da loja (cor/variação mudou ou saiu)",
-  "IS5115080020": "SKU repetido em cores diferentes na loja",
-  "IS5615080020": "SKU repetido em cores diferentes na loja",
   "IS7103080004": "sem equivalente no export da loja (cor/variação mudou ou saiu)",
   "IS7103110002": "sem equivalente no export da loja (cor/variação mudou ou saiu)",
   "PA10511": "produto ausente do export da loja",
