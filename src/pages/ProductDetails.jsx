@@ -10,6 +10,7 @@ import { getProductVideo } from '../utils/productVideos';
 import { getProductBadges } from '../utils/productBadges';
 import { getLureShapeCategoryLabel } from '../utils/lureShapeCategories';
 import { getSkuNote } from '../utils/skuAlerts';
+import { getOffPatternSku } from '../utils/offPatternSkus';
 
 export default function ProductDetails() {
   const { handle } = useParams();
@@ -309,7 +310,7 @@ export default function ProductDetails() {
     if (!currentVariant || !currentVariant.sku) return null;
     const colorKey = Object.keys(product.options).find((k) => k.toLowerCase().includes('cor') || k.toLowerCase().includes('color'));
     if (!colorKey) return currentVariant.sku;
-    if (offColor) return null;
+    if (offColor) return getOffPatternSku(product.id, offColor, selectedOptions['Tamanho'], selectedOptions['Quantidade']);
     const idx = Object.keys(product.options).indexOf(colorKey);
     const vColor = idx === 0 ? currentVariant.option1 : idx === 1 ? currentVariant.option2 : currentVariant.option3;
     return normalizeOpt2(vColor) === normalizeOpt2(selectedOptions[colorKey]) ? currentVariant.sku : null;
