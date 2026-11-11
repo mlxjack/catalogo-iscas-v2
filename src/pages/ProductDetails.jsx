@@ -337,7 +337,8 @@ export default function ProductDetails() {
       sku,
       variant,
       qty: selecaoQty,
-      unitPrice: currentVariant.price,
+      // na promocao (Black November etc.) a lista recebe o preco com desconto
+      unitPrice: promoPrice || currentVariant.price,
     });
     setSelecaoQty(1);
   };
