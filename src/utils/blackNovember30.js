@@ -1,6 +1,6 @@
 // GERADO a partir de contagem_estoque_consolidada (2).xlsx (Black November 2026).
 // handle do produto -> cores fora de padrao / inativas com 30% OFF (conforme disponibilidade).
-// Fora do catalogo (sem handle): Camarão Jig Head Maciço (29), Camarão Jig Head Maciço Head Maciço (2), camarão Maçico (5), Camarão Maciço - Firmetech (4), Camarão Offset Cavado (42).
+// Fora do catalogo (sem handle): Camarão Offset Cavado (42), Camarão Maciço - Firmetech (4).
 export const BLACK_NOVEMBER_30 = {
   "isca-artificial-ajigrub": [
     "Branco"
@@ -36,15 +36,7 @@ export const BLACK_NOVEMBER_30 = {
     "Rosa",
     "Rubi Dourado",
     "Salmão Radiante",
-    "Verde Cósmico",
-    "Verde Neon"
-  ],
-  "isca-artificial-camarao-articulado": [
-    "Amarelo Limão",
-    "Beijo da Sombra",
-    "Luz Laranja",
-    "Rosa",
-    "Rubi Dourado"
+    "Verde Cósmico"
   ],
   "isca-artificial-camarao-jig-head-articulado": [
     "Amarelo Limão",
@@ -52,11 +44,10 @@ export const BLACK_NOVEMBER_30 = {
     "Branco",
     "Chá Verde",
     "Luz Laranja",
-    "Pastel",
     "Rosa",
     "Rubi Dourado",
-    "Salmão",
-    "Salmão Radiante"
+    "Salmão Radiante",
+    "Verde Cósmico"
   ],
   "isca-artificial-danca-dagua": [
     "Amarelo Limão",
@@ -127,7 +118,6 @@ export const BLACK_NOVEMBER_30 = {
     "Azul",
     "Branco",
     "Chá Verde",
-    "Glow",
     "Rosa",
     "Rubi Dourado",
     "Verde Cósmico"
@@ -170,7 +160,6 @@ export const BLACK_NOVEMBER_30 = {
     "Beijo da Sombra",
     "Branco",
     "Chá Verde",
-    "Glow",
     "Luz Laranja",
     "Rosa",
     "Verde Cósmico"
@@ -178,23 +167,15 @@ export const BLACK_NOVEMBER_30 = {
   "kit-isca-artificial-ajikoka": [
     "Beijo da Sombra"
   ],
-  "kit-isca-artificial-ajimizu": [
-    "Véu da Noite"
-  ],
   "kit-isca-artificial-ajineedle": [
     "Beijo da Sombra",
-    "Branco",
-    "Pastel",
-    "Roxo",
-    "Verde Neon",
-    "Vermelho"
+    "Branco"
   ],
   "kit-isca-artificial-ajineedle-1": [
     "Beijo da Sombra",
     "Branco",
     "Chá Verde",
     "Luz Laranja",
-    "Pastel",
     "Rosa",
     "Rubi Dourado",
     "Salmão",
@@ -205,7 +186,6 @@ export const BLACK_NOVEMBER_30 = {
     "Beijo da Sombra",
     "Branco",
     "Chá Verde",
-    "Glow",
     "Luz Laranja",
     "Rosa",
     "Rubi Dourado",
@@ -216,36 +196,19 @@ export const BLACK_NOVEMBER_30 = {
     "Rubi Dourado",
     "Verde Cósmico"
   ],
-  "kit-isca-artificial-ajisho": [
-    "Amarelo Neon",
-    "Branco Pérola",
-    "Rapadura",
-    "Verde Neon"
-  ],
   "kit-isca-artificial-ajistingv": [
-    "Amarelo Neon",
     "Azul",
     "Beijo da Sombra",
     "Chá Verde",
     "Luz Laranja",
     "Ouro Preto",
     "Rosa",
-    "Roxo",
     "Salmão Radiante",
     "Verde Cósmico"
   ],
-  "kit-isca-artificial-ajitwin": [
-    "Capim Rubi",
-    "Glow",
-    "Véu da Noite"
-  ],
   "kit-isca-artificial-claw-strike": [
-    "Amarelo Neon",
     "Beijo da Sombra",
-    "Branco Pérola",
-    "Glow",
-    "Salmão Radiante",
-    "Vermelho"
+    "Salmão Radiante"
   ],
   "kit-isca-artificial-double-grub": [
     "Branco",
@@ -262,11 +225,7 @@ export const BLACK_NOVEMBER_30 = {
     "Verde Cósmico"
   ],
   "kit-isca-artificial-fatworm": [
-    "Amarelo Neon",
-    "Chá Verde",
-    "Glow",
-    "Roxo",
-    "Vermelho"
+    "Chá Verde"
   ],
   "kit-isca-artificial-filotail": [
     "Beijo da Sombra",
@@ -325,10 +284,7 @@ export const BLACK_NOVEMBER_30 = {
     "Azul",
     "Beijo da Sombra",
     "Branco",
-    "Capim Rubi",
     "Chá Verde",
-    "Laranja Neon",
-    "Limão",
     "Luz Laranja",
     "Rosa",
     "Rubi Dourado",
@@ -361,7 +317,6 @@ export const BLACK_NOVEMBER_30 = {
   "kit-isca-artificial-tornado-worm": [
     "Azul",
     "Beijo da Sombra",
-    "Capim Rubi",
     "Luz Laranja",
     "Rosa",
     "Rubi Dourado",
