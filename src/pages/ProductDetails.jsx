@@ -10,7 +10,7 @@ import { getProductVideo } from '../utils/productVideos';
 import { getProductBadges } from '../utils/productBadges';
 import { getLureShapeCategoryLabel } from '../utils/lureShapeCategories';
 import { getSkuNote } from '../utils/skuAlerts';
-import { getOffPatternSku } from '../utils/offPatternSkus';
+import { getOffPatternSku, isOffPatternExcluded } from '../utils/offPatternSkus';
 
 export default function ProductDetails() {
   const { handle } = useParams();
@@ -276,7 +276,10 @@ export default function ProductDetails() {
   const selectedColorForPromo = selectedOptions['Cor'] || selectedOptions['cor'] || selectedOptions['Color'];
   const selectedDiscount = offColor ? 0.3 : (isPromoActive() ? getColorDiscount(selectedColorForPromo, product.id) : 0);
 
+  const offExcluded = (c) => isOffPatternExcluded(product.id, c, selectedOptions['Tamanho'], selectedOptions['Quantidade']);
+
   const handleOffColor = (c) => {
+    if (offColor !== c && offExcluded(c)) return;
     const next = offColor === c ? null : c;
     setOffColor(next);
     if (next) {
@@ -622,13 +625,16 @@ export default function ProductDetails() {
                 <div className="bn-offpattern-chips">
                   {offPatternColors.map((c) => {
                     const img = getColorImage(c);
+                    const excluded = offExcluded(c);
                     return (
                       <button
                         key={c}
                         type="button"
                         className={`bn-offpattern-chip${offColor === c ? ' active' : ''}`}
-                        title={`${c} — 30% OFF`}
+                        title={excluded ? `${c} — indisponível nesta embalagem` : `${c} — 30% OFF`}
                         aria-pressed={offColor === c}
+                        aria-disabled={excluded}
+                        style={excluded ? { opacity: 0.35, cursor: 'not-allowed', textDecoration: 'line-through' } : undefined}
                         onClick={() => handleOffColor(c)}
                       >
                         <span
