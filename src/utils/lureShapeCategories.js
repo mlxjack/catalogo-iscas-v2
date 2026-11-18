@@ -35,6 +35,7 @@ const HANDLE_CATEGORY = {
   'isca-artificial-danca-dagua': 'grubs-curly-tails',
 
   // 3. Worms, Minhocas e Larvas
+  'isca-artificial-ajidorome': 'worms-minhocas-larvas',
   'isca-artificial-ajimimizu': 'worms-minhocas-larvas',
   'kit-isca-artificial-ajimushi': 'worms-minhocas-larvas',
   'kit-isca-artificial-ajiaero': 'worms-minhocas-larvas',
