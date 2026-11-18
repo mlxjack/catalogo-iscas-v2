@@ -70,6 +70,21 @@ export const lureColorManifest = {
     "pastel": "iscas_cores/isca-artificial-shad-gaikotsu/Pastel.png",
     "rapadura": "iscas_cores/isca-artificial-shad-gaikotsu/Rapadura.png",
   },
+  "isca-artificial-ajidorome": {
+    "amareloneon": "iscas_cores/isca-artificial-ajidorome/amarelo-neon.png",
+    "brancoperola": "iscas_cores/isca-artificial-ajidorome/Branco-perola.png",
+    "capimrubi": "iscas_cores/isca-artificial-ajidorome/Capim-Rubi.png",
+    "cha": "iscas_cores/isca-artificial-ajidorome/Cha.png",
+    "glow": "iscas_cores/isca-artificial-ajidorome/Glow.png",
+    "laranjaneon": "iscas_cores/isca-artificial-ajidorome/laranja-Neon.png",
+    "pastel": "iscas_cores/isca-artificial-ajidorome/Pastel.png",
+    "pretobrilhante": "iscas_cores/isca-artificial-ajidorome/preto-brilhante.png",
+    "rapadura": "iscas_cores/isca-artificial-ajidorome/Rapadura.png",
+    "roxoestrelar": "iscas_cores/isca-artificial-ajidorome/Roxo-Estrelnar.png",
+    "verdeneon": "iscas_cores/isca-artificial-ajidorome/Verde neon.png",
+    "vermelhoholografico": "iscas_cores/isca-artificial-ajidorome/Vermelho-Holografico.png",
+    "veudanoite": "iscas_cores/isca-artificial-ajidorome/Veu-da-noite.png"
+  },
   "isca-artificial-ajimimizu": {
     "amareloneon": "iscas_cores/isca-artificial-ajimimizu/amarelo-neon.png",
     "brancoperola": "iscas_cores/isca-artificial-ajimimizu/Branco-perola.png",
