@@ -1241,13 +1241,10 @@ export const OFF_PATTERN_SKUS = {
    "4.5cm|Kit com 6 Unidades": "IS6206045006"
   },
   "Rubi Dourado": {
-   "4.5cm|A granel - 100 Unidades": "IS6212045100",
    "4.5cm|A granel - 20 Unidades": "IS6212045020",
    "4.5cm|Kit com 6 Unidades": "IS6212045006"
   },
   "Verde Cósmico": {
-   "4.5cm|A granel - 100 Unidades": "IS6214045100",
-   "4.5cm|A granel - 20 Unidades": "IS6214045020",
    "4.5cm|Kit com 6 Unidades": "IS6214045006"
   }
  },
@@ -2096,4 +2093,19 @@ export const OFF_PATTERN_SKUS = {
 export const getOffPatternSku = (handle, color, tamanho, quantidade) => {
   const byColor = OFF_PATTERN_SKUS[handle] && OFF_PATTERN_SKUS[handle][color];
   return (byColor && byColor[`${tamanho || ''}|${quantidade || ''}`]) || null;
+};
+
+// Embalagens que SAIRAM da queima de estoque (pedido do usuario em 18/11/2026):
+// com essas cores fora de padrao, essas combinacoes "Tamanho|Quantidade" nao podem ser escolhidas.
+// IS6212045100, IS6214045100, IS6214045020
+export const OFF_PATTERN_EXCLUDED = {
+ "kit-isca-artificial-ajishirimp": {
+  "Rubi Dourado": ["4.5cm|A granel - 100 Unidades"],
+  "Verde Cósmico": ["4.5cm|A granel - 100 Unidades", "4.5cm|A granel - 20 Unidades"]
+ }
+};
+
+export const isOffPatternExcluded = (handle, color, tamanho, quantidade) => {
+  const list = OFF_PATTERN_EXCLUDED[handle] && OFF_PATTERN_EXCLUDED[handle][color];
+  return !!list && list.includes(`${tamanho || ''}|${quantidade || ''}`);
 };
