@@ -85,6 +85,21 @@ export const lureColorManifest = {
     "vermelhoholografico": "iscas_cores/isca-artificial-ajidorome/Vermelho-Holografico.png",
     "veudanoite": "iscas_cores/isca-artificial-ajidorome/Veu-da-noite.png"
   },
+  "isca-artificial-ajimembrana": {
+    "amareloneon": "iscas_cores/isca-artificial-ajimembrana/amarelo-neon.png",
+    "brancoperola": "iscas_cores/isca-artificial-ajimembrana/Branco-perola.png",
+    "capimrubi": "iscas_cores/isca-artificial-ajimembrana/Capim-Rubi.png",
+    "cha": "iscas_cores/isca-artificial-ajimembrana/Cha.png",
+    "glow": "iscas_cores/isca-artificial-ajimembrana/Glow.png",
+    "laranjaneon": "iscas_cores/isca-artificial-ajimembrana/laranja-Neon.png",
+    "pastel": "iscas_cores/isca-artificial-ajimembrana/Pastel.png",
+    "pretobrilhante": "iscas_cores/isca-artificial-ajimembrana/preto-brilhante.png",
+    "rapadura": "iscas_cores/isca-artificial-ajimembrana/Rapadura.png",
+    "roxoestrelar": "iscas_cores/isca-artificial-ajimembrana/Roxo-Estrelnar.png",
+    "verdeneon": "iscas_cores/isca-artificial-ajimembrana/Verde neon.png",
+    "vermelhoholografico": "iscas_cores/isca-artificial-ajimembrana/Vermelho-Holografico.png",
+    "veudanoite": "iscas_cores/isca-artificial-ajimembrana/Veu-da-noite.png"
+  },
   "isca-artificial-ajimimizu": {
     "amareloneon": "iscas_cores/isca-artificial-ajimimizu/amarelo-neon.png",
     "brancoperola": "iscas_cores/isca-artificial-ajimimizu/Branco-perola.png",
