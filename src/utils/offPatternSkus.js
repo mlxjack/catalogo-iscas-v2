@@ -2098,10 +2098,22 @@ export const getOffPatternSku = (handle, color, tamanho, quantidade) => {
 // Embalagens que SAIRAM da queima de estoque (pedido do usuario em 18/11/2026):
 // com essas cores fora de padrao, essas combinacoes "Tamanho|Quantidade" nao podem ser escolhidas.
 // IS6212045100, IS6214045100, IS6214045020
+// Boom Paddle (25/11/2026): so as embalagens com estoque no produto "Queima de Estoque" da loja
+// (admin, 79 variacoes); as demais ficam bloqueadas. Cha Verde saiu (nao existe na queima).
 export const OFF_PATTERN_EXCLUDED = {
  "kit-isca-artificial-ajishirimp": {
   "Rubi Dourado": ["4.5cm|A granel - 100 Unidades"],
   "Verde Cósmico": ["4.5cm|A granel - 100 Unidades", "4.5cm|A granel - 20 Unidades"]
+ },
+ "isca-artificial-boom-paddle": {
+  "Azul": ["14cm|A granel - 100 Unidades", "16cm|Kit com 1 Unidade", "16cm|A granel - 20 Unidades", "16cm|A granel - 100 Unidades", "18cm|Kit com 1 Unidade", "18cm|A granel - 20 Unidades", "18cm|A granel - 100 Unidades", "20cm|Kit com 1 Unidade", "20cm|A granel - 20 Unidades", "20cm|A granel - 100 Unidades"],
+  "Beijo da Sombra": ["12cm|A granel - 100 Unidades", "14cm|Kit com 1 Unidade", "14cm|A granel - 20 Unidades", "14cm|A granel - 100 Unidades", "16cm|Kit com 1 Unidade", "16cm|A granel - 20 Unidades", "16cm|A granel - 100 Unidades", "18cm|Kit com 1 Unidade", "18cm|A granel - 20 Unidades", "18cm|A granel - 100 Unidades", "20cm|Kit com 1 Unidade", "20cm|A granel - 20 Unidades", "20cm|A granel - 100 Unidades"],
+  "Branco": ["12cm|A granel - 100 Unidades", "14cm|A granel - 100 Unidades", "16cm|Kit com 1 Unidade", "16cm|A granel - 20 Unidades", "16cm|A granel - 100 Unidades", "18cm|Kit com 1 Unidade", "18cm|A granel - 20 Unidades", "18cm|A granel - 100 Unidades", "20cm|Kit com 1 Unidade", "20cm|A granel - 20 Unidades", "20cm|A granel - 100 Unidades"],
+  "Luz Laranja": ["14cm|A granel - 100 Unidades", "16cm|A granel - 100 Unidades", "20cm|A granel - 20 Unidades", "20cm|A granel - 100 Unidades"],
+  "Rosa": ["14cm|Kit com 1 Unidade", "14cm|A granel - 20 Unidades", "14cm|A granel - 100 Unidades", "16cm|Kit com 1 Unidade", "16cm|A granel - 20 Unidades", "16cm|A granel - 100 Unidades", "18cm|Kit com 1 Unidade", "18cm|A granel - 20 Unidades", "18cm|A granel - 100 Unidades", "20cm|Kit com 1 Unidade", "20cm|A granel - 20 Unidades", "20cm|A granel - 100 Unidades"],
+  "Rubi Dourado": ["8cm|A granel - 100 Unidades", "10cm|Kit com 3 Unidades", "10cm|A granel - 20 Unidades", "10cm|A granel - 100 Unidades", "12cm|Kit com 2 Unidades", "12cm|A granel - 20 Unidades", "12cm|A granel - 100 Unidades", "14cm|Kit com 1 Unidade", "14cm|A granel - 20 Unidades", "14cm|A granel - 100 Unidades", "16cm|Kit com 1 Unidade", "16cm|A granel - 20 Unidades", "16cm|A granel - 100 Unidades", "18cm|Kit com 1 Unidade", "18cm|A granel - 20 Unidades", "18cm|A granel - 100 Unidades", "20cm|Kit com 1 Unidade", "20cm|A granel - 20 Unidades", "20cm|A granel - 100 Unidades"],
+  "Salmão Radiante": ["12cm|Kit com 2 Unidades", "12cm|A granel - 20 Unidades", "12cm|A granel - 100 Unidades", "14cm|Kit com 1 Unidade", "14cm|A granel - 20 Unidades", "14cm|A granel - 100 Unidades", "16cm|Kit com 1 Unidade", "16cm|A granel - 20 Unidades", "16cm|A granel - 100 Unidades", "18cm|Kit com 1 Unidade", "18cm|A granel - 20 Unidades", "18cm|A granel - 100 Unidades", "20cm|Kit com 1 Unidade", "20cm|A granel - 20 Unidades", "20cm|A granel - 100 Unidades"],
+  "Verde Cósmico": ["12cm|A granel - 100 Unidades", "14cm|A granel - 100 Unidades", "16cm|A granel - 100 Unidades", "18cm|A granel - 100 Unidades", "20cm|A granel - 100 Unidades"]
  }
 };
 

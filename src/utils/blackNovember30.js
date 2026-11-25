@@ -31,7 +31,6 @@ export const BLACK_NOVEMBER_30 = {
     "Azul",
     "Beijo da Sombra",
     "Branco",
-    "Chá Verde",
     "Luz Laranja",
     "Rosa",
     "Rubi Dourado",
